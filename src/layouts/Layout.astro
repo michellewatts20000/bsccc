@@ -1,0 +1,88 @@
+---
+import logo from '../assets/current-site/betty_logo.jpg';
+
+const navItems = [
+  { label: 'Why Betty’s', href: '#why-bettys' },
+  { label: 'Difference', href: '#difference' },
+  { label: 'A Day', href: '#day' },
+  { label: 'Learning', href: '#learning' },
+  { label: 'Outdoors', href: '#outdoors' },
+  { label: 'Food', href: '#food' },
+  { label: 'Educators', href: '#educators' },
+  { label: 'Community', href: '#community' },
+  { label: 'FAQ', href: '#faq' },
+  { label: 'Visit', href: '#visit' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Betty Spears Child Care Centre in Tempe offers community-based early learning and long day care for children from 6 weeks to 6 years."
+    />
+    <meta
+      name="keywords"
+      content="childcare Tempe, daycare Tempe, preschool Tempe, long day care, Betty Spears Child Care Centre"
+    />
+    <meta property="og:title" content="Betty Spears Child Care Centre" />
+    <meta
+      property="og:description"
+      content="A place where children belong. Community-based childcare in Tempe, since 1986."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/src/assets/current-site/Header_24.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Baloo:wght@400;500;600;700;800&family=Comfortaa:wght@400;500;600;700&family=Varela+Round&display=swap" rel="stylesheet" />
+    <link rel="canonical" href="https://bettyspears.com.au/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Betty Spears Child Care Centre</title>
+  </head>
+  <body>
+    <div class="site-shell" id="top">
+      <header class="site-header">
+        <div class="container site-header-inner">
+          <a class="brand" href="#top" aria-label="Betty Spears home">
+            <img class="brand-logo" src={logo.src} alt="Betty Spears Child Care Centre logo" />
+          </a>
+
+          <nav class="main-nav" aria-label="Main navigation">
+            {navItems.map((item) => (
+              <a href={item.href}>{item.label}</a>
+            ))}
+          </nav>
+
+          <a class="top-cta" href="#waiting-list">Join the Waiting List</a>
+        </div>
+      </header>
+
+      <slot />
+
+      <footer class="site-footer">
+        <div class="container footer-inner">
+          <div>
+            <strong>Betty Spears Child Care Centre</strong><br />
+            Community-based early learning in Tempe
+          </div>
+          <div class="footer-links">
+            <a href="#visit">Visit</a>
+            <a href="#faq">FAQ</a>
+            <a href="/families">Families</a>
+            <a href="#waiting-list">Waiting list</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <a class="top-cta sticky-cta" href="#waiting-list">Join the Waiting List</a>
+  </body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>
