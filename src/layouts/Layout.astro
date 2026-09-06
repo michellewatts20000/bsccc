@@ -1,15 +1,14 @@
 ---
 import logo from '../assets/current-site/betty_logo.jpg';
+import ogImage from '../assets/current-site/outdoor3.jpeg';
 
 const navItems = [
   { label: 'Why Betty’s', href: '#why-bettys' },
-  { label: 'Difference', href: '#difference' },
   { label: 'A Day', href: '#day' },
   { label: 'Learning', href: '#learning' },
   { label: 'Outdoors', href: '#outdoors' },
   { label: 'Food', href: '#food' },
   { label: 'Educators', href: '#educators' },
-  { label: 'Community', href: '#community' },
   { label: 'FAQ', href: '#faq' },
   { label: 'Visit', href: '#visit' },
 ];
@@ -34,7 +33,7 @@ const navItems = [
       content="A place where children belong. Community-based childcare in Tempe, since 1986."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/src/assets/current-site/Header_24.jpg" />
+    <meta property="og:image" content={ogImage.src} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Baloo:wght@400;500;600;700;800&family=Comfortaa:wght@400;500;600;700&family=Varela+Round&display=swap" rel="stylesheet" />
@@ -57,7 +56,7 @@ const navItems = [
             ))}
           </nav>
 
-          <a class="top-cta" href="#waiting-list">Join the Waiting List</a>
+          <a class="top-cta" href="#waiting-list">Join Waitlist</a>
         </div>
       </header>
 
@@ -79,7 +78,7 @@ const navItems = [
       </footer>
     </div>
 
-    <a class="top-cta sticky-cta" href="#waiting-list">Join the Waiting List</a>
+    <a class="top-cta sticky-cta" href="#waiting-list">Join Waitlist</a>
   </body>
 </html>
 

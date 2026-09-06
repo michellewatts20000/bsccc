@@ -1,15 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import heroImage from '../assets/current-site/Header_24.jpg';
-import differenceImage from '../assets/current-site/header_25.jpg';
-import learningImage from '../assets/current-site/sandpit.png';
-import outdoorImage1 from '../assets/current-site/3.jpg';
-import outdoorImage2 from '../assets/current-site/1.jpg';
-import outdoorImage3 from '../assets/current-site/trainset250pix.png';
-import foodImage from '../assets/current-site/Header_24.jpg';
-import educatorImage1 from '../assets/current-site/discussion200pix.png';
-import educatorImage2 from '../assets/current-site/ringarosey200pix.png';
-import visitImage from '../assets/current-site/header_25.jpg';
+import heroImage from '../assets/current-site/outdoor4.jpeg';
+import differenceImage from '../assets/current-site/betty_image.png';
+import learningImage from '../assets/current-site/outdoor3.jpeg';
+import outdoorImage1 from '../assets/current-site/outdoor.jpeg';
+import outdoorImage2 from '../assets/current-site/outdoor2.jpeg';
+import outdoorImage3 from '../assets/current-site/outdoor4.jpeg';
+import foodImage from '../assets/current-site/outdoor4.jpeg';
+import educatorImage1 from '../assets/current-site/IMG_054AF91A4982-1.jpeg';
+import educatorImage2 from '../assets/current-site/outdoor2.jpeg';
 
 const whyItems = [
   {
@@ -83,7 +82,7 @@ const faqs = [
   },
   {
     q: 'Do you provide nappies?',
-    a: 'Nappies and wipes are provided for babies and younger children as required, with the centre maintaining practical support for families during daily routines.',
+    a: 'Daily fees includes everything your child will need in a day except formula for babies and nappies for all children using them. This is because all families have individual preferences around these things which we respect at Betty’s.',
   },
   {
     q: 'How do we arrange a visit?',
@@ -112,7 +111,7 @@ const faqs = [
           </p>
 
           <div class="hero-actions">
-            <a href="#waiting-list" class="button-primary">Join the Waiting List</a>
+            <a href="#waiting-list" class="button-primary">Join Waitlist</a>
             <a href="#visit" class="button-secondary">Visit Betty’s</a>
           </div>
 
@@ -145,10 +144,14 @@ const faqs = [
     <section class="section" id="why-bettys">
       <div class="container">
         <p class="section-kicker">Why Betty’s?</p>
-        <h2 class="section-heading">A centre built around trust, warmth and belonging.</h2>
+        <h2 class="section-heading">What makes Betty’s special?</h2>
         <p class="section-lead">
           Families choose Betty’s for the way it feels: calm, familiar, human and full of care. We believe the
           most important thing a child needs is not just a place to be, but a place to feel safe, known and free.
+        </p>
+        <p class="section-lead" style="margin-top: 0.9rem;">
+          Since 1986, Betty Spears has remained a not-for-profit, parent-governed centre where decisions are shaped
+          by families and community, not a corporate model.
         </p>
 
         <div class="feature-grid">
@@ -160,23 +163,18 @@ const faqs = [
             </article>
           ))}
         </div>
-      </div>
-    </section>
-
-    <section class="section" id="difference">
-      <div class="container">
-        <p class="section-kicker">The Betty’s difference</p>
-        <h2 class="section-heading">A long history, a strong community and a genuine sense of home.</h2>
-        <p class="section-lead">
-          Betty’s isn’t shaped by a corporate model or a quick turnaround. It’s grown from decades of trust,
-          local relationships and a deep understanding of what families need.
-        </p>
 
         <div class="story-grid">
           <div class="story-column">
             <img src={differenceImage.src} alt="Children exploring and playing in the Betty Spears outdoor learning space" />
           </div>
           <div class="story-column">
+            <p class="section-kicker" style="margin-bottom: 0.6rem;">What makes Betty’s different</p>
+            <h3 style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);">A long history, strong community and a genuine sense of home.</h3>
+            <p class="section-lead" style="margin-top: 0; margin-bottom: 1.1rem;">
+              Betty’s isn’t shaped by a corporate model or a quick turnaround. It’s grown from decades of trust,
+              local relationships and a deep understanding of what families need.
+            </p>
             <div class="story-notes">
               <div class="story-note">
                 <strong>1986</strong>
@@ -189,6 +187,16 @@ const faqs = [
               <div class="story-note">
                 <strong>20+ years</strong>
                 <span>Some educators have been here for decades, creating continuity and trust.</span>
+              </div>
+            </div>
+            <div class="community-stats" style="margin-top: 1.2rem;">
+              <div class="story-note">
+                <strong>Not-for-profit</strong>
+                <span>Built around community and family needs.</span>
+              </div>
+              <div class="story-note">
+                <strong>Parent-led</strong>
+                <span>Community governance remains central.</span>
               </div>
             </div>
           </div>
@@ -338,45 +346,6 @@ const faqs = [
       </div>
     </section>
 
-    <section class="section" id="community">
-      <div class="container">
-        <p class="section-kicker">Our story</p>
-        <h2 class="section-heading">A centre rooted in the Tempe community.</h2>
-
-        <div class="community-grid">
-          <div class="community-copy section-panel">
-            <p>
-              Betty Spears Child Care Centre began in 1986, shaped by a belief that early learning should be
-              grounded in community, care and genuine connection.
-            </p>
-            <p>
-              The centre remains not-for-profit and parent/community governed, which means its values stay close to
-              the families it serves and the children it supports.
-            </p>
-            <p>
-              Over decades, Betty’s has evolved with the community while staying true to what matters most: the
-              relationships between educators, families and children.
-            </p>
-          </div>
-
-          <div class="community-stats">
-            <div class="story-note">
-              <strong>1986</strong>
-              <span>Founded in the Tempe area.</span>
-            </div>
-            <div class="story-note">
-              <strong>Not-for-profit</strong>
-              <span>Built around community and family needs.</span>
-            </div>
-            <div class="story-note">
-              <strong>Parent-led</strong>
-              <span>Community governance remains central.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="section" id="faq">
       <div class="container">
         <p class="section-kicker">Practical information</p>
@@ -398,7 +367,7 @@ const faqs = [
 
     <section class="section" id="waiting-list">
       <div class="container">
-        <p class="section-kicker">Join the waiting list</p>
+        <p class="section-kicker">Join Waitlist</p>
         <h2 class="section-heading">Ready to join Betty’s?</h2>
         <p class="section-lead">
           Places can take time to become available, so we recommend joining the waiting list as early as possible.
@@ -439,7 +408,7 @@ const faqs = [
           <aside class="waiting-card">
             <h3>Start your journey with us</h3>
             <p>We’d love to speak with your family and talk through whether Betty’s feels like the right fit.</p>
-            <a href="#visit" class="button-primary" style="width: 100%; margin-top: 1rem;">Join the Waiting List</a>
+            <a href="#visit" class="button-primary waiting-card-cta">Join Waitlist</a>
             <ul>
               <li>Early enquiry encouraged</li>
               <li>Family-friendly guidance</li>
@@ -465,7 +434,7 @@ const faqs = [
             <div class="visit-details">
               <div class="detail-item">
                 <strong>Address</strong>
-                <span>Tempe, Sydney NSW</span>
+                <span>1A Gannon St, Tempe NSW 2044</span>
               </div>
               <div class="detail-item">
                 <strong>Opening hours</strong>
@@ -473,22 +442,29 @@ const faqs = [
               </div>
               <div class="detail-item">
                 <strong>Phone</strong>
-                <a href="tel:0000000000">(02) 0000 0000</a>
+                <a href="tel:0295588350">Ph: (02) 9558 8350</a>
               </div>
               <div class="detail-item">
                 <strong>Email</strong>
-                <a href="mailto:hello@bettyspears.com.au">hello@bettyspears.com.au</a>
+                <a href="mailto:office@bettyspearschildcare.org.au">office@bettyspearschildcare.org.au</a>
               </div>
             </div>
 
             <div class="hero-actions" style="margin-top: 1.6rem;">
-              <a href="#waiting-list" class="button-primary">Join the Waiting List</a>
-              <a href="mailto:hello@bettyspears.com.au" class="button-secondary">Arrange a Visit</a>
+              <a href="#waiting-list" class="button-primary">Join Waitlist</a>
+              <a href="mailto:office@bettyspearschildcare.org.au" class="button-secondary">Arrange a Visit</a>
             </div>
           </div>
 
           <div class="visit-map-wrap">
-            <img class="visit-map" src={visitImage.src} alt="Betty Spears natural outdoor learning environment in Tempe" />
+            <iframe
+              class="visit-map"
+              title="Map to Betty Spears Child Care Centre"
+              src="https://www.google.com/maps?q=1A+Gannon+St+Tempe+NSW+2044&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen
+            ></iframe>
           </div>
         </div>
       </div>

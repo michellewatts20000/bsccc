@@ -10,8 +10,8 @@
   --muted: #5c6771;
   --line: rgba(30, 115, 190, 0.15);
   --heading: #1e73be;
-  --accent: #5c8d36;
-  --accent-deep: #3e6a22;
+  --accent: #61b816;
+  --accent-deep: #3e8f12;
   --nav-bg: #0a4a7d;
   --nav-text: #f5f9ff;
   --sage: #6ea8c7;
@@ -409,13 +409,20 @@ select {
 
 .story-column img,
 .learning-visual img,
-.food-visual img,
-.visit-map {
+.food-visual img {
   width: 100%;
   min-height: 420px;
   object-fit: cover;
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow);
+}
+
+.visit-map {
+  width: 100%;
+  min-height: 420px;
+  border: 0;
+  border-radius: var(--radius-xl);
+  box-shadow: none;
 }
 
 .story-notes {
@@ -573,13 +580,13 @@ select {
 
 .community-stats {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 1rem;
   margin-top: 1.5rem;
 }
 
 .community-stats .story-note {
-  min-height: 150px;
+  min-height: 0;
 }
 
 .faq-list {
@@ -682,6 +689,14 @@ select {
   font-size: 1.7rem;
   font-family: Georgia, serif;
   letter-spacing: -0.04em;
+}
+
+.waiting-card-cta {
+  width: 80%;
+  margin-top: 1rem;
+  text-align: center;
+  line-height: 1;
+  padding-inline: 1rem;
 }
 
 .waiting-card ul {
