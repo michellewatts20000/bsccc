@@ -1,14 +1,36 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import heroImage from '../assets/current-site/outdoor4.jpeg';
 import differenceImage from '../assets/current-site/betty_image.png';
-import learningImage from '../assets/current-site/outdoor3.jpeg';
+import learningImage from '../assets/current-site/IMG_34F9EB7F8DB5-1.jpeg';
 import outdoorImage1 from '../assets/current-site/outdoor.jpeg';
 import outdoorImage2 from '../assets/current-site/outdoor2.jpeg';
-import outdoorImage3 from '../assets/current-site/outdoor4.jpeg';
-import foodImage from '../assets/current-site/outdoor4.jpeg';
-import educatorImage1 from '../assets/current-site/IMG_054AF91A4982-1.jpeg';
+import outdoorImage3 from '../assets/current-site/outdoor3.jpeg';
+import groupImage from '../assets/current-site/IMG_054AF91A4982-1.jpeg';
+import educatorImage1 from '../assets/current-site/IMG_60C1EFBF51E3-1.jpeg';
 import educatorImage2 from '../assets/current-site/outdoor2.jpeg';
+import educatorImage3 from '../assets/current-site/outdoor.jpeg';
+
+// TODO: replace with the centre's real Stripe Payment Link once the Stripe account is set up.
+const stripePaymentLinkUrl = 'https://buy.stripe.com/replace-with-real-payment-link';
+
+const feeTable = [
+  { age: 'Under 2 years', fee: '$178.50' },
+  { age: '2–3 years', fee: '$176.20' },
+  { age: '3–5 years', fee: '$176.00' },
+];
+
+const philosophyItems = [
+  { letter: 'C', title: 'Community & belonging', description: 'A community-based centre fostering respect and understanding for ourselves, each other and the wider community.' },
+  { letter: 'H', title: 'Health & wellbeing', description: 'Emotional and physical wellbeing come first, so every child feels secure enough to fully engage and enjoy their day.' },
+  { letter: 'I', title: 'Inclusion', description: 'We welcome all children and families and work to maintain a culturally safe, culturally inclusive centre where everyone feels connected.' },
+  { letter: 'L', title: 'Learning from interest', description: 'Children are capable, competent co-contributors in their own learning, exploring at their own pace and following their interests.' },
+  { letter: 'D', title: 'Development: being & becoming', description: 'We meet children where they are and help them grow, while supporting educators’ ongoing professional development too.' },
+  { letter: 'R', title: 'Relationships & rights', description: 'Meaningful relationships built on trust and respect, so Betty’s feels like a home away from home for children and families alike.' },
+  { letter: 'E', title: 'Environment', description: 'A stimulating environment with the time, space and resources children need to investigate and explore at their own pace.' },
+  { letter: 'N', title: 'Nature', description: 'Daily opportunities to explore our large natural outdoor space, and to learn what it means to care for the environment.' },
+];
 
 const whyItems = [
   {
@@ -58,11 +80,15 @@ const faqs = [
   },
   {
     q: 'What are the fees?',
-    a: 'Fees vary depending on age, attendance days and individual circumstances. We encourage families to contact the centre to discuss the most relevant information about your child’s enrolment and subsidy eligibility.',
+    a: 'Current daily fees (updated 1 September 2026) are $178.50 for under 2 years, $176.20 for 2–3 years, and $176.00 for 3–5 years. This includes everything your child needs each day except formula for babies and nappies for children using them — we know families have their own preferences here, and we respect that.',
   },
   {
     q: 'How does Child Care Subsidy work?',
     a: 'Families may be eligible for Child Care Subsidy through Services Australia. Our team can explain the process and guide you through the application and enrolment steps.',
+  },
+  {
+    q: 'What is your National Quality Standard rating?',
+    a: 'Betty Spears was assessed against the National Quality Standard in August 2023 and rated as Meeting the Standard overall, while Exceeding in three of the seven Quality Areas. A full copy of our assessment report is available on request.',
   },
   {
     q: 'How does the waiting list work?',
@@ -111,8 +137,8 @@ const faqs = [
           </p>
 
           <div class="hero-actions">
-            <a href="#waiting-list" class="button-primary">Join Waitlist</a>
-            <a href="#visit" class="button-secondary">Visit Betty’s</a>
+            <a href="#visit" class="button-primary">Book a Visit</a>
+            <a href="#waiting-list" class="button-secondary">Join Waitlist</a>
           </div>
 
           <div class="quick-facts" aria-label="Key facts about the centre">
@@ -128,11 +154,15 @@ const faqs = [
               <strong>Since 1986</strong>
               <span>Tempe community</span>
             </div>
+            <div class="quick-fact">
+              <strong>Exceeding NQS</strong>
+              <span>3 of 7 quality areas</span>
+            </div>
           </div>
         </div>
 
         <div class="hero-visual">
-          <img src={heroImage.src} alt="Children playing outdoors in the Betty Spears garden environment" />
+          <Image src={heroImage} width={1400} alt="Children playing outdoors in the Betty Spears garden environment" />
           <div class="hero-badge">
             <strong>Betty’s</strong>
             <span>Family-led, community-rooted and full of everyday wonder.</span>
@@ -165,8 +195,11 @@ const faqs = [
         </div>
 
         <div class="story-grid">
-          <div class="story-column">
-            <img src={differenceImage.src} alt="Children exploring and playing in the Betty Spears outdoor learning space" />
+          <div class="story-column founder-column">
+            <figure class="founder-card">
+              <Image src={differenceImage} width={320} class="founder-portrait" alt="An archival portrait of the late Betty Spears" />
+              <figcaption>Betty Spears, 1926–2012</figcaption>
+            </figure>
           </div>
           <div class="story-column">
             <p class="section-kicker" style="margin-bottom: 0.6rem;">What makes Betty’s different</p>
@@ -174,6 +207,13 @@ const faqs = [
             <p class="section-lead" style="margin-top: 0; margin-bottom: 1.1rem;">
               Betty’s isn’t shaped by a corporate model or a quick turnaround. It’s grown from decades of trust,
               local relationships and a deep understanding of what families need.
+            </p>
+            <p class="section-lead" style="margin-top: 0; margin-bottom: 1.1rem;">
+              The centre is named for the late Betty Spears (1926–2012), who — alongside June deLorenzo — worked
+              tirelessly to secure state and federal funding in the 1980s for shift-working families, especially
+              mothers, at the State Transit Authority. What they built was, to our knowledge, one of the first
+              24-hour child care centres in Sydney. We’re no longer open around the clock, but it’s with pride
+              that we carry that same spirit of responsiveness to families forward today.
             </p>
             <div class="story-notes">
               <div class="story-note">
@@ -204,10 +244,35 @@ const faqs = [
       </div>
     </section>
 
-    <section class="section" id="day">
+    <section class="section" id="learning">
       <div class="container">
-        <p class="section-kicker">A day at Betty’s</p>
-        <h2 class="section-heading">A rhythm that feels calm, natural and reassuring.</h2>
+        <p class="section-kicker">Learning through play</p>
+        <h2 class="section-heading">Children don’t need to be told how to play.</h2>
+
+        <div class="learning-grid">
+          <div class="learning-visual">
+            <Image src={learningImage} width={900} alt="A child painting at an outdoor art table at Betty Spears" />
+          </div>
+
+          <div class="section-panel learning-copy">
+            <p>
+              At Betty’s, learning grows naturally from children’s interests, relationships and everyday play.
+              We believe children thrive when they have time, space and trusted adults who understand their needs.
+            </p>
+            <p>
+              Play-based learning supports curiosity, creativity, independence, social development and confidence.
+              Through music, movement, stories, sensory exploration and imaginative experiences, children build the
+              foundations for lifelong learning.
+            </p>
+            <p>
+              Our educators follow children’s cues, listen closely and create rich, responsive learning experiences
+              that feel joyful, purposeful and deeply human.
+            </p>
+          </div>
+        </div>
+
+        <p class="section-kicker" style="margin-top: 3.2rem;">Your day at Betty’s</p>
+        <h3 style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);">A rhythm that feels calm, natural and reassuring.</h3>
         <p class="section-lead">
           Everyday life at Betty’s is full of movement, connection and small moments that matter. The day is
           designed to create comfort, curiosity and plenty of room for children to simply be themselves.
@@ -227,80 +292,72 @@ const faqs = [
       </div>
     </section>
 
-    <section class="section" id="learning">
+    <section class="section" id="philosophy">
       <div class="container">
-        <p class="section-kicker">Learning through play</p>
-        <h2 class="section-heading">Children don’t need to be told how to play.</h2>
+        <p class="section-kicker">Our philosophy</p>
+        <h2 class="section-heading">C.H.I.L.D.R.E.N. — the belief behind every day at Betty’s.</h2>
+        <p class="section-lead">
+          Reviewed annually with families and staff, our philosophy is the foundation for how we care for your
+          child and serve our community.
+        </p>
 
-        <div class="learning-grid">
-          <div class="learning-visual">
-            <img src={learningImage.src} alt="Children using the sandpit and outdoor play spaces at Betty Spears" />
-          </div>
-
-          <div class="section-panel learning-copy">
-            <p>
-              At Betty’s, learning grows naturally from children’s interests, relationships and everyday play.
-              We believe children thrive when they have time, space and trusted adults who understand their needs.
-            </p>
-            <p>
-              Play-based learning supports curiosity, creativity, independence, social development and confidence.
-              Through music, movement, stories, sensory exploration and imaginative experiences, children build the
-              foundations for lifelong learning.
-            </p>
-            <p>
-              Our educators follow children’s cues, listen closely and create rich, responsive learning experiences
-              that feel joyful, purposeful and deeply human.
-            </p>
-          </div>
+        <div class="philosophy-grid">
+          {philosophyItems.map((item) => (
+            <article class="philosophy-card">
+              <div class="philosophy-letter" aria-hidden="true">{item.letter}</div>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </article>
+          ))}
         </div>
       </div>
     </section>
 
-    <section class="section" id="outdoors">
+    <section class="section" id="life">
       <div class="container">
-        <p class="section-kicker">Outdoor spaces</p>
-        <h2 class="section-heading">Nature is part of everyday life here.</h2>
+        <p class="section-kicker">Life at Betty’s</p>
+        <h2 class="section-heading">Nature, food and shared routines — every day.</h2>
         <p class="section-lead">
           Betty’s is known for its generous outdoor spaces, where children run, dig, climb, notice and explore.
-          Fresh air, open-ended play and time in nature are part of the rhythm of the day.
+          Fresh air, open-ended play and time in nature are part of the rhythm of the day — alongside fresh food
+          and calm, connected mealtimes.
         </p>
 
         <div class="gallery-grid">
           <div class="gallery-card">
-            <img src={outdoorImage1.src} alt="Children playing in the Betty Spears outdoor play area" />
+            <Image src={outdoorImage1} width={900} alt="Children playing in the Betty Spears outdoor play area" />
           </div>
           <div class="gallery-card">
-            <img src={outdoorImage2.src} alt="Children exploring in the natural environment at Betty Spears" />
+            <Image src={outdoorImage2} width={700} alt="Children exploring in the natural environment at Betty Spears" />
           </div>
           <div class="gallery-card">
-            <img src={outdoorImage3.src} alt="Children engaging in outdoor play and exploration at Betty Spears" />
+            <Image src={outdoorImage3} width={700} alt="Children playing at the mud kitchen and water play area at Betty Spears" />
           </div>
         </div>
-      </div>
-    </section>
 
-    <section class="section" id="food">
-      <div class="container">
-        <p class="section-kicker">Food & nutrition</p>
-        <h2 class="section-heading">Fresh food, shared routines and healthy habits.</h2>
+        <p class="section-kicker" style="margin-top: 3.2rem;">Food & nutrition</p>
+        <h3 style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);">Fresh food, shared routines and healthy habits.</h3>
 
         <div class="food-grid">
           <div class="food-copy section-panel">
             <p>
-              Meals at Betty’s are prepared fresh at the centre, with a focus on nourishing food and positive
-              mealtime experiences.
+              Our cook makes food that’s low in salt and sugar, mostly from scratch, with fresh fruit and vegetables
+              delivered weekly. Every menu is assessed against the Nutrition Checklist for Long Day Care by an
+              early childhood nutritionist, and we run the “Munch and Move” program alongside it.
             </p>
             <p>
-              Children are supported to build confidence around eating, food choices and shared routines. Food is
-              not just fuel — it is part of how children learn about belonging, independence and community.
+              For toddlers and preschoolers, meals happen in a dedicated dining room where an educator sits with a
+              small group to share food and conversation — more like a family table than a canteen. Foods are
+              served in separate bowls with tasting saucers on offer, so children can self-select at their own
+              pace without feeling pressured by foods they’d rather avoid.
             </p>
             <p>
-              We also work with families to cater to dietary requirements where appropriate, so every child feels
-              comfortable and included.
+              We work with families to cater to dietary requirements, so every child feels comfortable and
+              included at the table.
             </p>
           </div>
           <div class="food-visual">
-            <img src={foodImage.src} alt="Children eating and playing in a calm, natural environment" />
+            <Image src={groupImage} width={900} alt="Children gathered together around a shared activity at Betty Spears" />
           </div>
         </div>
       </div>
@@ -317,7 +374,7 @@ const faqs = [
 
         <div class="staff-grid">
           <article class="staff-card">
-            <img src={educatorImage1.src} alt="Educator supporting children in a playful outdoor setting" />
+            <Image src={educatorImage1} width={700} alt="An educator sitting with a group of children during circle time" />
             <div class="staff-card-body">
               <h3>Experienced educators</h3>
               <span class="staff-role">Long-serving team</span>
@@ -326,7 +383,7 @@ const faqs = [
           </article>
 
           <article class="staff-card">
-            <img src={educatorImage2.src} alt="Children enjoying active play outdoors at Betty Spears" />
+            <Image src={educatorImage2} width={700} alt="Children exploring together outdoors at Betty Spears" />
             <div class="staff-card-body">
               <h3>Warm, familiar care</h3>
               <span class="staff-role">Relationships matter</span>
@@ -335,7 +392,7 @@ const faqs = [
           </article>
 
           <article class="staff-card">
-            <img src={outdoorImage1.src} alt="Educator helping a child explore in the outdoor environment" />
+            <Image src={educatorImage3} width={700} alt="Children exploring a shaded garden pathway at Betty Spears" />
             <div class="staff-card-body">
               <h3>Qualified, caring, consistent</h3>
               <span class="staff-role">Trusted professionals</span>
@@ -373,6 +430,23 @@ const faqs = [
           Places can take time to become available, so we recommend joining the waiting list as early as possible.
         </p>
 
+        <div class="fee-table" id="fees" role="table" aria-label="Current daily fees by age group">
+          <div class="fee-row fee-row-head" role="row">
+            <span role="columnheader">Age group</span>
+            <span role="columnheader">Daily fee</span>
+          </div>
+          {feeTable.map((row) => (
+            <div class="fee-row" role="row">
+              <span role="cell">{row.age}</span>
+              <span role="cell">{row.fee}</span>
+            </div>
+          ))}
+        </div>
+        <p class="fee-note">
+          Updated 1 September 2026. Includes everything your child needs each day except formula for babies and
+          nappies for children using them.
+        </p>
+
         <div class="waiting-wrap">
           <div class="steps">
             <div class="step">
@@ -385,8 +459,8 @@ const faqs = [
             <div class="step">
               <div class="step-number">2</div>
               <div>
-                <h3>Pay the waiting list fee</h3>
-                <p>There is a current waiting list fee to secure your place on the list.</p>
+                <h3>Pay the $30 waiting list fee</h3>
+                <p>Secure your place on the list by card online, or by direct bank transfer — details below.</p>
               </div>
             </div>
             <div class="step">
@@ -408,13 +482,43 @@ const faqs = [
           <aside class="waiting-card">
             <h3>Start your journey with us</h3>
             <p>We’d love to speak with your family and talk through whether Betty’s feels like the right fit.</p>
-            <a href="#visit" class="button-primary waiting-card-cta">Join Waitlist</a>
+            <a href="#visit" class="button-primary waiting-card-cta">Book a Visit</a>
             <ul>
               <li>Early enquiry encouraged</li>
               <li>Family-friendly guidance</li>
               <li>Clear next steps</li>
             </ul>
           </aside>
+        </div>
+
+        <div class="payment-grid">
+          <div class="section-panel payment-panel">
+            <h3>Pay online</h3>
+            <p>Pay your $30 waiting list fee securely by card.</p>
+            <a href={stripePaymentLinkUrl} class="button-primary" target="_blank" rel="noopener">Pay $30 waiting list fee</a>
+          </div>
+          <div class="section-panel payment-panel">
+            <h3>Or pay by bank transfer</h3>
+            <p>Please use your child’s name as the payment reference so we can match it to your application.</p>
+            <div class="bank-details">
+              <div class="detail-item">
+                <strong>Account name</strong>
+                <span>Betty Spears Child Care Centre</span>
+              </div>
+              <div class="detail-item">
+                <strong>Bank</strong>
+                <span>Bendigo Bank</span>
+              </div>
+              <div class="detail-item">
+                <strong>BSB</strong>
+                <span>633-000</span>
+              </div>
+              <div class="detail-item">
+                <strong>Account number</strong>
+                <span>143895936</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -451,8 +555,8 @@ const faqs = [
             </div>
 
             <div class="hero-actions" style="margin-top: 1.6rem;">
-              <a href="#waiting-list" class="button-primary">Join Waitlist</a>
-              <a href="mailto:office@bettyspearschildcare.org.au" class="button-secondary">Arrange a Visit</a>
+              <a href="mailto:office@bettyspearschildcare.org.au" class="button-primary">Arrange a Visit</a>
+              <a href="#waiting-list" class="button-secondary">Join Waitlist</a>
             </div>
           </div>
 

@@ -1,17 +1,44 @@
 ---
-import logo from '../assets/current-site/betty_logo.jpg';
-import ogImage from '../assets/current-site/outdoor3.jpeg';
+import { Image, getImage } from 'astro:assets';
+import logoSrc from '../assets/current-site/betty_logo.jpg';
+import ogImageSrc from '../assets/current-site/outdoor4.jpeg';
+
+const optimizedOgImage = await getImage({ src: ogImageSrc, width: 1200, format: 'webp' });
 
 const navItems = [
   { label: 'Why Betty’s', href: '#why-bettys' },
-  { label: 'A Day', href: '#day' },
-  { label: 'Learning', href: '#learning' },
-  { label: 'Outdoors', href: '#outdoors' },
-  { label: 'Food', href: '#food' },
+  { label: 'Learning & Your Day', href: '#learning' },
+  { label: 'Philosophy', href: '#philosophy' },
+  { label: 'Life at Betty’s', href: '#life' },
   { label: 'Educators', href: '#educators' },
+  { label: 'Fees', href: '#fees' },
   { label: 'FAQ', href: '#faq' },
   { label: 'Visit', href: '#visit' },
 ];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ChildCare',
+  name: 'Betty Spears Child Care Centre',
+  url: 'https://bettyspearschildcare.org.au/',
+  telephone: '+61295588350',
+  email: 'office@bettyspearschildcare.org.au',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '1A Gannon St',
+    addressLocality: 'Tempe',
+    addressRegion: 'NSW',
+    postalCode: '2044',
+    addressCountry: 'AU',
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '07:30',
+    closes: '18:00',
+  },
+  foundingDate: '1986',
+};
 ---
 
 <!doctype html>
@@ -33,21 +60,22 @@ const navItems = [
       content="A place where children belong. Community-based childcare in Tempe, since 1986."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content={ogImage.src} />
+    <meta property="og:image" content={new URL(optimizedOgImage.src, Astro.site)} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Baloo:wght@400;500;600;700;800&family=Comfortaa:wght@400;500;600;700&family=Varela+Round&display=swap" rel="stylesheet" />
-    <link rel="canonical" href="https://bettyspears.com.au/" />
+    <link rel="canonical" href="https://bettyspearschildcare.org.au/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>Betty Spears Child Care Centre</title>
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>
   <body>
     <div class="site-shell" id="top">
       <header class="site-header">
         <div class="container site-header-inner">
           <a class="brand" href="#top" aria-label="Betty Spears home">
-            <img class="brand-logo" src={logo.src} alt="Betty Spears Child Care Centre logo" />
+            <Image class="brand-logo" src={logoSrc} height={120} alt="Betty Spears Child Care Centre logo" />
           </a>
 
           <nav class="main-nav" aria-label="Main navigation">
@@ -56,7 +84,7 @@ const navItems = [
             ))}
           </nav>
 
-          <a class="top-cta" href="#waiting-list">Join Waitlist</a>
+          <a class="top-cta" href="#visit">Book a Visit</a>
         </div>
       </header>
 

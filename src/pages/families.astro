@@ -1,5 +1,21 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
+import bannerImage from '../assets/current-site/IMG_24902A2ED682-1.jpeg';
+
+const usefulLinks = [
+  { href: 'https://www.acecqa.gov.au', label: 'ACECQA', description: 'National Quality Framework (NQF), including the Early Years Learning Framework (EYLF).' },
+  { href: 'https://www.servicesaustralia.gov.au/child-care-subsidy', label: 'Services Australia', description: 'Child Care Subsidy (CCS) eligibility, rates and how to apply.' },
+  { href: 'https://www.earlychildhoodaustralia.org.au', label: 'Early Childhood Australia', description: 'Peak advocacy organisation for children and families, with further resources.' },
+  { href: 'https://www.facs.nsw.gov.au/families/protecting-kids', label: 'Keep Them Safe (NSW)', description: 'Child protection information, including how to report concerns.' },
+  { href: 'https://www.health.gov.au/topics/immunisation', label: 'Immunisation', description: 'Australian Government immunisation details and schedules.' },
+  { href: 'https://www.nhmrc.gov.au', label: 'Staying Healthy in Childcare', description: 'NHMRC guide to common childhood illnesses, treatments and exclusion periods.' },
+  { href: 'https://www.qld.gov.au/health/mental-health/support/kids-help', label: 'KidsMatter', description: 'Early childhood mental health initiative and fact sheets.' },
+  { href: 'https://education.nsw.gov.au', label: 'NSW Department of Education', description: 'Information about primary schools and starting school.' },
+  { href: 'https://www.schn.health.nsw.gov.au/parents-and-carers/fact-sheets', label: "Sydney Children's Hospitals Network", description: "Fact sheets on children's illnesses, first aid and more." },
+  { href: 'http://www.bom.gov.au/nsw/uv/sydney.shtml', label: 'Bureau of Meteorology', description: 'Daily UV rating for Sydney.' },
+  { href: 'https://www.stjohn.org.au', label: 'St John Ambulance', description: 'First aid fact sheets for families.' },
+];
 ---
 
 <Layout>
@@ -9,32 +25,81 @@ import Layout from '../layouts/Layout.astro';
         <p class="section-kicker">Family resources</p>
         <h1 class="section-heading">Current family information</h1>
         <p class="section-lead">
-          This page is reserved for family-specific resources such as policies, forms, illness guidance,
-          immunisation information and administrative updates.
+          This page is for policies, useful links and practical information for families already enrolled at
+          Betty’s. If you can’t find what you’re looking for, please contact the office.
         </p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        <div class="story-grid" style="align-items: start;">
+          <div class="story-column">
+            <Image src={bannerImage} width={900} alt="Children engaged in imaginative indoor play at Betty Spears" />
+          </div>
+          <div class="story-column section-panel community-copy">
+            <h3 style="margin: 0; font-size: clamp(1.3rem, 2.2vw, 1.6rem); color: var(--heading);">Our quality rating</h3>
+            <p style="margin: 0; color: var(--muted);">
+              Betty Spears was assessed against the National Quality Standard in August 2023 and rated as
+              Meeting the Standard overall, while Exceeding in three of the seven Quality Areas. A full copy of
+              our assessment report is available by request from the office, and ratings for all NSW services
+              can be checked on the
+              {' '}<a href="https://www.acecqa.gov.au" style="text-decoration: underline;">ACECQA website</a>.
+            </p>
+            <h3 style="margin: 1.2rem 0 0; font-size: clamp(1.3rem, 2.2vw, 1.6rem); color: var(--heading);">Reconciliation Action Plan</h3>
+            <p style="margin: 0; color: var(--muted);">
+              Betty’s has a Reconciliation Action Plan guiding how we build respect and understanding for
+              Aboriginal and Torres Strait Islander peoples and cultures across our centre. A copy is available
+              from the office on request.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        <p class="section-kicker">Links & resources</p>
+        <h2 class="section-heading" style="font-size: clamp(1.9rem, 4vw, 2.8rem);">Useful websites for families.</h2>
+        <p class="section-lead">
+          A few external sites our families find useful — for subsidies, health, safety and starting school.
+        </p>
+
+        <div class="links-grid">
+          {usefulLinks.map((link) => (
+            <a class="link-card" href={link.href} target="_blank" rel="noopener">
+              <strong>{link.label}</strong>
+              <span>{link.description}</span>
+            </a>
+          ))}
+        </div>
       </div>
     </section>
 
     <section class="section" style="padding-top: 0;">
       <div class="container section-panel">
         <div class="community-copy">
-          <p>
-            This section can be expanded with policies, parent forms, NQS documentation and practical
-            information for current families only.
+          <h3 style="margin: 0; font-size: clamp(1.3rem, 2.2vw, 1.6rem); color: var(--heading);">Policies & forms</h3>
+          <p style="margin: 0; color: var(--muted);">
+            Official centre policies, enrolment paperwork and administrative forms for current families are
+            being added here. In the meantime, please contact the office and we’ll send you what you need.
           </p>
-          <div class="community-stats">
-            <div class="story-note">
-              <strong>Policies</strong>
-              <span>Access official centre policies and updates.</span>
-            </div>
-            <div class="story-note">
-              <strong>Forms</strong>
-              <span>Enrolment and administrative documents.</span>
-            </div>
-            <div class="story-note">
-              <strong>Resources</strong>
-              <span>Illness, immunisation and family guidance.</span>
-            </div>
+          <div class="feature-grid" style="grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 0.5rem;">
+            <article class="feature-card">
+              <div class="feature-icon" aria-hidden="true">📋</div>
+              <h3>Policies</h3>
+              <p>Access official centre policies and updates.</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon" aria-hidden="true">📄</div>
+              <h3>Forms</h3>
+              <p>Enrolment and administrative documents.</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon" aria-hidden="true">🩺</div>
+              <h3>Resources</h3>
+              <p>Illness, immunisation and family guidance.</p>
+            </article>
           </div>
         </div>
       </div>
