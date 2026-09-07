@@ -171,9 +171,9 @@ const faqs = [
       </div>
     </section>
 
-    <section class="section" id="why-bettys">
+    <section class="section" id="about">
       <div class="container">
-        <p class="section-kicker">Why Betty’s?</p>
+        <p class="section-kicker">About Betty’s</p>
         <h2 class="section-heading">What makes Betty’s special?</h2>
         <p class="section-lead">
           Families choose Betty’s for the way it feels: calm, familiar, human and full of care. We believe the
@@ -194,59 +194,108 @@ const faqs = [
           ))}
         </div>
 
-        <div class="story-grid">
-          <div class="story-column founder-column">
-            <figure class="founder-card">
-              <Image src={differenceImage} width={320} class="founder-portrait" alt="An archival portrait of the late Betty Spears" />
-              <figcaption>Betty Spears, 1926–2012</figcaption>
-            </figure>
+        <div class="founder-wrap">
+          <figure class="founder-card">
+            <Image src={differenceImage} width={320} class="founder-portrait" alt="An archival portrait of the late Betty Spears" />
+            <figcaption>Betty Spears, 1926–2012</figcaption>
+          </figure>
+          <p class="section-kicker" style="margin-bottom: 0.6rem;">What makes Betty’s different</p>
+          <h3 style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);">A long history, strong community and a genuine sense of home.</h3>
+          <p class="section-lead" style="margin-top: 0; margin-bottom: 1.1rem;">
+            Betty’s isn’t shaped by a corporate model or a quick turnaround. It’s grown from decades of trust,
+            local relationships and a deep understanding of what families need.
+          </p>
+          <p class="section-lead" style="margin-top: 0; margin-bottom: 1.1rem;">
+            The centre is named for the late Betty Spears (1926–2012), who — alongside June deLorenzo — worked
+            tirelessly to secure state and federal funding in the 1980s for shift-working families, especially
+            mothers, at the State Transit Authority. What they built was, to our knowledge, one of the first
+            24-hour child care centres in Sydney. We’re no longer open around the clock, but it’s with pride
+            that we carry that same spirit of responsiveness to families forward today.
+          </p>
+        </div>
+        <div class="story-notes">
+          <div class="story-note">
+            <strong>1986</strong>
+            <span>Betty’s begins its story in the heart of the Tempe community.</span>
           </div>
-          <div class="story-column">
-            <p class="section-kicker" style="margin-bottom: 0.6rem;">What makes Betty’s different</p>
-            <h3 style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);">A long history, strong community and a genuine sense of home.</h3>
-            <p class="section-lead" style="margin-top: 0; margin-bottom: 1.1rem;">
-              Betty’s isn’t shaped by a corporate model or a quick turnaround. It’s grown from decades of trust,
-              local relationships and a deep understanding of what families need.
-            </p>
-            <p class="section-lead" style="margin-top: 0; margin-bottom: 1.1rem;">
-              The centre is named for the late Betty Spears (1926–2012), who — alongside June deLorenzo — worked
-              tirelessly to secure state and federal funding in the 1980s for shift-working families, especially
-              mothers, at the State Transit Authority. What they built was, to our knowledge, one of the first
-              24-hour child care centres in Sydney. We’re no longer open around the clock, but it’s with pride
-              that we carry that same spirit of responsiveness to families forward today.
-            </p>
-            <div class="story-notes">
-              <div class="story-note">
-                <strong>1986</strong>
-                <span>Betty’s begins its story in the heart of the Tempe community.</span>
-              </div>
-              <div class="story-note">
-                <strong>40+ years</strong>
-                <span>Part of local families’ stories, routines and milestones.</span>
-              </div>
-              <div class="story-note">
-                <strong>20+ years</strong>
-                <span>Some educators have been here for decades, creating continuity and trust.</span>
-              </div>
-            </div>
-            <div class="community-stats" style="margin-top: 1.2rem;">
-              <div class="story-note">
-                <strong>Not-for-profit</strong>
-                <span>Built around community and family needs.</span>
-              </div>
-              <div class="story-note">
-                <strong>Parent-led</strong>
-                <span>Community governance remains central.</span>
-              </div>
-            </div>
+          <div class="story-note">
+            <strong>40+ years</strong>
+            <span>Part of local families’ stories, routines and milestones.</span>
           </div>
+          <div class="story-note">
+            <strong>20+ years</strong>
+            <span>Some educators have been here for decades, creating continuity and trust.</span>
+          </div>
+        </div>
+        <div class="community-stats" style="margin-top: 1.2rem;">
+          <div class="story-note">
+            <strong>Not-for-profit</strong>
+            <span>Built around community and family needs.</span>
+          </div>
+          <div class="story-note">
+            <strong>Parent-led</strong>
+            <span>Community governance remains central.</span>
+          </div>
+        </div>
+
+        <p class="section-kicker" style="margin-top: 3.2rem;">Our philosophy</p>
+        <h3 style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);">C.H.I.L.D.R.E.N. — the belief behind every day at Betty’s.</h3>
+        <p class="section-lead">
+          Reviewed annually with families and staff, our philosophy is the foundation for how we care for your
+          child and serve our community.
+        </p>
+
+        <div class="philosophy-grid">
+          {philosophyItems.map((item) => (
+            <article class="philosophy-card">
+              <div class="philosophy-letter" aria-hidden="true">{item.letter}</div>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </article>
+          ))}
+        </div>
+
+        <p class="section-kicker" style="margin-top: 3.2rem;">Our educators</p>
+        <h3 style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);">Your child gets to know the people caring for them.</h3>
+        <p class="section-lead">
+          The long-serving nature of our educators is one of Betty’s greatest strengths. Families know they can
+          trust familiar faces, stable routines and deep relationships that grow over time.
+        </p>
+
+        <div class="staff-grid">
+          <article class="staff-card">
+            <Image src={educatorImage1} width={700} alt="An educator sitting with a group of children during circle time" />
+            <div class="staff-card-body">
+              <h3>Experienced educators</h3>
+              <span class="staff-role">Long-serving team</span>
+              <p>Strong relationships, continuity and a deep understanding of each child’s needs.</p>
+            </div>
+          </article>
+
+          <article class="staff-card">
+            <Image src={educatorImage2} width={700} alt="Children exploring together outdoors at Betty Spears" />
+            <div class="staff-card-body">
+              <h3>Warm, familiar care</h3>
+              <span class="staff-role">Relationships matter</span>
+              <p>Children feel safe when they know the adults around them and the adults know them well.</p>
+            </div>
+          </article>
+
+          <article class="staff-card">
+            <Image src={educatorImage3} width={700} alt="Children exploring a shaded garden pathway at Betty Spears" />
+            <div class="staff-card-body">
+              <h3>Qualified, caring, consistent</h3>
+              <span class="staff-role">Trusted professionals</span>
+              <p>Our team brings professional knowledge, calm energy and genuine care to every day.</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="learning">
+    <section class="section" id="day">
       <div class="container">
-        <p class="section-kicker">Learning through play</p>
+        <p class="section-kicker">A day at Betty’s</p>
         <h2 class="section-heading">Children don’t need to be told how to play.</h2>
 
         <div class="learning-grid">
@@ -271,7 +320,7 @@ const faqs = [
           </div>
         </div>
 
-        <p class="section-kicker" style="margin-top: 3.2rem;">Your day at Betty’s</p>
+        <p class="section-kicker" style="margin-top: 3.2rem;">Your rhythm of the day</p>
         <h3 style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);">A rhythm that feels calm, natural and reassuring.</h3>
         <p class="section-lead">
           Everyday life at Betty’s is full of movement, connection and small moments that matter. The day is
@@ -289,34 +338,9 @@ const faqs = [
             </div>
           ))}
         </div>
-      </div>
-    </section>
 
-    <section class="section" id="philosophy">
-      <div class="container">
-        <p class="section-kicker">Our philosophy</p>
-        <h2 class="section-heading">C.H.I.L.D.R.E.N. — the belief behind every day at Betty’s.</h2>
-        <p class="section-lead">
-          Reviewed annually with families and staff, our philosophy is the foundation for how we care for your
-          child and serve our community.
-        </p>
-
-        <div class="philosophy-grid">
-          {philosophyItems.map((item) => (
-            <article class="philosophy-card">
-              <div class="philosophy-letter" aria-hidden="true">{item.letter}</div>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="life">
-      <div class="container">
-        <p class="section-kicker">Life at Betty’s</p>
-        <h2 class="section-heading">Nature, food and shared routines — every day.</h2>
+        <p class="section-kicker" style="margin-top: 3.2rem;">Life at Betty’s</p>
+        <h3 style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);">Nature, food and shared routines — every day.</h3>
         <p class="section-lead">
           Betty’s is known for its generous outdoor spaces, where children run, dig, climb, notice and explore.
           Fresh air, open-ended play and time in nature are part of the rhythm of the day — alongside fresh food
@@ -359,46 +383,6 @@ const faqs = [
           <div class="food-visual">
             <Image src={groupImage} width={900} alt="Children gathered together around a shared activity at Betty Spears" />
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="educators">
-      <div class="container">
-        <p class="section-kicker">Our educators</p>
-        <h2 class="section-heading">Your child gets to know the people caring for them.</h2>
-        <p class="section-lead">
-          The long-serving nature of our educators is one of Betty’s greatest strengths. Families know they can
-          trust familiar faces, stable routines and deep relationships that grow over time.
-        </p>
-
-        <div class="staff-grid">
-          <article class="staff-card">
-            <Image src={educatorImage1} width={700} alt="An educator sitting with a group of children during circle time" />
-            <div class="staff-card-body">
-              <h3>Experienced educators</h3>
-              <span class="staff-role">Long-serving team</span>
-              <p>Strong relationships, continuity and a deep understanding of each child’s needs.</p>
-            </div>
-          </article>
-
-          <article class="staff-card">
-            <Image src={educatorImage2} width={700} alt="Children exploring together outdoors at Betty Spears" />
-            <div class="staff-card-body">
-              <h3>Warm, familiar care</h3>
-              <span class="staff-role">Relationships matter</span>
-              <p>Children feel safe when they know the adults around them and the adults know them well.</p>
-            </div>
-          </article>
-
-          <article class="staff-card">
-            <Image src={educatorImage3} width={700} alt="Children exploring a shaded garden pathway at Betty Spears" />
-            <div class="staff-card-body">
-              <h3>Qualified, caring, consistent</h3>
-              <span class="staff-role">Trusted professionals</span>
-              <p>Our team brings professional knowledge, calm energy and genuine care to every day.</p>
-            </div>
-          </article>
         </div>
       </div>
     </section>

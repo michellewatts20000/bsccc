@@ -147,20 +147,18 @@ select {
   letter-spacing: 0.02em;
 }
 
-.brand-logo {
-  display: block;
-  height: 56px;
-  width: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.12));
-}
-
 .brand-copy {
   display: flex;
   flex-direction: column;
   line-height: 1.1;
   color: var(--nav-text);
   font-family: 'Comfortaa', sans-serif;
+}
+
+.brand-name {
+  font-family: 'Baloo', 'Trebuchet MS', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
 }
 
 .brand-copy small {
@@ -190,11 +188,18 @@ select {
   color: white;
 }
 
+.top-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.7rem;
+}
+
 .top-cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.9rem 1.3rem;
+  padding: 0.5rem 1.3rem;
   border-radius: 999px;
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-deep) 100%);
   color: white;
@@ -204,8 +209,28 @@ select {
   box-shadow: var(--shadow);
 }
 
+.top-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.3rem;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--nav-text);
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.top-cta-secondary:hover,
+.top-cta-secondary:focus-visible {
+  background: rgba(255, 255, 255, 0.1);
+}
+
 .top-cta:hover,
 .top-cta:focus-visible,
+.top-cta-secondary:hover,
+.top-cta-secondary:focus-visible,
 .button-primary:hover,
 .button-primary:focus-visible,
 .button-secondary:hover,
@@ -277,7 +302,7 @@ select {
   align-items: center;
   justify-content: center;
   min-height: 52px;
-  padding: 0.92rem 1.5rem;
+  padding: 0 1.5rem;
   border-radius: 999px;
   font-weight: 700;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -412,28 +437,32 @@ select {
 .learning-visual img,
 .food-visual img {
   width: 100%;
-  min-height: 420px;
+  height: 420px;
   object-fit: cover;
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow);
 }
 
-.founder-column {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.founder-wrap {
+  margin-top: 2.8rem;
+}
+
+.founder-wrap::after {
+  content: '';
+  display: block;
+  clear: both;
 }
 
 .founder-card {
-  margin: 0;
+  float: left;
+  margin: 0.4rem 1.75rem 1rem 0;
   display: grid;
   justify-items: center;
   gap: 0.9rem;
 }
 
-.story-column.founder-column img.founder-portrait {
+.founder-portrait {
   width: 220px;
-  min-height: 0;
   aspect-ratio: 3 / 4;
   object-fit: cover;
   filter: sepia(0.25) contrast(0.96);
@@ -459,7 +488,10 @@ select {
 
 .story-notes {
   display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
+  clear: both;
+  margin-top: 1.5rem;
 }
 
 .story-note {
@@ -739,9 +771,10 @@ select {
 
 .community-stats {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
-  margin-top: 1.5rem;
+  clear: both;
+  margin-top: 1rem;
 }
 
 .community-stats .story-note {
@@ -921,6 +954,21 @@ select {
   color: rgba(255,255,255,0.74);
 }
 
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.footer-logo {
+  height: 90px;
+  width: auto;
+  background: var(--surface-strong);
+  padding: 6px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.3);
+}
+
 .sticky-cta {
   position: fixed;
   right: 1rem;
@@ -1007,6 +1055,15 @@ select {
 
   .community-stats {
     grid-template-columns: 1fr;
+  }
+
+  .story-notes {
+    grid-template-columns: 1fr;
+  }
+
+  .founder-card {
+    float: none;
+    margin: 0 auto 1.5rem;
   }
 
   .sticky-cta {

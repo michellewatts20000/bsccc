@@ -6,11 +6,8 @@ import ogImageSrc from '../assets/current-site/outdoor4.jpeg';
 const optimizedOgImage = await getImage({ src: ogImageSrc, width: 1200, format: 'webp' });
 
 const navItems = [
-  { label: 'Why Betty’s', href: '#why-bettys' },
-  { label: 'Learning & Your Day', href: '#learning' },
-  { label: 'Philosophy', href: '#philosophy' },
-  { label: 'Life at Betty’s', href: '#life' },
-  { label: 'Educators', href: '#educators' },
+  { label: 'About Betty’s', href: '#about' },
+  { label: 'A Day at Betty’s', href: '#day' },
   { label: 'Fees', href: '#fees' },
   { label: 'FAQ', href: '#faq' },
   { label: 'Visit', href: '#visit' },
@@ -68,14 +65,17 @@ const structuredData = {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>Betty Spears Child Care Centre</title>
-    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} is:inline />
   </head>
   <body>
     <div class="site-shell" id="top">
       <header class="site-header">
         <div class="container site-header-inner">
           <a class="brand" href="#top" aria-label="Betty Spears home">
-            <Image class="brand-logo" src={logoSrc} height={120} alt="Betty Spears Child Care Centre logo" />
+            <span class="brand-copy">
+              <strong class="brand-name">Betty Spears</strong>
+              <small>Child Care Centre</small>
+            </span>
           </a>
 
           <nav class="main-nav" aria-label="Main navigation">
@@ -84,7 +84,10 @@ const structuredData = {
             ))}
           </nav>
 
-          <a class="top-cta" href="#visit">Book a Visit</a>
+          <div class="top-cta-group">
+            <a class="top-cta" href="#visit">Book a Visit</a>
+            <a class="top-cta-secondary" href="#waiting-list">Join Waitlist</a>
+          </div>
         </div>
       </header>
 
@@ -92,9 +95,12 @@ const structuredData = {
 
       <footer class="site-footer">
         <div class="container footer-inner">
-          <div>
-            <strong>Betty Spears Child Care Centre</strong><br />
-            Community-based early learning in Tempe
+          <div class="footer-brand">
+            <Image class="footer-logo" src={logoSrc} height={200} alt="Betty Spears Child Care Centre logo" />
+            <div>
+              <strong>Betty Spears Child Care Centre</strong><br />
+              Community-based early learning in Tempe
+            </div>
           </div>
           <div class="footer-links">
             <a href="#visit">Visit</a>
