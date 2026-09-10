@@ -1,16 +1,17 @@
 ---
 import { Image, getImage } from 'astro:assets';
 import logoSrc from '../assets/current-site/betty_logo.jpg';
-import ogImageSrc from '../assets/current-site/outdoor4.jpeg';
+import ogImageSrc from '../assets/current-site/renovated_play_one.jpeg';
 
 const optimizedOgImage = await getImage({ src: ogImageSrc, width: 1200, format: 'webp' });
 
 const navItems = [
-  { label: 'About Betty’s', href: '#about' },
-  { label: 'A Day at Betty’s', href: '#day' },
+  { label: 'About us', href: '#about' },
+  { label: 'Philosophy', href: '#philosophy' },
+  { label: 'Daily routine', href: '#day' },
   { label: 'Fees', href: '#fees' },
-  { label: 'FAQ', href: '#faq' },
-  { label: 'Visit', href: '#visit' },
+  { label: 'FAQs', href: '#faq' },
+  { label: 'Contact us', href: '#contact' },
 ];
 
 const structuredData = {
@@ -60,7 +61,7 @@ const structuredData = {
     <meta property="og:image" content={new URL(optimizedOgImage.src, Astro.site)} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Baloo:wght@400;500;600;700;800&family=Comfortaa:wght@400;500;600;700&family=Varela+Round&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="canonical" href="https://bettyspearschildcare.org.au/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
@@ -85,8 +86,8 @@ const structuredData = {
           </nav>
 
           <div class="top-cta-group">
-            <a class="top-cta" href="#visit">Book a Visit</a>
-            <a class="top-cta-secondary" href="#waiting-list">Join Waitlist</a>
+            <a class="top-cta" href="#contact">Book a Visit</a>
+            <a class="top-cta-secondary" href="#contact">Join Waitlist</a>
           </div>
         </div>
       </header>
@@ -103,16 +104,15 @@ const structuredData = {
             </div>
           </div>
           <div class="footer-links">
-            <a href="#visit">Visit</a>
-            <a href="#faq">FAQ</a>
+            <a href="#contact">Contact us</a>
+            <a href="#faq">FAQs</a>
             <a href="/families">Families</a>
-            <a href="#waiting-list">Waiting list</a>
           </div>
         </div>
       </footer>
     </div>
 
-    <a class="top-cta sticky-cta" href="#waiting-list">Join Waitlist</a>
+    <a class="top-cta sticky-cta" href="#contact">Join Waitlist</a>
   </body>
 </html>
 
