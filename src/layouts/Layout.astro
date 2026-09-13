@@ -6,12 +6,12 @@ import ogImageSrc from '../assets/current-site/renovated_play_one.jpeg';
 const optimizedOgImage = await getImage({ src: ogImageSrc, width: 1200, format: 'webp' });
 
 const navItems = [
-  { label: 'About us', href: '#about' },
-  { label: 'Philosophy', href: '#philosophy' },
-  { label: 'Daily routine', href: '#day' },
-  { label: 'Fees', href: '#fees' },
-  { label: 'FAQs', href: '#faq' },
-  { label: 'Contact us', href: '#contact' },
+  { label: 'About us', href: '/#about' },
+  { label: 'Philosophy', href: '/#philosophy' },
+  { label: 'Daily routine', href: '/#day' },
+  { label: 'Fees', href: '/#fees' },
+  { label: 'FAQs', href: '/#faq' },
+  { label: 'Contact us', href: '/#contact', subject: 'General Enquiry' },
 ];
 
 const structuredData = {
@@ -81,13 +81,13 @@ const structuredData = {
 
           <nav class="main-nav" aria-label="Main navigation">
             {navItems.map((item) => (
-              <a href={item.href}>{item.label}</a>
+              <a href={item.href} data-subject={item.subject}>{item.label}</a>
             ))}
           </nav>
 
           <div class="top-cta-group">
-            <a class="top-cta" href="#contact">Book a Visit</a>
-            <a class="top-cta-secondary" href="#contact">Join Waitlist</a>
+            <a class="top-cta" href="/#contact" data-subject="Book a Visit">Book a Visit</a>
+            <a class="top-cta-secondary" href="/join-waitlist">Join Waitlist</a>
           </div>
         </div>
       </header>
@@ -95,6 +95,15 @@ const structuredData = {
       <slot />
 
       <footer class="site-footer">
+        <div class="container">
+          <p class="footer-acknowledgement">
+            Betty Spears Child Care Centre acknowledges Aboriginal and Torres Strait Islander peoples as the
+            custodians and traditional owners of the land in which we live, learn, and work. We pay our respects
+            to their Elders past, present and emerging. We value their continuing connection to land, water and
+            culture and their integral contribution to the bright inclusive future of this beautiful region we
+            call home.
+          </p>
+        </div>
         <div class="container footer-inner">
           <div class="footer-brand">
             <Image class="footer-logo" src={logoSrc} height={200} alt="Betty Spears Child Care Centre logo" />
@@ -104,15 +113,16 @@ const structuredData = {
             </div>
           </div>
           <div class="footer-links">
-            <a href="#contact">Contact us</a>
-            <a href="#faq">FAQs</a>
+            <a href="/#contact" data-subject="General Enquiry">Contact us</a>
+            <a href="/#faq">FAQs</a>
             <a href="/families">Families</a>
+            <a href="/join-waitlist">Join Waitlist</a>
           </div>
         </div>
       </footer>
     </div>
 
-    <a class="top-cta sticky-cta" href="#contact">Join Waitlist</a>
+    <a class="top-cta sticky-cta" href="/join-waitlist">Join Waitlist</a>
   </body>
 </html>
 

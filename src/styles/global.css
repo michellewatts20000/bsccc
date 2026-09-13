@@ -256,10 +256,18 @@ select {
   z-index: 0;
 }
 
-.hero-media img {
+.hero-slide {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.4s ease;
+}
+
+.hero-slide.is-active {
+  opacity: 1;
 }
 
 .hero-media::after {
@@ -339,7 +347,6 @@ select {
 .button-primary {
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-deep) 100%);
   color: white;
-  box-shadow: 0 18px 30px rgba(122, 61, 38, 0.18);
 }
 
 .button-secondary {
@@ -398,9 +405,33 @@ select {
   border-radius: 16px;
   display: grid;
   place-items: center;
-  font-size: 1.4rem;
+  color: var(--accent-deep);
   background: linear-gradient(135deg, rgba(91,140,90,0.14), rgba(232,163,61,0.14));
   margin-bottom: 1rem;
+}
+
+.feature-icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.feature-grid {
+  perspective: 1200px;
+}
+
+.feature-card {
+  transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+  will-change: transform;
+}
+
+.feature-card:hover {
+  box-shadow: 0 18px 30px rgba(60, 40, 10, 0.14);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feature-card {
+    transition: none;
+  }
 }
 
 .feature-card h3 {
@@ -944,10 +975,114 @@ select {
   color: var(--muted);
 }
 
+.big-form {
+  display: grid;
+  gap: 2.6rem;
+}
+
+.form-section {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.form-section h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--heading);
+}
+
+.form-section-note {
+  margin: -0.6rem 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.form-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.big-form fieldset {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.2rem 1.2rem;
+  margin: 0;
+}
+
+.big-form legend {
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 0 0.4rem;
+}
+
+.form-options {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.big-form .form-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-weight: 400;
+  font-size: 0.95rem;
+}
+
+.big-form .form-option input {
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}
+
+.form-days {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.form-toggle {
+  display: flex;
+  gap: 1.6rem;
+}
+
+.conditional-field {
+  margin-top: -0.4rem;
+}
+
+.big-form .form-acknowledge {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.big-form .form-acknowledge input {
+  margin-top: 0.25rem;
+  flex-shrink: 0;
+}
+
 .site-footer {
   background: rgba(29, 26, 24, 0.96);
   color: rgba(255,255,255,0.82);
   padding: 2.5rem 0 3rem;
+}
+
+.footer-acknowledgement {
+  max-width: 46rem;
+  margin: 0 0 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.88rem;
+  line-height: 1.7;
 }
 
 .footer-inner {
@@ -1056,6 +1191,16 @@ select {
 
   .links-grid {
     grid-template-columns: 1fr;
+  }
+
+  .form-grid-2,
+  .form-grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .form-toggle {
+    flex-direction: column;
+    gap: 0.6rem;
   }
 
   .quick-facts {

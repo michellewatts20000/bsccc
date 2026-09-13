@@ -30,40 +30,39 @@ const philosophyItems = [
 
 const whyItems = [
   {
-    icon: '🤝',
+    icon: 'relationships',
     title: 'Relationships',
     description: 'Children build strong, familiar relationships with educators who know them and care about them.',
   },
   {
-    icon: '🌿',
+    icon: 'community',
     title: 'Community',
     description: 'Betty’s is community-based, not-for-profit and shaped by the families who call it home.',
   },
   {
-    icon: '🌳',
+    icon: 'nature',
     title: 'Nature',
     description: 'Big natural outdoor spaces where children can run, dig, climb and explore.',
   },
   {
-    icon: '✨',
+    icon: 'familiar-faces',
     title: 'Familiar faces',
     description: 'Educators who stay for years, not months — so children grow up surrounded by people they know and trust.',
   },
   {
-    icon: '🥗',
+    icon: 'fresh-food',
     title: 'Fresh food',
     description: 'Meals made in-house, with a focus on fresh food and slow, unhurried mealtimes.',
   },
 ];
 
-const dayTimeline = [
-  { time: '7:30am', title: 'Arrive & settle', text: 'Children arrive, reconnect, and ease into the day in a calm and familiar environment.' },
-  { time: 'Morning', title: 'Explore & play', text: 'Indoor and outdoor experiences unfold around children’s interests, curiosity and energy.' },
-  { time: 'Lunch', title: 'Fresh food', text: 'Meals are prepared at the centre, supporting healthy habits and social routines.' },
-  { time: 'Rest', title: 'Quiet time', text: 'A gentle pause for reset, rest and returning to the rhythm of the day.' },
-  { time: 'Afternoon', title: 'Play & discover', text: 'Children continue exploring through movement, conversation, sensory play and imagination.' },
-  { time: '6:00pm', title: 'Home', text: 'Families head home after a day full of connection, exploration and care.' },
-];
+const featureIcons: Record<string, string> = {
+  relationships: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="5.5"/><circle cx="15" cy="12" r="5.5"/></svg>',
+  community: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5 12 4l8 7.5"/><path d="M6 10v9.5a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V10"/><path d="M10 20.5v-6h4v6"/></svg>',
+  nature: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c8 1 14-5 14-14C10 5 4 11 5 19Z"/><path d="M6 18c3-3.5 5.5-6.5 12.5-12"/></svg>',
+  'familiar-faces': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M9 10.5h.01M15 10.5h.01"/><path d="M8.5 14.5c1 1.3 2.2 2 3.5 2s2.5-.7 3.5-2"/></svg>',
+  'fresh-food': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16a8 6 0 0 1-16 0Z"/><path d="M9 4.5c-.6.8-.6 1.4 0 2M12 4c-.6.8-.6 1.4 0 2"/></svg>',
+};
 
 const faqs = [
   {
@@ -95,10 +94,6 @@ const faqs = [
     a: 'Yes. Fresh meals are prepared at the centre and planned with children’s nutrition, routines and dietary needs in mind.',
   },
   {
-    q: 'What do children need to bring?',
-    a: 'Families usually provide a labelled bag with any essentials such as spare clothes and comfort items, along with any specific items recommended for your child’s age group.',
-  },
-  {
     q: 'Do you provide nappies?',
     a: 'No, daily fees include everything your child will need in a day except formula for babies and nappies for all children using them.',
   },
@@ -113,7 +108,10 @@ const faqs = [
   <main>
     <section class="hero" id="top">
       <div class="hero-media">
-        <Image src={heroImage} width={1920} alt="The newly renovated outdoor play space and centre building at Betty Spears" />
+        <Image class="hero-slide is-active" src={heroImage} width={1920} loading="eager" fetchpriority="high" alt="The newly renovated outdoor play space and centre building at Betty Spears" />
+        <Image class="hero-slide" src={outdoorImage1} width={1920} loading="eager" alt="Children walking the garden pathway at Betty Spears" />
+        <Image class="hero-slide" src={outdoorImage2} width={1920} loading="eager" alt="Children playing at the mud kitchen and water play area at Betty Spears" />
+        <Image class="hero-slide" src={educatorImage2} width={1920} loading="eager" alt="An educator reading with a group of children outdoors" />
       </div>
 
       <div class="container hero-content">
@@ -128,8 +126,8 @@ const faqs = [
         </p>
 
         <div class="hero-actions">
-          <a href="#contact" class="button-primary">Book a Visit</a>
-          <a href="#contact" class="button-secondary">Join Waitlist</a>
+          <a href="/#contact" class="button-primary" data-subject="Book a Visit">Book a Visit</a>
+          <a href="/join-waitlist" class="button-secondary">Join Waitlist</a>
         </div>
 
         <div class="quick-facts" aria-label="Key facts about the centre">
@@ -169,7 +167,7 @@ const faqs = [
         <div class="feature-grid">
           {whyItems.map((item) => (
             <article class="feature-card">
-              <div class="feature-icon" aria-hidden="true">{item.icon}</div>
+              <div class="feature-icon" aria-hidden="true" set:html={featureIcons[item.icon]} />
               <h3>{item.title}</h3>
               <p>{item.description}</p>
             </article>
@@ -296,32 +294,12 @@ const faqs = [
             </p>
             <p>
               Play is how children make sense of the world — building curiosity, confidence and the courage
-              to try new things. Through music, movement, stories, mud and imagination, children build the
-              foundations for a lifetime of learning.
+              to try new things.
             </p>
             <p>
               Our educators follow each child’s lead, so every day feels like exploring rather than being taught at.
             </p>
           </div>
-        </div>
-
-        <p class="section-kicker" style="margin-top: 3.2rem;">Your rhythm of the day</p>
-        <h3 style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);">A rhythm that feels calm, natural and reassuring.</h3>
-        <p class="section-lead">
-          Every day has room for movement, connection and the small moments that matter most — plenty of space
-          for children to simply be themselves.
-        </p>
-
-        <div class="timeline">
-          {dayTimeline.map((item) => (
-            <div class="timeline-item">
-              <div class="timeline-time">{item.time}</div>
-              <div class="timeline-content">
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </div>
-            </div>
-          ))}
         </div>
 
         <p class="section-kicker" style="margin-top: 3.2rem;">Life at Betty’s</p>
@@ -424,8 +402,8 @@ const faqs = [
         <p class="section-kicker">Contact us</p>
         <h2 class="section-heading">Come and see Betty’s for yourself.</h2>
         <p class="section-lead">
-          Whether you’d like to book a visit, join our waiting list, or just ask a question — send us a
-          message below and we’ll get back to you.
+          Want to book a visit or just ask a question? Send us a message below and we’ll get back to you.
+          Joining the waiting list has its own short application — <a href="/join-waitlist" style="text-decoration: underline;">start it here</a>.
         </p>
 
         <div class="visit-grid">
@@ -443,7 +421,6 @@ const faqs = [
                 <span>What’s this about?</span>
                 <select name="subject" required>
                   <option value="Book a Visit">Book a Visit</option>
-                  <option value="Join Waitlist">Join Waitlist</option>
                   <option value="General Enquiry" selected>General Enquiry</option>
                 </select>
               </label>
@@ -454,29 +431,6 @@ const faqs = [
               <button type="submit" class="button-primary">Send message</button>
               <p class="form-note">This opens your email app with the details filled in, ready to send to the office.</p>
             </form>
-
-            <aside class="section-panel waitlist-aside">
-              <h3>Joining the waitlist?</h3>
-              <p>You’ll need to transfer a $30 application fee to secure your place — please use your child’s name as the reference.</p>
-              <div class="bank-details">
-                <div class="detail-item">
-                  <strong>Account name</strong>
-                  <span>Betty Spears Child Care Centre</span>
-                </div>
-                <div class="detail-item">
-                  <strong>Bank</strong>
-                  <span>Bendigo Bank</span>
-                </div>
-                <div class="detail-item">
-                  <strong>BSB</strong>
-                  <span>633-000</span>
-                </div>
-                <div class="detail-item">
-                  <strong>Account number</strong>
-                  <span>143895936</span>
-                </div>
-              </div>
-            </aside>
           </div>
 
           <div class="visit-map-wrap">
@@ -526,5 +480,45 @@ const faqs = [
       const mailto = `mailto:office@bettyspearschildcare.org.au?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       window.location.href = mailto;
     });
+
+    const subjectSelect = contactForm?.querySelector<HTMLSelectElement>('select[name="subject"]');
+    document.querySelectorAll<HTMLAnchorElement>('a[data-subject]').forEach((link) => {
+      link.addEventListener('click', () => {
+        if (subjectSelect && link.dataset.subject) {
+          subjectSelect.value = link.dataset.subject;
+        }
+      });
+    });
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const heroSlides = document.querySelectorAll<HTMLElement>('.hero-slide');
+    if (heroSlides.length > 1 && !prefersReducedMotion) {
+      let currentSlide = 0;
+      setInterval(() => {
+        heroSlides[currentSlide].classList.remove('is-active');
+        currentSlide = (currentSlide + 1) % heroSlides.length;
+        heroSlides[currentSlide].classList.add('is-active');
+      }, 6000);
+    }
+
+    if (!prefersReducedMotion) {
+      document.querySelectorAll<HTMLElement>('.feature-card').forEach((card) => {
+        const maxTilt = 10;
+
+        card.addEventListener('mousemove', (event) => {
+          const rect = card.getBoundingClientRect();
+          const x = (event.clientX - rect.left) / rect.width;
+          const y = (event.clientY - rect.top) / rect.height;
+          const rotateY = (x - 0.5) * maxTilt * 2;
+          const rotateX = (0.5 - y) * maxTilt * 2;
+          card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+        });
+      });
+    }
   </script>
 </Layout>

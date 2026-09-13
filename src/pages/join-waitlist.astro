@@ -1,0 +1,328 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import bannerImage from '../assets/current-site/outdoor_reading.jpeg';
+
+const states = ['NSW', 'ACT', 'VIC', 'QLD', 'SA', 'WA', 'TAS', 'NT'];
+const hearAboutOptions = [
+  'Word of mouth / referral',
+  'Google search',
+  'Social media',
+  'Drove or walked past',
+  'Local school or community group',
+  'Other',
+];
+---
+
+<Layout>
+  <main>
+    <section class="section">
+      <div class="container">
+        <p class="section-kicker">Join Waitlist</p>
+        <h1 class="section-heading">Apply for our waiting list.</h1>
+        <div class="story-grid" style="align-items: start;">
+          <div class="story-column section-panel">
+            <p class="section-lead" style="margin-top: 0;">
+              This one form covers everything — your child’s details, your family’s details, and the priority
+              of access questions we’re required to ask. Once it’s sent, transfer the $30 application fee
+              below and you’re on the list.
+            </p>
+            <p class="section-lead">
+              Places can take time to become available, so we recommend applying as early as possible. We’ll
+              confirm your application by email, and reach out again once a place is close.
+            </p>
+          </div>
+          <div class="story-column">
+            <Image src={bannerImage} width={900} alt="An educator reading with a group of children outdoors" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-white">
+      <div class="container">
+        <form class="contact-form big-form" id="waitlist-form">
+          <div class="form-section">
+            <h3>Child’s details</h3>
+
+            <label class="form-option">
+              <input type="checkbox" name="not-born-yet" id="not-born-yet" />
+              <span>My child hasn’t been born yet</span>
+            </label>
+
+            <div class="form-grid-2">
+              <label>
+                <span>First name</span>
+                <input type="text" name="child-first-name" required />
+              </label>
+              <label>
+                <span>Last name</span>
+                <input type="text" name="child-last-name" required />
+              </label>
+            </div>
+
+            <label id="child-dob-label">
+              <span>Date of birth</span>
+              <input type="date" name="child-dob" id="child-dob" required />
+            </label>
+
+            <fieldset>
+              <legend>Gender at birth</legend>
+              <div class="form-options form-toggle">
+                <label class="form-option"><input type="radio" name="child-gender" value="Female" required /><span>Female</span></label>
+                <label class="form-option"><input type="radio" name="child-gender" value="Male" required /><span>Male</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Preferred days of care (if known)</legend>
+              <div class="form-options form-days">
+                {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'].map((day) => (
+                  <label class="form-option"><input type="checkbox" name="preferred-days" value={day} /><span>{day}</span></label>
+                ))}
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="form-section">
+            <h3>Parent / guardian details</h3>
+
+            <div class="form-grid-2">
+              <label>
+                <span>First name</span>
+                <input type="text" name="parent-first-name" autocomplete="given-name" required />
+              </label>
+              <label>
+                <span>Last name</span>
+                <input type="text" name="parent-last-name" autocomplete="family-name" required />
+              </label>
+            </div>
+
+            <div class="form-grid-2">
+              <label>
+                <span>Email</span>
+                <input type="email" name="parent-email" autocomplete="email" required />
+              </label>
+              <label>
+                <span>Phone</span>
+                <input type="tel" name="parent-phone" autocomplete="tel" required />
+              </label>
+            </div>
+
+            <label>
+              <span>Address</span>
+              <input type="text" name="parent-address" autocomplete="street-address" />
+            </label>
+
+            <div class="form-grid-3">
+              <label>
+                <span>Suburb</span>
+                <input type="text" name="parent-suburb" autocomplete="address-level2" />
+              </label>
+              <label>
+                <span>State</span>
+                <select name="parent-state" autocomplete="address-level1">
+                  {states.map((s) => <option value={s}>{s}</option>)}
+                </select>
+              </label>
+              <label>
+                <span>Postcode</span>
+                <input type="text" name="parent-postcode" autocomplete="postal-code" inputmode="numeric" />
+              </label>
+            </div>
+
+            <label>
+              <span>How did you hear about us?</span>
+              <select name="hear-about">
+                {hearAboutOptions.map((option) => <option value={option}>{option}</option>)}
+              </select>
+            </label>
+          </div>
+
+          <div class="form-section">
+            <h3>Priority of access</h3>
+            <p class="form-section-note">
+              Families requiring care are placed in priority order under Family Assistance Law. We’re required
+              to ask these questions to allocate places fairly — they don’t affect whether you can apply.
+            </p>
+
+            <fieldset>
+              <legend>Which best describes your family’s priority category?</legend>
+              <div class="form-options">
+                <label class="form-option"><input type="radio" name="priority-category" value="A child at risk of serious abuse and neglect" required /><span>A child at risk of serious abuse and neglect</span></label>
+                <label class="form-option"><input type="radio" name="priority-category" value="A child of a single parent who satisfies, or of parents who both satisfy, the work/training/study test" required /><span>A child of a single parent who satisfies, or of parents who both satisfy, the work/training/study test</span></label>
+                <label class="form-option"><input type="radio" name="priority-category" value="Any other child" required /><span>Any other child</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Family type</legend>
+              <div class="form-options">
+                <label class="form-option"><input type="radio" name="family-type" value="Two parent family" required /><span>Two parent family</span></label>
+                <label class="form-option"><input type="radio" name="family-type" value="Single parent family" required /><span>Single parent family</span></label>
+                <label class="form-option"><input type="radio" name="family-type" value="Grandparent/s with legal guardianship" required /><span>Grandparent/s with legal guardianship</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Working parents</legend>
+              <div class="form-options">
+                <label class="form-option"><input type="radio" name="working-parents" value="One/both working full time" required /><span>One/both working full time</span></label>
+                <label class="form-option"><input type="radio" name="working-parents" value="One working full time / one part time" required /><span>One working full time / one part time</span></label>
+                <label class="form-option"><input type="radio" name="working-parents" value="Both part time" required /><span>Both part time</span></label>
+                <label class="form-option"><input type="radio" name="working-parents" value="One part time" required /><span>One part time</span></label>
+                <label class="form-option"><input type="radio" name="working-parents" value="Seeking employment / studying" required /><span>Seeking employment / studying</span></label>
+                <label class="form-option"><input type="radio" name="working-parents" value="Home duties" required /><span>Home duties</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Do any of these also apply to your family? (tick all that apply)</legend>
+              <div class="form-options">
+                <label class="form-option"><input type="checkbox" name="additional-priority" value="Aboriginal or Torres Strait Islander family" /><span>Aboriginal or Torres Strait Islander family</span></label>
+                <label class="form-option"><input type="checkbox" name="additional-priority" value="Family includes a person with disability" /><span>Family includes a person with disability</span></label>
+                <label class="form-option"><input type="checkbox" name="additional-priority" value="Family income at or below the lower income threshold, or receiving income support" /><span>Family income at or below the lower income threshold, or receiving income support</span></label>
+                <label class="form-option"><input type="checkbox" name="additional-priority" value="Socially isolated family" /><span>Socially isolated family</span></label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="form-section">
+            <h3>Health & additional needs</h3>
+
+            <fieldset>
+              <legend>Does your child have any known allergies?</legend>
+              <div class="form-options form-toggle">
+                <label class="form-option"><input type="radio" name="has-allergies" value="Yes" id="allergies-yes" required /><span>Yes</span></label>
+                <label class="form-option"><input type="radio" name="has-allergies" value="No" id="allergies-no" required /><span>No</span></label>
+              </div>
+            </fieldset>
+            <label class="conditional-field" id="allergies-detail-wrap" hidden>
+              <span>Please describe the allergies and any treatment needed</span>
+              <textarea name="allergies-detail" rows="3"></textarea>
+            </label>
+
+            <fieldset>
+              <legend>Does your child have a disability or additional needs?</legend>
+              <div class="form-options form-toggle">
+                <label class="form-option"><input type="radio" name="has-additional-needs" value="Yes" id="needs-yes" required /><span>Yes</span></label>
+                <label class="form-option"><input type="radio" name="has-additional-needs" value="No" id="needs-no" required /><span>No</span></label>
+              </div>
+            </fieldset>
+            <label class="conditional-field" id="needs-detail-wrap" hidden>
+              <span>Please share any details that will help us support your child</span>
+              <textarea name="needs-detail" rows="3"></textarea>
+            </label>
+          </div>
+
+          <div class="form-section">
+            <label class="form-acknowledge">
+              <input type="checkbox" name="acknowledge" required />
+              <span>
+                I understand the priority of access information above, and I’ll keep the centre updated with
+                any changes to our circumstances while our application is on the waiting list.
+              </span>
+            </label>
+
+            <button type="submit" class="button-primary" style="justify-self: start;">Submit application</button>
+            <p class="form-note">This opens your email app with the application filled in, ready to send to the office.</p>
+          </div>
+        </form>
+
+        <aside class="section-panel waitlist-aside" style="max-width: 32rem; margin-top: 2.8rem;">
+          <h3>Next: pay the $30 application fee</h3>
+          <p>
+            Once you’ve sent the form above, please transfer $30 to secure your place — use your child’s
+            name as the payment reference so we can match it to your application.
+          </p>
+          <div class="bank-details">
+            <div class="detail-item">
+              <strong>Account name</strong>
+              <span>Betty Spears Child Care Centre</span>
+            </div>
+            <div class="detail-item">
+              <strong>Bank</strong>
+              <span>Bendigo Bank</span>
+            </div>
+            <div class="detail-item">
+              <strong>BSB</strong>
+              <span>633-000</span>
+            </div>
+            <div class="detail-item">
+              <strong>Account number</strong>
+              <span>143895936</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const notBornYet = document.getElementById('not-born-yet') as HTMLInputElement | null;
+    const dobLabel = document.getElementById('child-dob-label');
+    const dobInput = document.getElementById('child-dob') as HTMLInputElement | null;
+    const dobText = dobLabel?.querySelector('span');
+
+    notBornYet?.addEventListener('change', () => {
+      if (!dobInput || !dobText) return;
+      if (notBornYet.checked) {
+        dobText.textContent = 'Expected due date';
+        dobInput.removeAttribute('required');
+      } else {
+        dobText.textContent = 'Date of birth';
+        dobInput.setAttribute('required', 'true');
+      }
+    });
+
+    function wireToggle(yesId: string, noId: string, detailWrapId: string) {
+      const yes = document.getElementById(yesId) as HTMLInputElement | null;
+      const no = document.getElementById(noId) as HTMLInputElement | null;
+      const wrap = document.getElementById(detailWrapId);
+      const update = () => {
+        if (!wrap) return;
+        wrap.hidden = !(yes?.checked ?? false);
+      };
+      yes?.addEventListener('change', update);
+      no?.addEventListener('change', update);
+    }
+
+    wireToggle('allergies-yes', 'allergies-no', 'allergies-detail-wrap');
+    wireToggle('needs-yes', 'needs-no', 'needs-detail-wrap');
+
+    const form = document.getElementById('waitlist-form') as HTMLFormElement | null;
+    form?.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const data = new FormData(form);
+      const get = (key: string) => String(data.get(key) ?? '').trim();
+      const getAll = (key: string) => data.getAll(key).map(String).join(', ');
+
+      const lines = [
+        `Child: ${get('child-first-name')} ${get('child-last-name')}`,
+        `${notBornYet?.checked ? 'Expected due date' : 'Date of birth'}: ${get('child-dob')}`,
+        `Gender at birth: ${get('child-gender')}`,
+        `Preferred days: ${getAll('preferred-days') || 'Not specified'}`,
+        '',
+        `Parent/guardian: ${get('parent-first-name')} ${get('parent-last-name')}`,
+        `Email: ${get('parent-email')}`,
+        `Phone: ${get('parent-phone')}`,
+        `Address: ${get('parent-address')}, ${get('parent-suburb')} ${get('parent-state')} ${get('parent-postcode')}`,
+        `How they heard about us: ${get('hear-about')}`,
+        '',
+        `Priority category: ${get('priority-category')}`,
+        `Family type: ${get('family-type')}`,
+        `Working parents: ${get('working-parents')}`,
+        `Other priority circumstances: ${getAll('additional-priority') || 'None'}`,
+        '',
+        `Known allergies: ${get('has-allergies')}${get('has-allergies') === 'Yes' ? ' — ' + get('allergies-detail') : ''}`,
+        `Disability / additional needs: ${get('has-additional-needs')}${get('has-additional-needs') === 'Yes' ? ' — ' + get('needs-detail') : ''}`,
+        '',
+        'Acknowledged priority of access information: Yes',
+      ];
+
+      const subject = `Waiting List Application — ${get('child-first-name')} ${get('child-last-name')}`;
+      const mailto = `mailto:office@bettyspearschildcare.org.au?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
+      window.location.href = mailto;
+    });
+  </script>
+</Layout>
