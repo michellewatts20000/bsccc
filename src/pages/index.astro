@@ -186,23 +186,27 @@ const faqs = [
         </div>
 
         <div class="founder-wrap">
-          <figure class="founder-card">
-            <Image src={differenceImage} width={320} class="founder-portrait" alt="An archival portrait of the late Betty Spears" />
-            <figcaption>Betty Spears, 1926–2012</figcaption>
-          </figure>
-          <p class="section-kicker" style="margin-bottom: 0.6rem;">Our story</p>
-          <h3 style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);">A long history and a genuine sense of home.</h3>
-          <p class="section-lead" style="margin-top: 0; margin-bottom: 1.1rem;">
-            Betty’s isn’t shaped by a corporate model or a quick turnaround. It’s grown from decades of trust,
-            local relationships and a deep understanding of what families need.
-          </p>
-          <p class="section-lead" style="margin-top: 0; margin-bottom: 1.1rem;">
-            The centre is named for the late Betty Spears (1926–2012), who — alongside June deLorenzo — worked
-            tirelessly to secure state and federal funding in the 1980s for shift-working families, especially
-            mothers, at the State Transit Authority. What they built was, to our knowledge, one of the first
-            24-hour child care centres in Sydney. We’re no longer open around the clock, but it’s with pride
-            that we carry that same spirit forward today.
-          </p>
+          <div class="founder-visual">
+            <figure class="founder-card">
+              <Image src={differenceImage} width={320} class="founder-portrait" alt="An archival portrait of the late Betty Spears" />
+              <figcaption>Betty Spears, 1926–2012</figcaption>
+            </figure>
+          </div>
+          <div class="founder-body">
+            <p class="section-kicker" style="margin-bottom: 0.6rem;">Our story</p>
+            <h3 style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);">A long history and a genuine sense of home.</h3>
+            <p class="section-lead" style="margin-top: 0; margin-bottom: 1.1rem;">
+              Betty’s isn’t shaped by a corporate model or a quick turnaround. It’s grown from decades of trust,
+              local relationships and a deep understanding of what families need.
+            </p>
+            <p class="section-lead" style="margin-top: 0; margin-bottom: 1.1rem;">
+              The centre is named for the late Betty Spears (1926–2012), who — alongside June deLorenzo — worked
+              tirelessly to secure state and federal funding in the 1980s for shift-working families, especially
+              mothers, at the State Transit Authority. What they built was, to our knowledge, one of the first
+              24-hour child care centres in Sydney. We’re no longer open around the clock, but it’s with pride
+              that we carry that same spirit forward today.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -234,53 +238,40 @@ const faqs = [
       <div class="container">
         <p class="section-kicker" style="margin-top: 3.2rem;">Part of the neighbourhood</p>
         <h3 style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);">Woven into the local community.</h3>
-        <p class="section-lead">
-          Many of our families have shared several children with us over the years, and some of our parents and
-          educators came to Betty’s as children themselves. Each year our preschoolers visit Tempe Public School
-          to explore the library and kindergarten classrooms ahead of starting “big school”, the local fire
-          brigade drops by to show off the truck and talk fire safety, and the year winds up with a shared lunch
-          at a nearby Thai restaurant — a tradition the children look forward to.
-        </p>
+
+        <div class="staff-row">
+          <div class="section-panel staff-row-body">
+            <p>
+              Many of our families have shared several children with us over the years, and some of our parents and
+              educators came to Betty’s as children themselves. Each year our preschoolers visit Tempe Public School
+              to explore the library and kindergarten classrooms ahead of starting “big school”, the local fire
+              brigade drops by to show off the truck and talk fire safety, and the year winds up with a shared lunch
+              at a nearby Thai restaurant — a tradition the children look forward to.
+            </p>
+          </div>
+          <div class="staff-row-visual">
+            <Image src={educatorImage2} width={700} alt="An educator reading with a group of children outdoors" />
+          </div>
+        </div>
 
         <p class="section-kicker" style="margin-top: 3.2rem;">Our educators</p>
         <h3 style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);">Your child gets to know the people caring for them.</h3>
-        <p class="section-lead">
-          The long-serving nature of our educators is one of Betty’s greatest strengths. Families know they can
-          trust familiar faces, stable routines and deep relationships that grow over time.
-        </p>
-        <p class="section-lead" style="margin-top: 0.9rem;">
-          Every room has a university-qualified Early Childhood Teacher alongside Diploma-qualified educators,
-          with more staff per child than the regulations require — plus our own trusted list of permanent
-          relief staff, so a sick day never means an unfamiliar face.
-        </p>
 
-        <div class="staff-grid">
-          <article class="staff-card">
+        <div class="staff-row">
+          <div class="staff-row-visual">
             <Image src={educatorImage1} width={700} alt="An educator sitting with a group of children during circle time" />
-            <div class="staff-card-body">
-              <h3>Experienced educators</h3>
-              <span class="staff-role">Long-serving team</span>
-              <p>Strong relationships, continuity and a deep understanding of each child’s needs.</p>
-            </div>
-          </article>
-
-          <article class="staff-card">
-            <Image src={educatorImage2} width={700} alt="An educator reading with a group of children outdoors" />
-            <div class="staff-card-body">
-              <h3>Warm, familiar care</h3>
-              <span class="staff-role">Relationships matter</span>
-              <p>Children feel safe when they know the adults around them and the adults know them well.</p>
-            </div>
-          </article>
-
-          <article class="staff-card">
-            <Image src={outdoorImage3} width={700} alt="Children exploring the garden environment our educators help create" />
-            <div class="staff-card-body">
-              <h3>Steady and consistent</h3>
-              <span class="staff-role">Here for the long run</span>
-              <p>Our educators bring calm energy, real care and steady hands to every day.</p>
-            </div>
-          </article>
+          </div>
+          <div class="section-panel staff-row-body">
+            <p>
+              The long-serving nature of our educators is one of Betty’s greatest strengths. Families know they can
+              trust familiar faces, stable routines and deep relationships that grow over time.
+            </p>
+            <p>
+              Every room has a university-qualified Early Childhood Teacher alongside Diploma-qualified educators,
+              with more staff per child than the regulations require — plus our own trusted list of permanent
+              relief staff, so a sick day never means an unfamiliar face.
+            </p>
+          </div>
         </div>
       </div>
     </section>

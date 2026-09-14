@@ -497,7 +497,8 @@ select {
 .learning-grid,
 .food-grid,
 .visit-grid,
-.community-grid {
+.community-grid,
+.staff-row {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2rem;
@@ -507,7 +508,8 @@ select {
 
 .story-column img,
 .learning-visual img,
-.food-visual img {
+.food-visual img,
+.staff-row-visual img {
   width: 100%;
   height: 420px;
   object-fit: cover;
@@ -517,26 +519,32 @@ select {
 
 .founder-wrap {
   margin-top: 2.8rem;
+  display: grid;
+  grid-template-columns: minmax(220px, 300px) 1fr;
+  gap: 3rem;
+  align-items: center;
 }
 
-.founder-wrap::after {
-  content: '';
-  display: block;
-  clear: both;
+.founder-visual {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 2.2rem 1.75rem;
+  display: grid;
+  justify-items: center;
 }
 
 .founder-card {
-  float: left;
-  margin: 0.4rem 1.75rem 1rem 0;
   display: grid;
   justify-items: center;
   gap: 0.9rem;
 }
 
 .founder-portrait {
-  width: 220px;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
+  width: 100%;
+  max-width: 220px;
+  height: auto;
   filter: sepia(0.25) contrast(0.96);
   border: 6px solid var(--surface-strong);
   border-radius: var(--radius-md);
@@ -548,6 +556,7 @@ select {
   font-family: 'Quicksand', sans-serif;
   font-size: 0.85rem;
   letter-spacing: 0.04em;
+  text-align: center;
 }
 
 .visit-map {
@@ -774,6 +783,15 @@ select {
   font-size: 1.04rem;
 }
 
+.staff-row-body p {
+  margin: 0 0 1rem;
+  color: var(--muted);
+}
+
+.staff-row-body p:last-child {
+  margin-bottom: 0;
+}
+
 .gallery-grid {
   display: grid;
   grid-template-columns: 1.2fr 1fr 1fr;
@@ -801,46 +819,6 @@ select {
   min-height: 440px;
 }
 
-.staff-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.5rem;
-  margin-top: 2.8rem;
-}
-
-.staff-card {
-  background: rgba(255,255,255,0.5);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-}
-
-.staff-card img {
-  width: 100%;
-  height: 330px;
-  object-fit: cover;
-}
-
-.staff-card-body {
-  padding: 1.2rem 1.2rem 1.4rem;
-}
-
-.staff-card-body h3 {
-  margin: 0 0 0.1rem;
-  font-size: 1.2rem;
-}
-
-.staff-role {
-  display: block;
-  color: var(--accent-deep);
-  font-weight: 700;
-  margin-bottom: 0.7rem;
-}
-
-.staff-card-body p {
-  margin: 0;
-  color: var(--muted);
-}
 
 .community-copy {
   display: grid;
@@ -1184,8 +1162,23 @@ select {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .staff-grid {
+  .staff-row {
     grid-template-columns: 1fr;
+  }
+
+  .staff-row-visual {
+    order: -1;
+  }
+
+  .founder-wrap {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .founder-visual {
+    justify-self: center;
+    width: 100%;
+    max-width: 320px;
   }
 
   .stats-band-grid {
@@ -1278,8 +1271,14 @@ select {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .founder-card {
-    float: none;
-    margin: 0 auto 1.5rem;
+  .founder-wrap {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .founder-visual {
+    justify-self: center;
+    width: 100%;
+    max-width: 280px;
   }
 }
