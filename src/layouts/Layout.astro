@@ -79,7 +79,7 @@ const structuredData = {
             </span>
           </a>
 
-          <nav class="main-nav" aria-label="Main navigation">
+          <nav class="main-nav" id="main-nav" aria-label="Main navigation">
             {navItems.map((item) => (
               <a href={item.href} data-subject={item.subject}>{item.label}</a>
             ))}
@@ -89,6 +89,12 @@ const structuredData = {
             <a class="top-cta" href="/#contact" data-subject="Book a Visit">Book a Visit</a>
             <a class="top-cta-secondary" href="/join-waitlist">Join Waitlist</a>
           </div>
+
+          <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-nav">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
       </header>
 
@@ -121,10 +127,27 @@ const structuredData = {
         </div>
       </footer>
     </div>
-
-    <a class="top-cta sticky-cta" href="/join-waitlist">Join Waitlist</a>
   </body>
 </html>
+
+<script>
+  const navToggle = document.getElementById('nav-toggle');
+  const mainNav = document.getElementById('main-nav');
+
+  navToggle?.addEventListener('click', () => {
+    const isOpen = mainNav?.classList.toggle('is-open') ?? false;
+    navToggle.classList.toggle('is-open', isOpen);
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  mainNav?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      mainNav.classList.remove('is-open');
+      navToggle?.classList.remove('is-open');
+      navToggle?.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
 
 <style is:global>
   @import '../styles/global.css';
