@@ -1,3 +1,7 @@
+## Writing style
+
+Never use em dashes (—) in site copy. Use en dashes (–) instead.
+
 ## Development
 
 When starting the dev server, use background mode:

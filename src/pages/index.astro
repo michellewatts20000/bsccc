@@ -1,137 +1,216 @@
 ---
-import { Image } from 'astro:assets';
-import Layout from '../layouts/Layout.astro';
-import heroImage from '../assets/current-site/renovated_play_one.jpeg';
-import differenceImage from '../assets/current-site/betty_image.png';
-import learningImage from '../assets/current-site/outdoor_painting.jpeg';
-import outdoorImage1 from '../assets/current-site/outdoor_garden_wide.jpeg';
-import outdoorImage2 from '../assets/current-site/outdoor_bush_garden.jpeg';
-import outdoorImage3 from '../assets/current-site/outdoor_garden.jpeg';
-import groupImage from '../assets/current-site/indoor_painting.jpeg';
-import educatorImage1 from '../assets/current-site/indoor_bus.jpeg';
-import educatorImage2 from '../assets/current-site/outdoor_reading.jpeg';
+import { Image } from 'astro:assets'
+import Layout from '../layouts/Layout.astro'
+import heroImage from '../assets/current-site/renovated_play_one.jpeg'
+import differenceImage from '../assets/current-site/betty_image.png'
+import learningImage from '../assets/current-site/outdoor_painting.jpeg'
+import outdoorImage1 from '../assets/current-site/outdoor_garden_wide.jpeg'
+import outdoorImage2 from '../assets/current-site/outdoor_bush_garden.jpeg'
+import outdoorImage3 from '../assets/current-site/outdoor_garden.jpeg'
+import groupImage from '../assets/current-site/indoor_painting.jpeg'
+import educatorImage1 from '../assets/current-site/indoor_bus.jpeg'
+import educatorImage2 from '../assets/current-site/outdoor_reading.jpeg'
+import familyImage from '../assets/current-site/indoor_trains.jpeg'
+import feesImage from '../assets/current-site/renovated_play_four.jpeg'
 
 const feeTable = [
   { age: 'Under 2 years', fee: '$178.50' },
   { age: '2–3 years', fee: '$176.20' },
-  { age: '3–5 years', fee: '$176.00' },
-];
+  { age: '3–5 years', fee: '$176.00' }
+]
 
 const philosophyItems = [
-  { letter: 'C', title: 'Community & belonging', description: 'A community-based centre fostering respect and understanding for ourselves, each other and the wider community.' },
-  { letter: 'H', title: 'Health & wellbeing', description: 'Emotional and physical wellbeing come first, so every child feels secure enough to fully engage and enjoy their day.' },
-  { letter: 'I', title: 'Inclusion', description: 'We welcome all children and families and work to maintain a culturally safe, culturally inclusive centre where everyone feels connected.' },
-  { letter: 'L', title: 'Learning from interest', description: 'Children are capable, competent co-contributors in their own learning, exploring at their own pace and following their interests.' },
-  { letter: 'D', title: 'Development: being & becoming', description: 'We meet children where they are and help them grow, while supporting educators’ ongoing development too.' },
-  { letter: 'R', title: 'Relationships & rights', description: 'Meaningful relationships built on trust and respect, so Betty’s feels like a home away from home for children and families alike.' },
-  { letter: 'E', title: 'Environment', description: 'Time, space and freedom for children to investigate and explore the world in their own way.' },
-  { letter: 'N', title: 'Nature', description: 'Daily opportunities to explore our large natural outdoor space, and to learn what it means to care for the world around us.' },
-];
+  {
+    letter: 'C',
+    title: 'Community & belonging',
+    description:
+      'A community-based centre fostering respect and understanding for ourselves, each other and the wider community.'
+  },
+  {
+    letter: 'H',
+    title: 'Health & wellbeing',
+    description:
+      'Emotional and physical wellbeing come first, so every child feels secure enough to fully engage and enjoy their day.'
+  },
+  {
+    letter: 'I',
+    title: 'Inclusion',
+    description:
+      'We welcome all children and families and work to maintain a culturally safe, culturally inclusive centre where everyone feels connected.'
+  },
+  {
+    letter: 'L',
+    title: 'Learning from interest',
+    description:
+      'Children are capable, competent co-contributors in their own learning, exploring at their own pace and following their interests.'
+  },
+  {
+    letter: 'D',
+    title: 'Development: being & becoming',
+    description:
+      'We meet children where they are and help them grow, while supporting educators’ ongoing development too.'
+  },
+  {
+    letter: 'R',
+    title: 'Relationships & rights',
+    description:
+      'Meaningful relationships built on trust and respect, so Betty’s feels like a home away from home for children and families alike.'
+  },
+  {
+    letter: 'E',
+    title: 'Environment',
+    description:
+      'Time, space and freedom for children to investigate and explore the world in their own way.'
+  },
+  {
+    letter: 'N',
+    title: 'Nature',
+    description:
+      'Daily opportunities to explore our large natural outdoor space, and to learn what it means to care for the world around us.'
+  }
+]
 
 const whyItems = [
   {
     icon: 'relationships',
     title: 'Relationships',
-    description: 'Children build strong, familiar relationships with educators who know them and care about them.',
+    description:
+      'Children build strong, familiar relationships with educators who know them and care about them.'
   },
   {
     icon: 'community',
     title: 'Community',
-    description: 'Betty’s is community-based, not-for-profit and shaped by the families who call it home.',
+    description:
+      'Betty’s is community-based, not-for-profit and shaped by the families who call it home.'
   },
   {
     icon: 'nature',
     title: 'Nature',
-    description: 'Big natural outdoor spaces where children can run, dig, climb and explore.',
+    description:
+      'Big natural outdoor spaces where children can run, dig, climb and explore.'
   },
   {
     icon: 'familiar-faces',
     title: 'Familiar faces',
-    description: 'Educators who stay for years, not months — so children grow up surrounded by people they know and trust.',
+    description:
+      'Educators who stay for years, not months – so children grow up surrounded by people they know and trust.'
   },
   {
     icon: 'fresh-food',
     title: 'Fresh food',
-    description: 'Meals made in-house, with a focus on fresh food and slow, unhurried mealtimes.',
-  },
-];
+    description:
+      'Meals made in-house, with a focus on fresh food and slow, unhurried mealtimes.'
+  }
+]
 
 const featureIcons: Record<string, string> = {
-  relationships: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="5.5"/><circle cx="15" cy="12" r="5.5"/></svg>',
-  community: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5 12 4l8 7.5"/><path d="M6 10v9.5a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V10"/><path d="M10 20.5v-6h4v6"/></svg>',
-  nature: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c8 1 14-5 14-14C10 5 4 11 5 19Z"/><path d="M6 18c3-3.5 5.5-6.5 12.5-12"/></svg>',
-  'familiar-faces': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M9 10.5h.01M15 10.5h.01"/><path d="M8.5 14.5c1 1.3 2.2 2 3.5 2s2.5-.7 3.5-2"/></svg>',
-  'fresh-food': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16a8 6 0 0 1-16 0Z"/><path d="M9 4.5c-.6.8-.6 1.4 0 2M12 4c-.6.8-.6 1.4 0 2"/></svg>',
-};
+  relationships:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="5.5"/><circle cx="15" cy="12" r="5.5"/></svg>',
+  community:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5 12 4l8 7.5"/><path d="M6 10v9.5a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V10"/><path d="M10 20.5v-6h4v6"/></svg>',
+  nature:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c8 1 14-5 14-14C10 5 4 11 5 19Z"/><path d="M6 18c3-3.5 5.5-6.5 12.5-12"/></svg>',
+  'familiar-faces':
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M9 10.5h.01M15 10.5h.01"/><path d="M8.5 14.5c1 1.3 2.2 2 3.5 2s2.5-.7 3.5-2"/></svg>',
+  'fresh-food':
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16a8 6 0 0 1-16 0Z"/><path d="M9 4.5c-.6.8-.6 1.4 0 2M12 4c-.6.8-.6 1.4 0 2"/></svg>'
+}
 
 const faqs = [
   {
     q: 'What ages do you accept?',
-    a: 'Betty Spears welcomes children from approximately 6 weeks to 6 years, with the centre structured around care, play and early learning across different age groups.',
+    a: 'Betty Spears welcomes children from approximately 6 weeks to 6 years, with the centre structured around care, play and early learning across different age groups.'
   },
   {
     q: 'What are your opening hours?',
-    a: 'The centre is open Monday to Friday, 7:30am–6:00pm, with a strong focus on long-day care and smooth family routines.',
+    a: 'The centre is open Monday to Friday, 7:30am–6:00pm, with a strong focus on long-day care and smooth family routines.'
   },
   {
     q: 'Are you open all year round?',
-    a: 'We’re open 50 weeks a year and close for two weeks over Christmas and New Year, when fees aren’t payable.',
+    a: 'We’re open 50 weeks a year and close for two weeks over Christmas and New Year, when fees aren’t payable.'
   },
   {
     q: 'How does Child Care Subsidy work?',
-    a: 'Families may be eligible for Child Care Subsidy through Services Australia. Our team can explain the process and guide you through the application and enrolment steps.',
+    a: 'Families may be eligible for Child Care Subsidy through Services Australia. Our team can explain the process and guide you through the application and enrolment steps.'
   },
   {
     q: 'What is your National Quality Standard rating?',
-    a: 'Betty Spears was assessed against the National Quality Standard in August 2023 and rated as Meeting the Standard overall, while Exceeding in three of the seven Quality Areas.',
+    a: 'Betty Spears was assessed against the National Quality Standard in August 2023 and rated as Meeting the Standard overall, while Exceeding in three of the seven Quality Areas.'
   },
   {
     q: 'How does the waiting list work?',
-    a: 'Families can submit a waiting list application and pay the applicable waiting list fee. Once your application is received, we’ll confirm it and contact you when a place becomes available.',
+    a: 'Families can submit a waiting list application and pay the applicable waiting list fee. Once your application is received, we’ll confirm it and contact you when a place becomes available.'
   },
   {
     q: 'How long can the waiting list take?',
-    a: 'Waiting times vary depending on age group and availability. We recommend joining the list as early as possible and staying in touch with the centre as your circumstances change.',
+    a: 'Waiting times vary depending on age group and availability. We recommend joining the list as early as possible and staying in touch with the centre as your circumstances change.'
   },
   {
     q: 'Do you provide meals?',
-    a: 'Yes. Fresh meals are prepared at the centre and planned with children’s nutrition, routines and dietary needs in mind.',
+    a: 'Yes. Fresh meals are prepared at the centre and planned with children’s nutrition, routines and dietary needs in mind.'
   },
   {
     q: 'Do you provide nappies?',
-    a: 'No, daily fees include everything your child will need in a day except formula for babies and nappies for all children using them.',
+    a: 'No, daily fees include everything your child will need in a day except formula for babies and nappies for all children using them.'
   },
   {
     q: 'How do we arrange a visit?',
-    a: 'You can contact the centre to arrange a visit, speak with the team and see the environment in person. We’re always happy to show families around and answer questions.',
-  },
-];
+    a: 'You can contact the centre to arrange a visit, speak with the team and see the environment in person. We’re always happy to show families around and answer questions.'
+  }
+]
 ---
 
 <Layout>
   <main>
     <section class="hero" id="top">
       <div class="hero-media">
-        <Image class="hero-slide is-active" src={heroImage} width={1920} loading="eager" fetchpriority="high" alt="The newly renovated outdoor play space and centre building at Betty Spears" />
-        <Image class="hero-slide" src={outdoorImage1} width={1920} loading="eager" alt="Children walking the garden pathway at Betty Spears" />
-        <Image class="hero-slide" src={outdoorImage2} width={1920} loading="eager" alt="Children playing at the mud kitchen and water play area at Betty Spears" />
-        <Image class="hero-slide" src={educatorImage2} width={1920} loading="eager" alt="An educator reading with a group of children outdoors" />
+        <Image
+          class="hero-slide is-active"
+          src={heroImage}
+          width={1920}
+          loading="eager"
+          fetchpriority="high"
+          alt="The newly renovated outdoor play space and centre building at Betty Spears"
+        />
+        <Image
+          class="hero-slide"
+          src={outdoorImage1}
+          width={1920}
+          loading="eager"
+          alt="Children walking the garden pathway at Betty Spears"
+        />
+        <Image
+          class="hero-slide"
+          src={outdoorImage2}
+          width={1920}
+          loading="eager"
+          alt="Children playing at the mud kitchen and water play area at Betty Spears"
+        />
+        <Image
+          class="hero-slide"
+          src={educatorImage2}
+          width={1920}
+          loading="eager"
+          alt="An educator reading with a group of children outdoors"
+        />
       </div>
 
       <div class="container hero-content">
-        
         <h1>
-          Betty Spears <br><span class="accent">Child Care Centre</span>
+          Betty Spears <br /><span class="accent">Child Care Centre</span>
         </h1>
         <p class="hero-intro">
-          Betty Spears Child Care Centre is a warm, grounded place where children grow, play, learn and
-          feel deeply known. For over 40 years, families in Tempe have trusted us to care for their children
-          with honesty, heart and consistency.
+          Betty Spears Child Care Centre is a not for profit, community based,
+          long day care centre that has been operating in Tempe since 1986.
         </p>
 
         <div class="hero-actions">
-          <a href="/#contact" class="button-primary" data-subject="Book a Visit">Book a Visit</a>
-          <a href="/join-waitlist" class="button-secondary">Join Waitlist</a>
+          <a href="#" class="button-primary" aria-disabled="true"
+            >Book a Visit</a
+          >
+          <a href="#" class="button-secondary" aria-disabled="true"
+            >Join Waitlist</a
+          >
         </div>
       </div>
     </section>
@@ -159,53 +238,188 @@ const faqs = [
 
     <section class="section" id="about">
       <div class="container">
-        <p class="section-kicker">About us</p>
-        <h2 class="section-heading">Run by families, for families.</h2>
-        <p class="section-lead">
-          Families choose Betty’s for the way it feels: calm, familiar, human and full of care. We believe the
-          most important thing a child needs is not just a place to be, but a place to feel safe, known and free.
-        </p>
-        <p class="section-lead" style="margin-top: 0.9rem;">
-          Since 1986, Betty Spears has remained a not-for-profit, parent-governed centre where decisions are shaped
-          by families and community, not a corporate model.
-        </p>
-        <p class="section-lead" style="margin-top: 0.9rem;">
-          Our volunteer Board of Directors — all parents themselves — meets monthly, and every family is welcome
-          to attend. From time to time we ask for a hand with fundraising or a working bee, always optional,
-          because many hands make light work.
-        </p>
-
-        <div class="feature-grid">
-          {whyItems.map((item) => (
-            <article class="feature-card">
-              <div class="feature-icon" aria-hidden="true" set:html={featureIcons[item.icon]} />
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-            </article>
-          ))}
-        </div>
-
         <div class="founder-wrap">
           <div class="founder-visual">
             <figure class="founder-card">
-              <Image src={differenceImage} width={320} class="founder-portrait" alt="An archival portrait of the late Betty Spears" />
+              <Image
+                src={differenceImage}
+                width={320}
+                class="founder-portrait"
+                alt="An archival portrait of the late Betty Spears"
+              />
               <figcaption>Betty Spears, 1926–2012</figcaption>
             </figure>
           </div>
-          <div class="founder-body">
-            <p class="section-kicker" style="margin-bottom: 0.6rem;">Our story</p>
-            <h3 style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);">A long history and a genuine sense of home.</h3>
-            <p class="section-lead" style="margin-top: 0; margin-bottom: 1.1rem;">
-              Betty’s isn’t shaped by a corporate model or a quick turnaround. It’s grown from decades of trust,
-              local relationships and a deep understanding of what families need.
+          <div>
+            <p class="section-kicker" style="margin-bottom: 0.6rem;">
+              Our story
             </p>
-            <p class="section-lead" style="margin-top: 0; margin-bottom: 1.1rem;">
-              The centre is named for the late Betty Spears (1926–2012), who — alongside June deLorenzo — worked
-              tirelessly to secure state and federal funding in the 1980s for shift-working families, especially
-              mothers, at the State Transit Authority. What they built was, to our knowledge, one of the first
-              24-hour child care centres in Sydney. We’re no longer open around the clock, but it’s with pride
-              that we carry that same spirit forward today.
+            <h2 class="section-heading" style="margin: 0 0 0.9rem;">
+              A long history and a genuine sense of home.
+            </h2>
+            <p class="section-lead" style="margin-top: 0;">
+              The centre is named for the late Betty Spears (1926–2012), who -
+              alongside June deLorenzo - worked tirelessly to secure state and
+              federal funding in the 1980s for shift-working families,
+              especially mothers, at the State Transit Authority. What they
+              built was, to our knowledge, one of the first 24-hour child care
+              centres in Sydney. We’re no longer open around the clock, but it’s
+              with pride that we carry that same spirit forward today.
             </p>
+          </div>
+        </div>
+
+        <div class="feature-grid">
+          {
+            whyItems.map((item) => (
+              <article class="feature-card">
+                <div
+                  class="feature-icon"
+                  aria-hidden="true"
+                  set:html={featureIcons[item.icon]}
+                />
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </article>
+            ))
+          }
+        </div>
+
+        <div class="about-carousel" data-carousel>
+          <div class="about-carousel-viewport">
+            <div class="about-slide is-active">
+              <div class="section-panel about-slide-text">
+                <p class="section-kicker" style="margin-bottom: 0.6rem;">
+                  About us
+                </p>
+                <h3
+                  style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);"
+                >
+                  Run by families, for families.
+                </h3>
+
+                <p>
+                  Since 1986, Betty Spears has remained a not-for-profit,
+                  parent-governed centre where decisions are shaped by families
+                  and community, not a corporate model.
+                </p>
+                <p>
+                  Our volunteer Board of Directors – all parents themselves –
+                  meets monthly, and every family is welcome to attend. From
+                  time to time we ask for a hand with fundraising or a working
+                  bee, always optional, because many hands make light work.
+                </p>
+              </div>
+              <div class="about-slide-visual">
+                <Image
+                  src={familyImage}
+                  width={700}
+                  alt="Children engaged in imaginative indoor play at Betty Spears"
+                />
+              </div>
+            </div>
+
+            <div class="about-slide">
+              <div class="section-panel about-slide-text">
+                <p class="section-kicker" style="margin-bottom: 0.6rem;">
+                  Part of the neighbourhood
+                </p>
+                <h3
+                  style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);"
+                >
+                  Woven into the local community.
+                </h3>
+                <p>
+                  Many of our families have shared several children with us over
+                  the years, and some of our parents and educators came to
+                  Betty’s as children themselves.
+                </p>
+
+                <p>
+                  Each year our preschoolers visit Tempe Public School to
+                  explore the library and kindergarten classrooms ahead of
+                  starting “big school”, the local fire brigade drops by to show
+                  off the truck and talk fire safety, and the year winds up with
+                  a shared lunch at a nearby Thai restaurant – a tradition the
+                  children look forward to.
+                </p>
+              </div>
+              <div class="about-slide-visual">
+                <Image
+                  src={educatorImage2}
+                  width={700}
+                  alt="An educator reading with a group of children outdoors"
+                />
+              </div>
+            </div>
+
+            <div class="about-slide">
+              <div class="section-panel about-slide-text">
+                <p class="section-kicker" style="margin-bottom: 0.6rem;">
+                  Our educators
+                </p>
+                <h3
+                  style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);"
+                >
+                  Long serving educators
+                </h3>
+                <p>
+                  The long-serving nature of our educators is one of Betty’s
+                  greatest strengths. Families know they can trust familiar
+                  faces, stable routines and deep relationships that grow over
+                  time.
+                </p>
+                <p>
+                  Every room has a university-qualified Early Childhood Teacher
+                  alongside Diploma-qualified educators, plus our own trusted
+                  list of permanent relief staff, so a sick day never means an
+                  unfamiliar face.
+                </p>
+              </div>
+              <div class="about-slide-visual">
+                <Image
+                  src={educatorImage1}
+                  width={700}
+                  alt="An educator sitting with a group of children during circle time"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="about-carousel-controls">
+            <button
+              type="button"
+              class="carousel-arrow carousel-arrow-prev"
+              aria-label="Previous"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg
+              >
+            </button>
+            <div class="carousel-dots" aria-hidden="true">
+              <span class="carousel-dot is-active"></span>
+              <span class="carousel-dot"></span>
+              <span class="carousel-dot"></span>
+            </div>
+            <button
+              type="button"
+              class="carousel-arrow carousel-arrow-next"
+              aria-label="Next"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg
+              >
+            </button>
           </div>
         </div>
       </div>
@@ -213,16 +427,17 @@ const faqs = [
       <div class="stats-band">
         <div class="container stats-band-grid">
           <div class="stat-item">
-            <strong>1986</strong>
-            <span>Betty’s begins its story in the heart of the Tempe community.</span>
-          </div>
-          <div class="stat-item">
-            <strong>40+ years</strong>
-            <span>Part of local families’ stories, routines and milestones.</span>
+            <strong>Since 1986</strong>
+            <span
+              >Part of local families’ stories, routines and milestones.</span
+            >
           </div>
           <div class="stat-item">
             <strong>20+ years</strong>
-            <span>Some educators have been here for decades, creating continuity and trust.</span>
+            <span
+              >Some educators have been here for decades, creating continuity
+              and trust.</span
+            >
           </div>
           <div class="stat-item">
             <strong>Not-for-profit</strong>
@@ -234,46 +449,6 @@ const faqs = [
           </div>
         </div>
       </div>
-
-      <div class="container">
-        <p class="section-kicker" style="margin-top: 3.2rem;">Part of the neighbourhood</p>
-        <h3 style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);">Woven into the local community.</h3>
-
-        <div class="staff-row">
-          <div class="section-panel staff-row-body">
-            <p>
-              Many of our families have shared several children with us over the years, and some of our parents and
-              educators came to Betty’s as children themselves. Each year our preschoolers visit Tempe Public School
-              to explore the library and kindergarten classrooms ahead of starting “big school”, the local fire
-              brigade drops by to show off the truck and talk fire safety, and the year winds up with a shared lunch
-              at a nearby Thai restaurant — a tradition the children look forward to.
-            </p>
-          </div>
-          <div class="staff-row-visual">
-            <Image src={educatorImage2} width={700} alt="An educator reading with a group of children outdoors" />
-          </div>
-        </div>
-
-        <p class="section-kicker" style="margin-top: 3.2rem;">Our educators</p>
-        <h3 style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);">Your child gets to know the people caring for them.</h3>
-
-        <div class="staff-row">
-          <div class="staff-row-visual">
-            <Image src={educatorImage1} width={700} alt="An educator sitting with a group of children during circle time" />
-          </div>
-          <div class="section-panel staff-row-body">
-            <p>
-              The long-serving nature of our educators is one of Betty’s greatest strengths. Families know they can
-              trust familiar faces, stable routines and deep relationships that grow over time.
-            </p>
-            <p>
-              Every room has a university-qualified Early Childhood Teacher alongside Diploma-qualified educators,
-              with more staff per child than the regulations require — plus our own trusted list of permanent
-              relief staff, so a sick day never means an unfamiliar face.
-            </p>
-          </div>
-        </div>
-      </div>
     </section>
 
     <section class="section section-white" id="philosophy">
@@ -281,110 +456,150 @@ const faqs = [
         <p class="section-kicker">Our philosophy</p>
         <h2 class="section-heading">C.H.I.L.D.R.E.N.</h2>
         <p class="section-lead">
-          Written with families and educators, and revisited every year, this is what guides how we care for
-          your child and each other.
+          Written with families and educators, and revisited every year, this is
+          what guides how we care for your child and each other.
         </p>
 
         <div class="philosophy-grid">
-          {philosophyItems.map((item) => (
-            <article class="philosophy-card">
-              <div class="philosophy-letter" aria-hidden="true">{item.letter}</div>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-            </article>
-          ))}
+          {
+            philosophyItems.map((item) => (
+              <article class="philosophy-card">
+                <div class="philosophy-letter" aria-hidden="true">
+                  {item.letter}
+                </div>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </article>
+            ))
+          }
         </div>
       </div>
     </section>
 
-    <section class="section" id="day">
+    <section class="section" id="curriculum">
       <div class="container">
-        <p class="section-kicker">Daily routine</p>
-        <h2 class="section-heading">Play-based, and led by the children themselves.</h2>
+        <p class="section-kicker">Curriculum</p>
+        <h2 class="section-heading">
+          Play-based, and led by the children themselves.
+        </h2>
 
         <div class="learning-grid">
           <div class="learning-visual">
-            <Image src={learningImage} width={900} alt="A child painting at an outdoor art table at Betty Spears" />
+            <Image
+              src={learningImage}
+              width={900}
+              alt="A child painting at an outdoor art table at Betty Spears"
+            />
           </div>
 
           <div class="section-panel learning-copy">
             <p>
-              At Betty’s, learning grows naturally from children’s interests, relationships and everyday play.
-              We believe children thrive when they have time, space and trusted adults who understand their needs.
+              At Betty’s, learning grows naturally from children’s interests,
+              relationships and everyday play. We believe children thrive when
+              they have time, space and trusted adults who understand their
+              needs.
             </p>
             <p>
-              Play is how children make sense of the world — building curiosity, confidence and the courage
-              to try new things.
+              Play is how children make sense of the world – building curiosity,
+              confidence and the courage to try new things.
             </p>
             <p>
-              Our educators follow each child’s lead, so every day feels like exploring rather than being taught at.
+              Our educators follow each child’s lead, so every day feels like
+              exploring rather than being taught at.
+            </p>
+            <p class="section-lead">
+              Our play-based program follows Australia’s national curriculum for
+              early childhood, which sees childhood as a time of belonging,
+              being and becoming. It’s built around five learning outcomes: a
+              strong sense of identity, connection to and contribution to their
+              world, a strong sense of wellbeing, confident and involved
+              learning, and effective communication.
             </p>
           </div>
         </div>
 
-        <p class="section-kicker" style="margin-top: 3.2rem;">Curriculum</p>
-        <h3 style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);">Guided by the Early Years Learning Framework.</h3>
-        <p class="section-lead">
-          Our play-based program follows Australia’s national curriculum for early childhood, which sees
-          childhood as a time of belonging, being and becoming. It’s built around five learning outcomes: a
-          strong sense of identity, connection to and contribution to their world, a strong sense of wellbeing,
-          confident and involved learning, and effective communication.
+        <p class="section-kicker" style="margin-top: 3.2rem;">
+          Life at Betty’s
         </p>
-        <p class="section-lead" style="margin-top: 0.9rem;">
-          Each room keeps a daily diary linking back to the curriculum, and every child has their own learning
-          journal — a record of their development, interests and experiences that you’re welcome to read, and
-          take home to add to, any time.
-        </p>
-
-        <p class="section-kicker" style="margin-top: 3.2rem;">Life at Betty’s</p>
-        <h3 style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);">Nature, food and shared routines — every day.</h3>
+        <h3
+          style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);"
+        >
+          Nature, food and shared routines – every day.
+        </h3>
         <p class="section-lead">
-          Betty’s is known for its generous outdoor spaces, where children run, dig, climb, notice and explore.
-          Fresh air, open-ended play and time in nature are part of the rhythm of the day — alongside fresh food
-          and calm, connected mealtimes. Even our youngest toddlers have their own patch to explore, with a
-          sensory walk and vegetable garden in the 0–2s outdoor area — picking herbs and watering the garden are
-          big favourites.
+          Betty’s is known for its generous outdoor spaces, where children run,
+          dig, climb, notice and explore. Fresh air, open-ended play and time in
+          nature are part of the rhythm of the day – alongside fresh food and
+          calm, connected mealtimes. Even our youngest toddlers have their own
+          patch to explore, with a sensory walk and vegetable garden in the 0–2s
+          outdoor area – picking herbs and watering the garden are big
+          favourites.
         </p>
 
         <div class="gallery-grid">
           <div class="gallery-card">
-            <Image src={outdoorImage1} width={900} alt="Children walking the garden pathway at Betty Spears" />
+            <Image
+              src={outdoorImage1}
+              width={900}
+              alt="Children walking the garden pathway at Betty Spears"
+            />
           </div>
           <div class="gallery-card">
-            <Image src={outdoorImage2} width={700} alt="Children playing at the mud kitchen and water play area at Betty Spears" />
+            <Image
+              src={outdoorImage2}
+              width={700}
+              alt="Children playing at the mud kitchen and water play area at Betty Spears"
+            />
           </div>
           <div class="gallery-card">
-            <Image src={outdoorImage3} width={700} alt="Children watering plants in the garden at Betty Spears" />
+            <Image
+              src={outdoorImage3}
+              width={700}
+              alt="Children watering plants in the garden at Betty Spears"
+            />
           </div>
         </div>
 
-        <p class="section-kicker" style="margin-top: 3.2rem;">Food & nutrition</p>
-        <h3 style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);">Fresh food, shared routines and healthy habits.</h3>
+        <p class="section-kicker" style="margin-top: 3.2rem;">
+          Food & nutrition
+        </p>
+        <h3
+          style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);"
+        >
+          Fresh food, shared routines and healthy habits.
+        </h3>
 
         <div class="food-grid">
           <div class="food-copy section-panel">
             <p>
-              Our cook makes real food from scratch — low in salt and sugar, with fresh fruit and veg delivered
-              every week. An early childhood nutritionist checks every menu, and we run the “Munch and Move”
+              Our cook makes real food from scratch – low in salt and sugar,
+              with fresh fruit and veg delivered every week. An early childhood
+              nutritionist checks every menu, and we run the “Munch and Move”
               program alongside it, so healthy habits are just part of the day.
             </p>
             <p>
-              We serve breakfast, morning tea, lunch, afternoon tea and a late snack, with a bowl of fresh fruit
-              always on hand in every room.
+              We serve breakfast, morning tea, lunch, afternoon tea and a late
+              snack, with a bowl of fresh fruit always on hand in every room.
             </p>
             <p>
-              For toddlers and preschoolers, meals happen in a dedicated dining room where an educator sits with a
-              small group to share food and conversation — more like a family table than a canteen. Foods are
-              served in separate bowls with tasting saucers on offer, so children can self-select at their own
-              pace without feeling pressured by foods they’d rather avoid.
+              For toddlers and preschoolers, meals happen in a dedicated dining
+              room where an educator sits with a small group to share food and
+              conversation – more like a family table than a canteen. Foods are
+              served in separate bowls with tasting saucers on offer, so
+              children can self-select at their own pace without feeling
+              pressured by foods they’d rather avoid.
             </p>
             <p>
-              We work with families to cater to dietary requirements, so every child feels comfortable and
-              included at the table.
+              We work with families to cater to dietary requirements, so every
+              child feels comfortable and included at the table.
             </p>
           </div>
           <div class="food-visual">
-            <Image src={groupImage} width={900} alt="Children gathered together around a shared activity at Betty Spears" />
+            <Image
+              src={groupImage}
+              width={900}
+              alt="Children gathered together around a shared activity at Betty Spears"
+            />
           </div>
         </div>
       </div>
@@ -395,26 +610,45 @@ const faqs = [
         <p class="section-kicker">Fees</p>
         <h2 class="section-heading">Our daily fees.</h2>
         <p class="section-lead">
-          Fees vary by age. Many families are also eligible for Child Care Subsidy through Services Australia —
-          just ask us if you’re not sure.
+          Fees vary by age. Betty Spears Child Care Centre is approved for
+          families to receive CCS (Child Care Subsidy).
         </p>
 
-        <div class="fee-table" id="fees-table" role="table" aria-label="Current daily fees by age group">
-          <div class="fee-row fee-row-head" role="row">
-            <span role="columnheader">Age group</span>
-            <span role="columnheader">Daily fee</span>
-          </div>
-          {feeTable.map((row) => (
-            <div class="fee-row" role="row">
-              <span role="cell">{row.age}</span>
-              <span role="cell">{row.fee}</span>
+        <div class="fees-grid">
+          <div>
+            <div
+              class="fee-table"
+              id="fees-table"
+              role="table"
+              aria-label="Current daily fees by age group"
+            >
+              <div class="fee-row fee-row-head" role="row">
+                <span role="columnheader">Age group</span>
+                <span role="columnheader">Daily fee</span>
+              </div>
+              {
+                feeTable.map((row) => (
+                  <div class="fee-row" role="row">
+                    <span role="cell">{row.age}</span>
+                    <span role="cell">{row.fee}</span>
+                  </div>
+                ))
+              }
             </div>
-          ))}
+            <p class="fee-note">
+              Updated 1 September 2026. Includes everything your child needs
+              each day except formula for babies and nappies for children
+              using them.
+            </p>
+          </div>
+          <div class="fees-visual">
+            <Image
+              src={feesImage}
+              width={700}
+              alt="The renovated play space at Betty Spears"
+            />
+          </div>
         </div>
-        <p class="fee-note">
-          Updated 1 September 2026. Includes everything your child needs each day except formula for babies and
-          nappies for children using them.
-        </p>
       </div>
     </section>
 
@@ -423,16 +657,19 @@ const faqs = [
         <p class="section-kicker">FAQs</p>
         <h2 class="section-heading">Questions families often ask.</h2>
         <p class="section-lead">
-          Can’t find what you’re after? Just give us a call or send an email — we’re happy to help.
+          Can’t find what you’re after? Just give us a call or send an email –
+          we’re happy to help.
         </p>
 
         <div class="faq-list">
-          {faqs.map((item) => (
-            <details class="faq-item">
-              <summary>{item.q}</summary>
-              <p>{item.a}</p>
-            </details>
-          ))}
+          {
+            faqs.map((item) => (
+              <details class="faq-item">
+                <summary>{item.q}</summary>
+                <p>{item.a}</p>
+              </details>
+            ))
+          }
         </div>
       </div>
     </section>
@@ -442,8 +679,8 @@ const faqs = [
         <p class="section-kicker">Contact us</p>
         <h2 class="section-heading">Book a visit to see Betty's.</h2>
         <p class="section-lead">
-          Want to book a visit or just ask a question? Send us a message below and we’ll get back to you.
-          Joining the waiting list has its own short application — <a href="/join-waitlist" style="text-decoration: underline;">start it here</a>.
+          Want to book a visit or just ask a question? Send us a message below
+          and we’ll get back to you.
         </p>
 
         <div class="visit-grid">
@@ -455,21 +692,22 @@ const faqs = [
               </label>
               <label>
                 <span>Your email</span>
-                <input type="email" name="email" autocomplete="email" required />
-              </label>
-              <label>
-                <span>What’s this about?</span>
-                <select name="subject" required>
-                  <option value="Book a Visit">Book a Visit</option>
-                  <option value="General Enquiry" selected>General Enquiry</option>
-                </select>
+                <input
+                  type="email"
+                  name="email"
+                  autocomplete="email"
+                  required
+                />
               </label>
               <label>
                 <span>Message</span>
                 <textarea name="message" rows="4" required></textarea>
               </label>
               <button type="submit" class="button-primary">Send message</button>
-              <p class="form-note">This opens your email app with the details filled in, ready to send to the office.</p>
+              <p class="form-note">
+                This opens your email app with the details filled in, ready to
+                send to the office.
+              </p>
             </form>
           </div>
 
@@ -480,8 +718,7 @@ const faqs = [
               src="https://www.google.com/maps?q=1A+Gannon+St+Tempe+NSW+2044&output=embed"
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
-              allowfullscreen
-            ></iframe>
+              allowfullscreen></iframe>
 
             <div class="visit-details">
               <div class="detail-item">
@@ -498,7 +735,9 @@ const faqs = [
               </div>
               <div class="detail-item">
                 <strong>Email</strong>
-                <a href="mailto:office@bettyspearschildcare.org.au">office@bettyspearschildcare.org.au</a>
+                <a href="mailto:office@bettyspearschildcare.org.au"
+                  >office@bettyspearschildcare.org.au</a
+                >
               </div>
             </div>
           </div>
@@ -508,70 +747,94 @@ const faqs = [
   </main>
 
   <script>
-    const contactForm = document.getElementById('contact-form');
+    const contactForm = document.getElementById('contact-form')
     contactForm?.addEventListener('submit', (event) => {
-      event.preventDefault();
-      const data = new FormData(contactForm as HTMLFormElement);
-      const subject = String(data.get('subject') ?? 'General Enquiry');
-      const name = String(data.get('name') ?? '');
-      const email = String(data.get('email') ?? '');
-      const message = String(data.get('message') ?? '');
-      const body = `From: ${name} (${email})\n\n${message}`;
-      const mailto = `mailto:office@bettyspearschildcare.org.au?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      window.location.href = mailto;
-    });
+      event.preventDefault()
+      const data = new FormData(contactForm as HTMLFormElement)
+      const subject = String(data.get('subject') ?? 'General Enquiry')
+      const name = String(data.get('name') ?? '')
+      const email = String(data.get('email') ?? '')
+      const message = String(data.get('message') ?? '')
+      const body = `From: ${name} (${email})\n\n${message}`
+      const mailto = `mailto:office@bettyspearschildcare.org.au?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+      window.location.href = mailto
+    })
 
-    const subjectSelect = contactForm?.querySelector<HTMLSelectElement>('select[name="subject"]');
-    document.querySelectorAll<HTMLAnchorElement>('a[data-subject]').forEach((link) => {
-      link.addEventListener('click', () => {
-        if (subjectSelect && link.dataset.subject) {
-          subjectSelect.value = link.dataset.subject;
-        }
-      });
-    });
-
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    const statItems = document.querySelectorAll<HTMLElement>('.stat-item');
-    if (statItems.length) {
-      const statsObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            statsObserver.unobserve(entry.target);
+    const subjectSelect = contactForm?.querySelector<HTMLSelectElement>(
+      'select[name="subject"]'
+    )
+    document
+      .querySelectorAll<HTMLAnchorElement>('a[data-subject]')
+      .forEach((link) => {
+        link.addEventListener('click', () => {
+          if (subjectSelect && link.dataset.subject) {
+            subjectSelect.value = link.dataset.subject
           }
-        });
-      }, { threshold: 0.3 });
-      statItems.forEach((item) => statsObserver.observe(item));
+        })
+      })
+
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches
+
+    const statItems = document.querySelectorAll<HTMLElement>('.stat-item')
+    if (statItems.length) {
+      const statsObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible')
+              statsObserver.unobserve(entry.target)
+            }
+          })
+        },
+        { threshold: 0.3 }
+      )
+      statItems.forEach((item) => statsObserver.observe(item))
     }
 
-    const heroSlides = document.querySelectorAll<HTMLElement>('.hero-slide');
+    document
+      .querySelectorAll<HTMLElement>('[data-carousel]')
+      .forEach((carousel) => {
+        const slides = Array.from(
+          carousel.querySelectorAll<HTMLElement>('.about-slide')
+        )
+        const dots = Array.from(
+          carousel.querySelectorAll<HTMLElement>('.carousel-dot')
+        )
+        const prevButton = carousel.querySelector<HTMLButtonElement>(
+          '.carousel-arrow-prev'
+        )
+        const nextButton = carousel.querySelector<HTMLButtonElement>(
+          '.carousel-arrow-next'
+        )
+        if (!slides.length) return
+
+        let current = Math.max(
+          slides.findIndex((slide) => slide.classList.contains('is-active')),
+          0
+        )
+
+        const showSlide = (index: number) => {
+          slides[current]?.classList.remove('is-active')
+          dots[current]?.classList.remove('is-active')
+          current = (index + slides.length) % slides.length
+          slides[current]?.classList.add('is-active')
+          dots[current]?.classList.add('is-active')
+        }
+
+        prevButton?.addEventListener('click', () => showSlide(current - 1))
+        nextButton?.addEventListener('click', () => showSlide(current + 1))
+      })
+
+    const heroSlides = document.querySelectorAll<HTMLElement>('.hero-slide')
     if (heroSlides.length > 1 && !prefersReducedMotion) {
-      let currentSlide = 0;
+      let currentSlide = 0
       setInterval(() => {
-        heroSlides[currentSlide].classList.remove('is-active');
-        currentSlide = (currentSlide + 1) % heroSlides.length;
-        heroSlides[currentSlide].classList.add('is-active');
-      }, 6000);
-    }
-
-    if (!prefersReducedMotion) {
-      document.querySelectorAll<HTMLElement>('.feature-card').forEach((card) => {
-        const maxTilt = 10;
-
-        card.addEventListener('mousemove', (event) => {
-          const rect = card.getBoundingClientRect();
-          const x = (event.clientX - rect.left) / rect.width;
-          const y = (event.clientY - rect.top) / rect.height;
-          const rotateY = (x - 0.5) * maxTilt * 2;
-          const rotateX = (0.5 - y) * maxTilt * 2;
-          card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
-        });
-
-        card.addEventListener('mouseleave', () => {
-          card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-        });
-      });
+        heroSlides[currentSlide].classList.remove('is-active')
+        currentSlide = (currentSlide + 1) % heroSlides.length
+        heroSlides[currentSlide].classList.add('is-active')
+      }, 6000)
     }
   </script>
 </Layout>

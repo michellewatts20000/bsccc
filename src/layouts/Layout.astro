@@ -8,7 +8,7 @@ const optimizedOgImage = await getImage({ src: ogImageSrc, width: 1200, format: 
 const navItems = [
   { label: 'About us', href: '/#about' },
   { label: 'Philosophy', href: '/#philosophy' },
-  { label: 'Daily routine', href: '/#day' },
+  { label: 'Curriculum', href: '/#curriculum' },
   { label: 'Fees', href: '/#fees' },
   { label: 'FAQs', href: '/#faq' },
   { label: 'Contact us', href: '/#contact', subject: 'General Enquiry' },
@@ -86,8 +86,8 @@ const structuredData = {
           </nav>
 
           <div class="top-cta-group">
-            <a class="top-cta" href="/#contact" data-subject="Book a Visit">Book a Visit</a>
-            <a class="top-cta-secondary" href="/join-waitlist">Join Waitlist</a>
+            <a class="top-cta" href="#" aria-disabled="true">Book a Visit</a>
+            <a class="top-cta-secondary" href="#" aria-disabled="true">Join Waitlist</a>
           </div>
 
           <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-nav">
@@ -121,8 +121,7 @@ const structuredData = {
           <div class="footer-links">
             <a href="/#contact" data-subject="General Enquiry">Contact us</a>
             <a href="/#faq">FAQs</a>
-            <a href="/families">Families</a>
-            <a href="/join-waitlist">Join Waitlist</a>
+            <a href="#" aria-disabled="true">Join Waitlist</a>
           </div>
         </div>
       </footer>
@@ -146,6 +145,10 @@ const structuredData = {
       navToggle?.classList.remove('is-open');
       navToggle?.setAttribute('aria-expanded', 'false');
     });
+  });
+
+  document.querySelectorAll('a[aria-disabled="true"]').forEach((link) => {
+    link.addEventListener('click', (event) => event.preventDefault());
   });
 </script>
 
