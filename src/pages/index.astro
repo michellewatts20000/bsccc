@@ -6,12 +6,19 @@ import differenceImage from '../assets/current-site/betty_image.png'
 import learningImage from '../assets/current-site/outdoor_painting.jpeg'
 import outdoorImage1 from '../assets/current-site/outdoor_garden_wide.jpeg'
 import outdoorImage2 from '../assets/current-site/outdoor_bush_garden.jpeg'
-import outdoorImage3 from '../assets/current-site/outdoor_garden.jpeg'
+import outdoorGardenImage from '../assets/current-site/outdoor_garden.jpeg'
+import foodImage1 from '../assets/current-site/food-1.jpeg'
+import foodImage2 from '../assets/current-site/food-2.jpeg'
+import foodImage3 from '../assets/current-site/food-3.jpeg'
+import foodImage4 from '../assets/current-site/food-4.jpeg'
+import foodImage5 from '../assets/current-site/food-5.jpeg'
 import groupImage from '../assets/current-site/indoor_painting.jpeg'
 import educatorImage1 from '../assets/current-site/indoor_bus.jpeg'
 import educatorImage2 from '../assets/current-site/outdoor_reading.jpeg'
 import familyImage from '../assets/current-site/indoor_trains.jpeg'
 import feesImage from '../assets/current-site/renovated_play_four.jpeg'
+import bushGardenImage from '../assets/current-site/bush-garden-1.jpeg'
+import ducklingsImage from '../assets/current-site/ducklinks-play-area.jpeg'
 
 const feeTable = [
   { age: 'Under 2 years', fee: '$178.50' },
@@ -218,20 +225,21 @@ const faqs = [
     <section class="stats-strip" aria-label="Key facts about the centre">
       <div class="container stats-grid">
         <div class="stat-item">
-          <strong>6 weeks–6 years</strong>
-          <span>Long day care</span>
+          <strong>Not-for-profit</strong>
+          <span>Built around community and family needs.</span>
         </div>
         <div class="stat-item">
-          <strong>Mon–Fri</strong>
-          <span>7:30am–6pm</span>
+          <strong>Long day care</strong>
+          <span>For children <br />6 weeks–6 years of age</span>
         </div>
+        <div class="stat-item">
+          <strong>Open Mon–Fri</strong>
+          <span>7:30am–6pm. <br /> 50 weeks per year.</span>
+        </div>
+
         <div class="stat-item">
           <strong>Since 1986</strong>
-          <span>Tempe community</span>
-        </div>
-        <div class="stat-item">
-          <strong>Exceeding NQS</strong>
-          <span>3 of 7 quality areas</span>
+          <span>Part of local families’ stories, routines and milestones.</span>
         </div>
       </div>
     </section>
@@ -255,10 +263,10 @@ const faqs = [
               Our story
             </p>
             <h2 class="section-heading" style="margin: 0 0 0.9rem;">
-              A long history and a genuine sense of home.
+              A long history and a genuine sense of home
             </h2>
             <p class="section-lead" style="margin-top: 0;">
-              The centre is named for the late Betty Spears (1926–2012), who -
+              The centre is named after the late Betty Spears (1926–2012), who -
               alongside June deLorenzo - worked tirelessly to secure state and
               federal funding in the 1980s for shift-working families,
               especially mothers, at the State Transit Authority. What they
@@ -295,7 +303,7 @@ const faqs = [
                 <h3
                   style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);"
                 >
-                  Run by families, for families.
+                  Run by families, for families
                 </h3>
 
                 <p>
@@ -327,7 +335,7 @@ const faqs = [
                 <h3
                   style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);"
                 >
-                  Woven into the local community.
+                  Woven into the local community
                 </h3>
                 <p>
                   Many of our families have shared several children with us over
@@ -440,9 +448,10 @@ const faqs = [
             >
           </div>
           <div class="stat-item">
-            <strong>Not-for-profit</strong>
-            <span>Built around community and family needs.</span>
+            <strong>Exceeding NQS</strong>
+            <span>3 of 7 quality areas</span>
           </div>
+
           <div class="stat-item">
             <strong>Parent-led</strong>
             <span>Community governance remains central.</span>
@@ -451,45 +460,100 @@ const faqs = [
       </div>
     </section>
 
-    <section class="section section-white" id="philosophy">
-      <div class="container">
-        <p class="section-kicker">Our philosophy</p>
-        <h2 class="section-heading">C.H.I.L.D.R.E.N.</h2>
-        <p class="section-lead">
-          Written with families and educators, and revisited every year, this is
-          what guides how we care for your child and each other.
-        </p>
-
-        <div class="philosophy-grid">
-          {
-            philosophyItems.map((item) => (
-              <article class="philosophy-card">
-                <div class="philosophy-letter" aria-hidden="true">
-                  {item.letter}
-                </div>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </article>
-            ))
-          }
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="curriculum">
+    <section class="section section-white" id="curriculum">
       <div class="container">
         <p class="section-kicker">Curriculum</p>
         <h2 class="section-heading">
-          Play-based, and led by the children themselves.
+          Play-based, and led by the children themselves
         </h2>
 
         <div class="learning-grid">
-          <div class="learning-visual">
-            <Image
-              src={learningImage}
-              width={900}
-              alt="A child painting at an outdoor art table at Betty Spears"
-            />
+          <div class="life-carousel" data-carousel>
+            <div class="life-carousel-viewport">
+              <figure class="life-slide is-active">
+                <Image
+                  src={learningImage}
+                  width={700}
+                  alt="A child painting at an outdoor art table at Betty Spears"
+                />
+              </figure>
+              <figure class="life-slide">
+                <Image
+                  src={educatorImage2}
+                  width={700}
+                  alt="An educator reading with a group of children outdoors"
+                />
+              </figure>
+              <figure class="life-slide">
+                <Image
+                  src={familyImage}
+                  width={700}
+                  alt="Children engaged in imaginative indoor play at Betty Spears"
+                />
+              </figure>
+              <figure class="life-slide">
+                <Image
+                  src={groupImage}
+                  width={700}
+                  alt="Children gathered together around a shared activity at Betty Spears"
+                />
+              </figure>
+              <figure class="life-slide">
+                <Image
+                  src={educatorImage1}
+                  width={700}
+                  alt="An educator sitting with a group of children during circle time"
+                />
+              </figure>
+              <figure class="life-slide">
+                <Image
+                  src={outdoorImage2}
+                  width={700}
+                  alt="Children playing at the mud kitchen and water play area at Betty Spears"
+                />
+              </figure>
+              <figure class="life-slide">
+                <Image
+                  src={outdoorImage1}
+                  width={700}
+                  alt="Children walking the garden pathway at Betty Spears"
+                />
+              </figure>
+              <figure class="life-slide">
+                <Image
+                  src={outdoorGardenImage}
+                  width={700}
+                  alt="Children watering plants in the garden at Betty Spears"
+                />
+              </figure>
+            </div>
+
+            <div class="about-carousel-controls">
+              <button
+                type="button"
+                class="carousel-arrow carousel-arrow-prev"
+                aria-label="Previous"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7" /></svg>
+              </button>
+              <div class="carousel-dots" aria-hidden="true">
+                <span class="carousel-dot is-active"></span>
+                <span class="carousel-dot"></span>
+                <span class="carousel-dot"></span>
+                <span class="carousel-dot"></span>
+                <span class="carousel-dot"></span>
+                <span class="carousel-dot"></span>
+                <span class="carousel-dot"></span>
+                <span class="carousel-dot"></span>
+              </div>
+              <button
+                type="button"
+                class="carousel-arrow carousel-arrow-next"
+                aria-label="Next"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7" /></svg>
+              </button>
+            </div>
           </div>
 
           <div class="section-panel learning-copy">
@@ -518,45 +582,88 @@ const faqs = [
           </div>
         </div>
 
-        <p class="section-kicker" style="margin-top: 3.2rem;">
-          Life at Betty’s
-        </p>
-        <h3
-          style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);"
-        >
-          Nature, food and shared routines – every day.
-        </h3>
-        <p class="section-lead">
-          Betty’s is known for its generous outdoor spaces, where children run,
-          dig, climb, notice and explore. Fresh air, open-ended play and time in
-          nature are part of the rhythm of the day – alongside fresh food and
-          calm, connected mealtimes. Even our youngest toddlers have their own
-          patch to explore, with a sensory walk and vegetable garden in the 0–2s
-          outdoor area – picking herbs and watering the garden are big
-          favourites.
-        </p>
+        <div class="life-grid">
+          <div>
+            <p class="section-kicker">Life at Betty’s</p>
+            <h3
+              style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);"
+            >
+              Nature, food and shared routines – every day
+            </h3>
+            <p class="section-lead">
+              Betty’s is known for its generous outdoor spaces, where children
+              run, dig, climb, notice and explore. Fresh air, open-ended play
+              and time in nature are part of the rhythm of the day – alongside
+              fresh food and calm, connected mealtimes. Even our youngest
+              toddlers have their own patch to explore, with a sensory walk and
+              vegetable garden in the 0–2s outdoor area – picking herbs and
+              watering the garden are big favourites.
+            </p>
+          </div>
 
-        <div class="gallery-grid">
-          <div class="gallery-card">
-            <Image
-              src={outdoorImage1}
-              width={900}
-              alt="Children walking the garden pathway at Betty Spears"
-            />
-          </div>
-          <div class="gallery-card">
-            <Image
-              src={outdoorImage2}
-              width={700}
-              alt="Children playing at the mud kitchen and water play area at Betty Spears"
-            />
-          </div>
-          <div class="gallery-card">
-            <Image
-              src={outdoorImage3}
-              width={700}
-              alt="Children watering plants in the garden at Betty Spears"
-            />
+          <div class="life-carousel" data-carousel>
+            <div class="life-carousel-viewport">
+              <figure class="life-slide is-active">
+                <Image
+                  src={bushGardenImage}
+                  width={700}
+                  alt="The bush garden at Betty Spears"
+                />
+                <figcaption>Bush garden</figcaption>
+              </figure>
+              <figure class="life-slide">
+                <Image
+                  src={ducklingsImage}
+                  width={700}
+                  alt="The Ducklings outdoor play area at Betty Spears"
+                />
+                <figcaption>Ducklings play area</figcaption>
+              </figure>
+              <figure class="life-slide">
+                <Image
+                  src={heroImage}
+                  width={700}
+                  alt="The renovated outdoor play area at Betty Spears"
+                />
+                <figcaption>Renovated play area</figcaption>
+              </figure>
+            </div>
+
+            <div class="about-carousel-controls">
+              <button
+                type="button"
+                class="carousel-arrow carousel-arrow-prev"
+                aria-label="Previous"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg
+                >
+              </button>
+              <div class="carousel-dots" aria-hidden="true">
+                <span class="carousel-dot is-active"></span>
+                <span class="carousel-dot"></span>
+                <span class="carousel-dot"></span>
+              </div>
+              <button
+                type="button"
+                class="carousel-arrow carousel-arrow-next"
+                aria-label="Next"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg
+                >
+              </button>
+            </div>
           </div>
         </div>
 
@@ -566,7 +673,7 @@ const faqs = [
         <h3
           style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);"
         >
-          Fresh food, shared routines and healthy habits.
+          Fresh food, shared routines and healthy habits
         </h3>
 
         <div class="food-grid">
@@ -594,13 +701,94 @@ const faqs = [
               child feels comfortable and included at the table.
             </p>
           </div>
-          <div class="food-visual">
-            <Image
-              src={groupImage}
-              width={900}
-              alt="Children gathered together around a shared activity at Betty Spears"
-            />
+          <div class="life-carousel" data-carousel>
+            <div class="life-carousel-viewport">
+              <figure class="life-slide is-active">
+                <Image
+                  src={foodImage1}
+                  width={700}
+                  alt="A child self-selecting pasta at mealtime at Betty Spears"
+                />
+              </figure>
+              <figure class="life-slide">
+                <Image
+                  src={foodImage2}
+                  width={700}
+                  alt="A child having breakfast at Betty Spears"
+                />
+              </figure>
+              <figure class="life-slide">
+                <Image
+                  src={foodImage3}
+                  width={700}
+                  alt="A child eating a meal at the table at Betty Spears"
+                />
+              </figure>
+              <figure class="life-slide">
+                <Image
+                  src={foodImage4}
+                  width={700}
+                  alt="A child self-selecting pasta and vegetables at mealtime at Betty Spears"
+                />
+              </figure>
+              <figure class="life-slide">
+                <Image
+                  src={foodImage5}
+                  width={700}
+                  alt="A child smiling during mealtime at Betty Spears"
+                />
+              </figure>
+            </div>
+
+            <div class="about-carousel-controls">
+              <button
+                type="button"
+                class="carousel-arrow carousel-arrow-prev"
+                aria-label="Previous"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7" /></svg>
+              </button>
+              <div class="carousel-dots" aria-hidden="true">
+                <span class="carousel-dot is-active"></span>
+                <span class="carousel-dot"></span>
+                <span class="carousel-dot"></span>
+                <span class="carousel-dot"></span>
+                <span class="carousel-dot"></span>
+              </div>
+              <button
+                type="button"
+                class="carousel-arrow carousel-arrow-next"
+                aria-label="Next"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7" /></svg>
+              </button>
+            </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="philosophy">
+      <div class="container">
+        <p class="section-kicker">Our philosophy</p>
+        <h2 class="section-heading">C.H.I.L.D.R.E.N.</h2>
+        <p class="section-lead">
+          Written with families and educators, and revisited every year, this is
+          what guides how we care for your child and each other.
+        </p>
+
+        <div class="philosophy-grid">
+          {
+            philosophyItems.map((item) => (
+              <article class="philosophy-card">
+                <div class="philosophy-letter" aria-hidden="true">
+                  {item.letter}
+                </div>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </article>
+            ))
+          }
         </div>
       </div>
     </section>
@@ -608,7 +796,7 @@ const faqs = [
     <section class="section section-white" id="fees">
       <div class="container">
         <p class="section-kicker">Fees</p>
-        <h2 class="section-heading">Our daily fees.</h2>
+        <h2 class="section-heading">Our daily fees</h2>
         <p class="section-lead">
           Fees vary by age. Betty Spears Child Care Centre is approved for
           families to receive CCS (Child Care Subsidy).
@@ -637,8 +825,8 @@ const faqs = [
             </div>
             <p class="fee-note">
               Updated 1 September 2026. Includes everything your child needs
-              each day except formula for babies and nappies for children
-              using them.
+              each day except formula for babies and nappies for children using
+              them.
             </p>
           </div>
           <div class="fees-visual">
@@ -655,7 +843,7 @@ const faqs = [
     <section class="section" id="faq">
       <div class="container">
         <p class="section-kicker">FAQs</p>
-        <h2 class="section-heading">Questions families often ask.</h2>
+        <h2 class="section-heading">Questions families often ask</h2>
         <p class="section-lead">
           Can’t find what you’re after? Just give us a call or send an email –
           we’re happy to help.
@@ -677,7 +865,7 @@ const faqs = [
     <section class="section section-white" id="contact">
       <div class="container">
         <p class="section-kicker">Contact us</p>
-        <h2 class="section-heading">Book a visit to see Betty's.</h2>
+        <h2 class="section-heading">Book a visit to see Betty's</h2>
         <p class="section-lead">
           Want to book a visit or just ask a question? Send us a message below
           and we’ll get back to you.
@@ -796,9 +984,12 @@ const faqs = [
     document
       .querySelectorAll<HTMLElement>('[data-carousel]')
       .forEach((carousel) => {
-        const slides = Array.from(
-          carousel.querySelectorAll<HTMLElement>('.about-slide')
+        const viewport = carousel.querySelector<HTMLElement>(
+          '[class$="-viewport"]'
         )
+        const slides = viewport
+          ? (Array.from(viewport.children) as HTMLElement[])
+          : []
         const dots = Array.from(
           carousel.querySelectorAll<HTMLElement>('.carousel-dot')
         )

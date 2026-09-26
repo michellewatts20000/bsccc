@@ -79,7 +79,7 @@ Our volunteer Board of Directors — all parents themselves — meets monthly, a
 **Kicker:** Our story
 **Heading:** A long history and a genuine sense of home.
 
-The centre is named for the late Betty Spears (1926–2012), who - alongside June deLorenzo - worked tirelessly to secure state and federal funding in the 1980s for shift-working families, especially mothers, at the State Transit Authority. What they built was, to our knowledge, one of the first 24-hour child care centres in Sydney. We’re no longer open around the clock, but it’s with pride that we carry that same spirit forward today.
+The centre is named after the late Betty Spears (1926–2012), who - alongside June deLorenzo - worked tirelessly to secure state and federal funding in the 1980s for shift-working families, especially mothers, at the State Transit Authority. What they built was, to our knowledge, one of the first 24-hour child care centres in Sydney. We’re no longer open around the clock, but it’s with pride that we carry that same spirit forward today.
 
 Portrait caption: *Betty Spears, 1926–2012*
 

@@ -1,18 +1,22 @@
 ---
-import { Image, getImage } from 'astro:assets';
-import logoSrc from '../assets/current-site/betty_logo.jpg';
-import ogImageSrc from '../assets/current-site/renovated_play_one.jpeg';
+import { Image, getImage } from 'astro:assets'
+import logoSrc from '../assets/current-site/betty_logo.jpg'
+import ogImageSrc from '../assets/current-site/renovated_play_one.jpeg'
 
-const optimizedOgImage = await getImage({ src: ogImageSrc, width: 1200, format: 'webp' });
+const optimizedOgImage = await getImage({
+  src: ogImageSrc,
+  width: 1200,
+  format: 'webp'
+})
 
 const navItems = [
   { label: 'About us', href: '/#about' },
-  { label: 'Philosophy', href: '/#philosophy' },
   { label: 'Curriculum', href: '/#curriculum' },
+  { label: 'Philosophy', href: '/#philosophy' },
   { label: 'Fees', href: '/#fees' },
   { label: 'FAQs', href: '/#faq' },
-  { label: 'Contact us', href: '/#contact', subject: 'General Enquiry' },
-];
+  { label: 'Contact us', href: '/#contact', subject: 'General Enquiry' }
+]
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -27,16 +31,16 @@ const structuredData = {
     addressLocality: 'Tempe',
     addressRegion: 'NSW',
     postalCode: '2044',
-    addressCountry: 'AU',
+    addressCountry: 'AU'
   },
   openingHoursSpecification: {
     '@type': 'OpeningHoursSpecification',
     dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
     opens: '07:30',
-    closes: '18:00',
+    closes: '18:00'
   },
-  foundingDate: '1986',
-};
+  foundingDate: '1986'
+}
 ---
 
 <!doctype html>
@@ -46,7 +50,7 @@ const structuredData = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Betty Spears Child Care Centre in Tempe offers community-based early learning and long day care for children from 6 weeks to 6 years."
+      content="Betty Spears Child Care Centre in Tempe offers community-based early learning and long day care for children aged 6 weeks to 6 years."
     />
     <meta
       name="keywords"
@@ -58,15 +62,25 @@ const structuredData = {
       content="A place where children belong. Community-based childcare in Tempe, since 1986."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content={new URL(optimizedOgImage.src, Astro.site)} />
+    <meta
+      property="og:image"
+      content={new URL(optimizedOgImage.src, Astro.site)}
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="canonical" href="https://bettyspearschildcare.org.au/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>Betty Spears Child Care Centre</title>
-    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} is:inline />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(structuredData)}
+      is:inline
+    />
   </head>
   <body>
     <div class="site-shell" id="top">
@@ -80,17 +94,29 @@ const structuredData = {
           </a>
 
           <nav class="main-nav" id="main-nav" aria-label="Main navigation">
-            {navItems.map((item) => (
-              <a href={item.href} data-subject={item.subject}>{item.label}</a>
-            ))}
+            {
+              navItems.map((item) => (
+                <a href={item.href} data-subject={item.subject}>
+                  {item.label}
+                </a>
+              ))
+            }
           </nav>
 
           <div class="top-cta-group">
             <a class="top-cta" href="#" aria-disabled="true">Book a Visit</a>
-            <a class="top-cta-secondary" href="#" aria-disabled="true">Join Waitlist</a>
+            <a class="top-cta-secondary" href="#" aria-disabled="true"
+              >Join Waitlist</a
+            >
           </div>
 
-          <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-nav">
+          <button
+            class="nav-toggle"
+            id="nav-toggle"
+            aria-label="Toggle menu"
+            aria-expanded="false"
+            aria-controls="main-nav"
+          >
             <span></span>
             <span></span>
             <span></span>
@@ -103,16 +129,23 @@ const structuredData = {
       <footer class="site-footer">
         <div class="container">
           <p class="footer-acknowledgement">
-            Betty Spears Child Care Centre acknowledges Aboriginal and Torres Strait Islander peoples as the
-            custodians and traditional owners of the land in which we live, learn, and work. We pay our respects
-            to their Elders past, present and emerging. We value their continuing connection to land, water and
-            culture and their integral contribution to the bright inclusive future of this beautiful region we
-            call home.
+            Betty Spears Child Care Centre acknowledges Aboriginal and Torres
+            Strait Islander peoples as the custodians and traditional owners of
+            the land in which we live, learn, and work. We pay our respects to
+            their Elders past, present and emerging. We value their continuing
+            connection to land, water and culture and their integral
+            contribution to the bright inclusive future of this beautiful region
+            we call home.
           </p>
         </div>
         <div class="container footer-inner">
           <div class="footer-brand">
-            <Image class="footer-logo" src={logoSrc} height={200} alt="Betty Spears Child Care Centre logo" />
+            <Image
+              class="footer-logo"
+              src={logoSrc}
+              height={200}
+              alt="Betty Spears Child Care Centre logo"
+            />
             <div>
               <strong>Betty Spears Child Care Centre</strong><br />
               Community-based early learning in Tempe
@@ -121,7 +154,6 @@ const structuredData = {
           <div class="footer-links">
             <a href="/#contact" data-subject="General Enquiry">Contact us</a>
             <a href="/#faq">FAQs</a>
-            <a href="#" aria-disabled="true">Join Waitlist</a>
           </div>
         </div>
       </footer>
@@ -130,26 +162,26 @@ const structuredData = {
 </html>
 
 <script>
-  const navToggle = document.getElementById('nav-toggle');
-  const mainNav = document.getElementById('main-nav');
+  const navToggle = document.getElementById('nav-toggle')
+  const mainNav = document.getElementById('main-nav')
 
   navToggle?.addEventListener('click', () => {
-    const isOpen = mainNav?.classList.toggle('is-open') ?? false;
-    navToggle.classList.toggle('is-open', isOpen);
-    navToggle.setAttribute('aria-expanded', String(isOpen));
-  });
+    const isOpen = mainNav?.classList.toggle('is-open') ?? false
+    navToggle.classList.toggle('is-open', isOpen)
+    navToggle.setAttribute('aria-expanded', String(isOpen))
+  })
 
   mainNav?.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
-      mainNav.classList.remove('is-open');
-      navToggle?.classList.remove('is-open');
-      navToggle?.setAttribute('aria-expanded', 'false');
-    });
-  });
+      mainNav.classList.remove('is-open')
+      navToggle?.classList.remove('is-open')
+      navToggle?.setAttribute('aria-expanded', 'false')
+    })
+  })
 
   document.querySelectorAll('a[aria-disabled="true"]').forEach((link) => {
-    link.addEventListener('click', (event) => event.preventDefault());
-  });
+    link.addEventListener('click', (event) => event.preventDefault())
+  })
 </script>
 
 <style is:global>
