@@ -336,11 +336,13 @@ const faqs = [
       <div class="container stats-grid">
         <div class="stat-item">
           <strong>Not-for-profit</strong>
-          <span>Built around community and family needs.</span>
+          <span>Built around community <br />and family needs.</span>
         </div>
         <div class="stat-item">
-          <strong>Long day care & preschool</strong>
-          <span>For children <br />6 weeks–6 years of age</span>
+          <strong>6 weeks–6 years</strong>
+          <span
+            >Long day care & preschool<br />for children aged 6 weeks–6 years</span
+          >
         </div>
         <div class="stat-item">
           <strong>Open Mon–Fri</strong>
@@ -356,22 +358,6 @@ const faqs = [
 
     <section class="section" id="about">
       <div class="container">
-        <div class="feature-grid">
-          {
-            whyItems.map((item) => (
-              <article class="feature-card">
-                <div
-                  class="feature-icon"
-                  aria-hidden="true"
-                  set:html={featureIcons[item.icon]}
-                />
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </article>
-            ))
-          }
-        </div>
-
         <div class="about-carousel" data-carousel>
           <div class="about-carousel-viewport">
             <div class="about-slide is-active">
@@ -593,6 +579,21 @@ const faqs = [
               >
             </button>
           </div>
+        </div>
+        <div class="feature-grid">
+          {
+            whyItems.map((item) => (
+              <article class="feature-card">
+                <div
+                  class="feature-icon"
+                  aria-hidden="true"
+                  set:html={featureIcons[item.icon]}
+                />
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </article>
+            ))
+          }
         </div>
         <p class="section-kicker" style="margin-top: 4rem;">
           Our outdoor spaces
@@ -1023,10 +1024,11 @@ const faqs = [
     <section class="section section-white" id="contact">
       <div class="container">
         <p class="section-kicker">Contact us</p>
-        <h2 class="section-heading">Book a visit to see Betty's</h2>
+        <h2 class="section-heading">Got a question? Get in touch</h2>
         <p class="section-lead">
-          Want to book a visit or just ask a question? Send us a message below
-          and we’ll get back to you.
+          Send us a message below and we’ll get back to you. If you’d like to
+          see Betty’s for yourself, use the Book a Visit button to arrange a
+          time.
         </p>
 
         <div class="visit-grid">
