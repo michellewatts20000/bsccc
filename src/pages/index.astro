@@ -136,14 +136,46 @@ const roomItems = [
 ]
 
 const outdoorSpaces = [
-  { image: bushGardenImage, caption: 'Bush garden', alt: 'The bush garden at Betty Spears' },
-  { image: lawnImage, caption: 'Big lawn', alt: 'The big lawn and native garden at Betty Spears' },
-  { image: outdoorImage1, caption: 'Garden pathway', alt: 'Children walking the garden pathway at Betty Spears' },
-  { image: heroImage, caption: 'Renovated play area', alt: 'The renovated outdoor play area at Betty Spears' },
-  { image: ducklingsImage, caption: 'Ducklings play area', alt: 'The Ducklings outdoor play area at Betty Spears' },
-  { image: ducklingsOutdoorImage, caption: 'Ducklings outdoor area', alt: 'The Ducklings outdoor area at Betty Spears' },
-  { image: ducklingsDeckImage, caption: 'Deck and sandpit', alt: 'The covered deck and sandpit at Betty Spears' },
-  { image: outdoorGardenImage, caption: 'Vegetable garden', alt: 'Children watering plants in the vegetable garden at Betty Spears' }
+  {
+    image: bushGardenImage,
+    caption: 'Bush garden',
+    alt: 'The bush garden at Betty Spears'
+  },
+  {
+    image: lawnImage,
+    caption: 'Big lawn',
+    alt: 'The big lawn and native garden at Betty Spears'
+  },
+  {
+    image: outdoorImage1,
+    caption: 'Garden pathway',
+    alt: 'Children walking the garden pathway at Betty Spears'
+  },
+  {
+    image: heroImage,
+    caption: 'Renovated play area',
+    alt: 'The renovated outdoor play area at Betty Spears'
+  },
+  {
+    image: ducklingsImage,
+    caption: 'Ducklings play area',
+    alt: 'The Ducklings outdoor play area at Betty Spears'
+  },
+  {
+    image: ducklingsOutdoorImage,
+    caption: 'Ducklings outdoor area',
+    alt: 'The Ducklings outdoor area at Betty Spears'
+  },
+  {
+    image: ducklingsDeckImage,
+    caption: 'Deck and sandpit',
+    alt: 'The covered deck and sandpit at Betty Spears'
+  },
+  {
+    image: outdoorGardenImage,
+    caption: 'Vegetable garden',
+    alt: 'Children watering plants in the vegetable garden at Betty Spears'
+  }
 ]
 
 const featureIcons: Record<string, string> = {
@@ -285,8 +317,8 @@ const faqs = [
           Betty Spears <br /><span class="accent">Child Care Centre</span>
         </h1>
         <p class="hero-intro">
-          Betty Spears is a not-for-profit, community-based long day care
-          centre and preschool that has been operating in Tempe since 1986.
+          Betty Spears is a not-for-profit, community-based long day care centre
+          and preschool that has been operating in Tempe since 1986.
         </p>
 
         <div class="hero-actions">
@@ -345,6 +377,41 @@ const faqs = [
             <div class="about-slide is-active">
               <div class="section-panel about-slide-text">
                 <p class="section-kicker" style="margin-bottom: 0.6rem;">
+                  About us
+                </p>
+                <h3
+                  style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);"
+                >
+                  Run by families, for families
+                </h3>
+
+                <p>
+                  Betty Spears is a not-for-profit, parent-governed centre where
+                  decisions are shaped by families and community. Not-for-profit
+                  means that all of the income we receive in fees and Government
+                  subsidies goes directly to the centre budget to be used for
+                  the benefit of children and families.
+                </p>
+                <p>
+                  The day to day running of the centre is the responsibility of
+                  the Centre Director who reports to our volunteer Board of
+                  Directors – all parents themselves. The Centre Director and
+                  Board meet each month to discuss issues relating to the centre
+                  operation and all parents whose children attend Betty’s are
+                  welcome to attend.
+                </p>
+              </div>
+              <div class="about-slide-visual">
+                <Image
+                  src={familyImage}
+                  width={700}
+                  alt="Children engaged in imaginative indoor play at Betty Spears"
+                />
+              </div>
+            </div>
+            <div class="about-slide">
+              <div class="section-panel about-slide-text">
+                <p class="section-kicker" style="margin-bottom: 0.6rem;">
                   Relationships
                 </p>
                 <h3
@@ -392,9 +459,9 @@ const faqs = [
                   Time outdoors, every day
                 </h3>
                 <p>
-                  Betty’s is known for its generous natural outdoor spaces, where
-                  children run, dig, climb, notice and explore. Fresh air and
-                  open-ended play are part of the rhythm of every day.
+                  Betty’s is known for its generous natural outdoor spaces,
+                  where children run, dig, climb, notice and explore. Fresh air
+                  and open-ended play are part of the rhythm of every day.
                 </p>
                 <p>
                   We value risky play – climbing a little higher, balancing
@@ -415,41 +482,6 @@ const faqs = [
                   src={bushGardenImage}
                   width={700}
                   alt="The bush garden at Betty Spears"
-                />
-              </div>
-            </div>
-            <div class="about-slide">
-              <div class="section-panel about-slide-text">
-                <p class="section-kicker" style="margin-bottom: 0.6rem;">
-                  About us
-                </p>
-                <h3
-                  style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);"
-                >
-                  Run by families, for families
-                </h3>
-
-                <p>
-                  Betty Spears is a not-for-profit, parent-governed centre where
-                  decisions are shaped by families and community. Not-for-profit
-                  means that all of the income we receive in fees and Government
-                  subsidies goes directly to the centre budget to be used for
-                  the benefit of children and families.
-                </p>
-                <p>
-                  The day to day running of the centre is the responsibility of
-                  the Centre Director who reports to our volunteer Board of
-                  Directors – all parents themselves. The Centre Director and
-                  Board meet each month to discuss issues relating to the centre
-                  operation and all parents whose children attend Betty’s are
-                  welcome to attend.
-                </p>
-              </div>
-              <div class="about-slide-visual">
-                <Image
-                  src={familyImage}
-                  width={700}
-                  alt="Children engaged in imaginative indoor play at Betty Spears"
                 />
               </div>
             </div>
