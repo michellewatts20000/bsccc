@@ -1,5 +1,5 @@
 ---
-import { Image, getImage } from 'astro:assets'
+import { Font, Image, getImage } from 'astro:assets'
 import logoSrc from '../assets/current-site/betty_logo.jpg'
 import ogImageSrc from '../assets/current-site/renovated_play_one.jpeg'
 
@@ -44,7 +44,7 @@ const structuredData = {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en-AU">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -66,15 +66,14 @@ const structuredData = {
       property="og:image"
       content={new URL(optimizedOgImage.src, Astro.site)}
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <Font cssVariable="--font-heading" preload />
+    <Font cssVariable="--font-body" />
     <link rel="canonical" href="https://bettyspearschildcare.org.au/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <script is:inline>
+      document.documentElement.classList.add('js')
+    </script>
     <title>Betty Spears Child Care Centre</title>
     <script
       type="application/ld+json"
@@ -86,7 +85,7 @@ const structuredData = {
     <div class="site-shell" id="top">
       <header class="site-header">
         <div class="container site-header-inner">
-          <a class="brand" href="#top" aria-label="Betty Spears home">
+          <a class="brand" href="#top">
             <span class="brand-copy">
               <strong class="brand-name">Betty Spears</strong>
               <small>Child Care Centre</small>
@@ -101,6 +100,9 @@ const structuredData = {
                 </a>
               ))
             }
+            <a class="nav-mobile-cta" href="#" aria-disabled="true"
+              >Join Waitlist</a
+            >
           </nav>
 
           <div class="top-cta-group">

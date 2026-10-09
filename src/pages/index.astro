@@ -1,16 +1,14 @@
 ---
-import { Image } from 'astro:assets'
+import { Image, getImage } from 'astro:assets'
 import Layout from '../layouts/Layout.astro'
 import heroImage from '../assets/current-site/renovated_play_one.jpeg'
 import differenceImage from '../assets/current-site/betty_image.png'
 import learningImage from '../assets/current-site/outdoor_painting.jpeg'
 import outdoorImage1 from '../assets/current-site/outdoor_garden_wide.jpeg'
-import outdoorImage2 from '../assets/current-site/outdoor_bush_garden.jpeg'
 import outdoorGardenImage from '../assets/current-site/outdoor_garden.jpeg'
 import foodImage1 from '../assets/current-site/food-1.jpeg'
 import foodImage2 from '../assets/current-site/food-2.jpeg'
 import foodImage3 from '../assets/current-site/food-3.jpeg'
-import foodImage4 from '../assets/current-site/food-4.jpeg'
 import foodImage5 from '../assets/current-site/food-5.jpeg'
 import groupImage from '../assets/current-site/indoor_painting.jpeg'
 import educatorImage1 from '../assets/current-site/indoor_bus.jpeg'
@@ -23,6 +21,29 @@ import frontSignImage from '../assets/current-site/bettys-front-sign-2.jpg'
 import ducklingsOutdoorImage from '../assets/current-site/duckliings-outdoor-1.jpg'
 import ducklingsDeckImage from '../assets/current-site/ducklings-play-2.jpeg'
 import lawnImage from '../assets/current-site/outdoor-area-1.jpeg'
+
+// Hero photos get several sizes so phones don't download desktop-sized files
+const heroSlides = await Promise.all(
+  [
+    heroImage,
+    outdoorImage1,
+    outdoorGardenImage,
+    bushGardenImage,
+    lawnImage,
+    ducklingsImage,
+    ducklingsOutdoorImage,
+    ducklingsDeckImage,
+    educatorImage2,
+    frontSignImage
+  ].map((src) =>
+    getImage({
+      src,
+      widths: [640, 1024, 1440, 1920],
+      sizes: '100vw',
+      quality: 60
+    })
+  )
+)
 
 const feeTable = [
   { age: 'Under 2 years', fee: '$178.50' },
@@ -178,6 +199,78 @@ const outdoorSpaces = [
   }
 ]
 
+const impactItems = [
+  {
+    icon: 'sprout',
+    color: '#dcef9a',
+    value: 'Since 1986',
+    label: 'Part of local families’ stories, routines and milestones.'
+  },
+  {
+    icon: 'heart',
+    color: '#f6b98a',
+    value: '20+ years',
+    label:
+      'Some educators have been here for decades, creating continuity and trust.'
+  },
+  {
+    icon: 'star',
+    color: '#ffd66b',
+    value: 'Exceeding NQS',
+    label: 'Rated Exceeding in 3 of the 7 National Quality Standard areas.'
+  },
+  {
+    icon: 'house',
+    color: '#9edcf3',
+    value: 'Parent-led',
+    label:
+      'Run by a volunteer board of parents, with community governance at the centre.'
+  }
+]
+
+const keyFacts = [
+  {
+    icon: 'people',
+    color: '#9edcf3',
+    value: 'Not-for-profit',
+    label: 'Built around community and family needs.'
+  },
+  {
+    icon: 'blocks',
+    color: '#ffd66b',
+    value: '6 weeks–6 years',
+    label: 'Long day care & preschool for children aged 6 weeks–6 years'
+  },
+  {
+    icon: 'clock',
+    color: '#f6b98a',
+    value: 'Open Mon–Fri',
+    label: '7:30am–6pm. 50 weeks per year.'
+  },
+  {
+    icon: 'sprout',
+    color: '#dcef9a',
+    value: 'Since 1986',
+    label: 'Part of local families’ stories, routines and milestones.'
+  }
+]
+
+const impactIcons: Record<string, string> = {
+  people:
+    '<svg viewBox="0 0 64 64" fill="currentColor"><circle cx="22" cy="18" r="9"/><circle cx="44" cy="22" r="7.5"/><path d="M5 54c0-11 7.6-19 17-19s17 8 17 19Z"/><path d="M36 54c0-6.5-2-12-5.6-15.6A13 13 0 0 1 44 33c8 0 14 7 14 16v5Z"/></svg>',
+  blocks:
+    '<svg viewBox="0 0 64 64" fill="currentColor"><rect x="6" y="34" width="24" height="24" rx="4"/><rect x="34" y="34" width="24" height="24" rx="4"/><rect x="20" y="7" width="24" height="24" rx="4"/></svg>',
+  clock:
+    '<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="26" fill="currentColor"/><path d="M32 17v16l10 7" fill="none" stroke="#3b7a19" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  sprout:
+    '<svg viewBox="0 0 64 64" fill="currentColor"><path d="M10 58c0-10 10-16 22-16s22 6 22 16Z"/><rect x="30" y="26" width="4" height="20" rx="2"/><path d="M30 34C17 34 9 26 9 13c13 0 21 8 21 21Z"/><path d="M34 29c0-14 9-22 22-22 0 14-9 22-22 22Z"/></svg>',
+  heart:
+    '<svg viewBox="0 0 64 64" fill="currentColor"><path d="M32 56S7 41 7 23.5A12.5 12.5 0 0 1 32 18a12.5 12.5 0 0 1 25 5.5C57 41 32 56 32 56Z"/></svg>',
+  star: '<svg viewBox="0 0 64 64" fill="currentColor"><path d="M32 5l8 16.3 18 2.6-13 12.7 3.1 17.9L32 46.1l-16.1 8.4L19 36.6 6 23.9l18-2.6Z"/></svg>',
+  house:
+    '<svg viewBox="0 0 64 64" fill="currentColor"><path d="M32 7 5 30h8v25h15V41h8v14h15V30h8Z"/></svg>'
+}
+
 const featureIcons: Record<string, string> = {
   relationships:
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="5.5"/><circle cx="15" cy="12" r="5.5"/></svg>',
@@ -238,84 +331,48 @@ const faqs = [
 <Layout>
   <main>
     <section class="hero" id="top">
-      <div class="hero-media">
-        <Image
-          class="hero-slide is-active"
-          src={heroImage}
-          width={1920}
-          loading="eager"
-          fetchpriority="high"
-          alt="The newly renovated outdoor play space and centre building at Betty Spears"
-        />
-        <Image
-          class="hero-slide"
-          src={outdoorImage1}
-          width={1920}
-          loading="eager"
-          alt="Children walking the garden pathway at Betty Spears"
-        />
-        <Image
-          class="hero-slide"
-          src={outdoorGardenImage}
-          width={1920}
-          loading="eager"
-          alt="Children watering plants in the garden at Betty Spears"
-        />
-        <Image
-          class="hero-slide"
-          src={bushGardenImage}
-          width={1920}
-          loading="eager"
-          alt="The bush garden at Betty Spears"
-        />
-        <Image
-          class="hero-slide"
-          src={lawnImage}
-          width={1920}
-          loading="eager"
-          alt="The big lawn and native garden at Betty Spears"
-        />
-        <Image
-          class="hero-slide"
-          src={ducklingsImage}
-          width={1920}
-          loading="eager"
-          alt="The Ducklings outdoor play area at Betty Spears"
-        />
-        <Image
-          class="hero-slide"
-          src={ducklingsOutdoorImage}
-          width={1920}
-          loading="eager"
-          alt="The Ducklings outdoor area at Betty Spears"
-        />
-        <Image
-          class="hero-slide"
-          src={ducklingsDeckImage}
-          width={1920}
-          loading="eager"
-          alt="The covered deck and sandpit at Betty Spears"
-        />
-        <Image
-          class="hero-slide"
-          src={educatorImage2}
-          width={1920}
-          loading="eager"
-          alt="An educator reading with a group of children outdoors"
-        />
-        <Image
-          class="hero-slide"
-          src={frontSignImage}
-          width={1920}
-          loading="eager"
-          alt="The Betty Spears Child Care Centre front sign"
-        />
+      <div class="hero-media" aria-hidden="true">
+        {
+          heroSlides.map((slide, i) =>
+            i === 0 ? (
+              <img
+                class="hero-slide is-active"
+                src={slide.src}
+                srcset={slide.srcSet.attribute}
+                sizes="100vw"
+                width={slide.attributes.width}
+                height={slide.attributes.height}
+                alt=""
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+              />
+            ) : (
+              <img
+                class="hero-slide"
+                data-src={slide.src}
+                data-srcset={slide.srcSet.attribute}
+                sizes="100vw"
+                width={slide.attributes.width}
+                height={slide.attributes.height}
+                alt=""
+                decoding="async"
+              />
+            )
+          )
+        }
       </div>
 
       <div class="container hero-content">
         <h1>
-          Betty Spears <br /><span class="accent">Child Care Centre</span>
+          <span class="accent">Betty Spears</span>
+          Child Care Centre & Preschool
         </h1>
+        <div
+          class="hero-mark"
+          aria-hidden="true"
+          set:html={featureIcons.nature}
+        />
         <p class="hero-intro">
           Betty Spears is a not-for-profit, community-based long day care centre
           and preschool that has been operating in Tempe since 1986.
@@ -330,46 +387,63 @@ const faqs = [
           >
         </div>
       </div>
+
+      <button
+        type="button"
+        class="hero-pause"
+        aria-label="Pause slideshow"
+        hidden
+      >
+        <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+          ><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect
+            x="14"
+            y="5"
+            width="4"
+            height="14"
+            rx="1"></rect></svg
+        >
+        <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+          ><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"
+          ></path></svg
+        >
+      </button>
     </section>
 
-    <section class="stats-strip" aria-label="Key facts about the centre">
-      <div class="container stats-grid">
-        <div class="stat-item">
-          <strong>Not-for-profit</strong>
-          <span>Built around community <br />and family needs.</span>
-        </div>
-        <div class="stat-item">
-          <strong>6 weeks–6 years</strong>
-          <span
-            >Long day care & preschool<br />for children aged 6 weeks–6 years</span
-          >
-        </div>
-        <div class="stat-item">
-          <strong>Open Mon–Fri</strong>
-          <span>7:30am–6pm. <br /> 50 weeks per year.</span>
-        </div>
-
-        <div class="stat-item">
-          <strong>Since 1986</strong>
-          <span>Part of local families’ stories, routines and milestones.</span>
-        </div>
+    <section
+      class="impact-band impact-band-compact"
+      aria-label="Key facts about the centre"
+    >
+      <div class="container impact-grid">
+        {
+          keyFacts.map((item) => (
+            <div
+              class="stat-item impact-item"
+              style={`--impact-color: ${item.color}`}
+            >
+              <div
+                class="impact-icon"
+                aria-hidden="true"
+                set:html={impactIcons[item.icon]}
+              />
+              <strong>{item.value}</strong>
+              <span>{item.label}</span>
+            </div>
+          ))
+        }
       </div>
     </section>
 
-    <section class="section" id="about">
+    <section class="section" id="about" aria-labelledby="about-heading">
       <div class="container">
+        <h2 class="visually-hidden" id="about-heading">About Betty’s</h2>
         <div class="about-carousel" data-carousel>
           <div class="about-carousel-viewport">
             <div class="about-slide is-active">
-              <div class="section-panel about-slide-text">
+              <div class="about-slide-text">
                 <p class="section-kicker" style="margin-bottom: 0.6rem;">
                   About us
                 </p>
-                <h3
-                  style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);"
-                >
-                  Run by families, for families
-                </h3>
+                <h3 class="subheading">Run by families, for families</h3>
 
                 <p>
                   Betty Spears is a not-for-profit, parent-governed centre where
@@ -390,19 +464,18 @@ const faqs = [
               <div class="about-slide-visual">
                 <Image
                   src={familyImage}
-                  width={700}
+                  widths={[480, 720, 1000]}
+                  sizes="(max-width: 980px) calc(100vw - 2rem), 590px"
                   alt="Children engaged in imaginative indoor play at Betty Spears"
                 />
               </div>
             </div>
             <div class="about-slide">
-              <div class="section-panel about-slide-text">
+              <div class="about-slide-text">
                 <p class="section-kicker" style="margin-bottom: 0.6rem;">
                   Relationships
                 </p>
-                <h3
-                  style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);"
-                >
+                <h3 class="subheading">
                   It really is about the relationships at Betty’s
                 </h3>
                 <p>
@@ -428,22 +501,19 @@ const faqs = [
               <div class="about-slide-visual">
                 <Image
                   src={groupImage}
-                  width={700}
+                  widths={[480, 720, 1000]}
+                  sizes="(max-width: 980px) calc(100vw - 2rem), 590px"
                   alt="A child painting a cardboard tube at the art table"
                 />
               </div>
             </div>
 
             <div class="about-slide">
-              <div class="section-panel about-slide-text">
+              <div class="about-slide-text">
                 <p class="section-kicker" style="margin-bottom: 0.6rem;">
                   Nature
                 </p>
-                <h3
-                  style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);"
-                >
-                  Time outdoors, every day
-                </h3>
+                <h3 class="subheading">Time outdoors, every day</h3>
                 <p>
                   Betty’s is known for its generous natural outdoor spaces,
                   where children run, dig, climb, notice and explore. Fresh air
@@ -466,22 +536,19 @@ const faqs = [
               <div class="about-slide-visual">
                 <Image
                   src={bushGardenImage}
-                  width={700}
+                  widths={[480, 720, 1000]}
+                  sizes="(max-width: 980px) calc(100vw - 2rem), 590px"
                   alt="The bush garden at Betty Spears"
                 />
               </div>
             </div>
 
             <div class="about-slide">
-              <div class="section-panel about-slide-text">
+              <div class="about-slide-text">
                 <p class="section-kicker" style="margin-bottom: 0.6rem;">
                   Part of the neighbourhood
                 </p>
-                <h3
-                  style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);"
-                >
-                  Woven into the local community
-                </h3>
+                <h3 class="subheading">Woven into the local community</h3>
                 <p>
                   Betty’s is well known in the local area and we continue to
                   build relationships with individuals and organisations within
@@ -497,22 +564,19 @@ const faqs = [
               <div class="about-slide-visual">
                 <Image
                   src={educatorImage2}
-                  width={700}
+                  widths={[480, 720, 1000]}
+                  sizes="(max-width: 980px) calc(100vw - 2rem), 590px"
                   alt="An educator reading with a group of children outdoors"
                 />
               </div>
             </div>
 
             <div class="about-slide">
-              <div class="section-panel about-slide-text">
+              <div class="about-slide-text">
                 <p class="section-kicker" style="margin-bottom: 0.6rem;">
                   Our educators
                 </p>
-                <h3
-                  style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);"
-                >
-                  Long serving educators
-                </h3>
+                <h3 class="subheading">Long serving educators</h3>
                 <p>
                   The long-serving nature of our educators is one of Betty’s
                   greatest strengths. Families know they can trust familiar
@@ -535,7 +599,8 @@ const faqs = [
               <div class="about-slide-visual">
                 <Image
                   src={educatorImage1}
-                  width={700}
+                  widths={[480, 720, 1000]}
+                  sizes="(max-width: 980px) calc(100vw - 2rem), 590px"
                   alt="An educator sitting with a group of children during circle time"
                 />
               </div>
@@ -546,7 +611,7 @@ const faqs = [
             <button
               type="button"
               class="carousel-arrow carousel-arrow-prev"
-              aria-label="Previous"
+              aria-label="Previous slide"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -554,20 +619,14 @@ const faqs = [
                 stroke="currentColor"
                 stroke-width="2"
                 stroke-linecap="round"
-                stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg
+                stroke-linejoin="round"
+                ><path d="M19 12H5M11 6l-6 6 6 6"></path></svg
               >
             </button>
-            <div class="carousel-dots" aria-hidden="true">
-              <span class="carousel-dot is-active"></span>
-              <span class="carousel-dot"></span>
-              <span class="carousel-dot"></span>
-              <span class="carousel-dot"></span>
-              <span class="carousel-dot"></span>
-            </div>
             <button
               type="button"
               class="carousel-arrow carousel-arrow-next"
-              aria-label="Next"
+              aria-label="Next slide"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -575,9 +634,11 @@ const faqs = [
                 stroke="currentColor"
                 stroke-width="2"
                 stroke-linecap="round"
-                stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg
+                stroke-linejoin="round"
+                ><path d="M5 12h14M13 6l6 6-6 6"></path></svg
               >
             </button>
+            <p class="carousel-count" aria-live="polite"></p>
           </div>
         </div>
         <div class="feature-grid">
@@ -598,16 +659,13 @@ const faqs = [
         <p class="section-kicker" style="margin-top: 4rem;">
           Our outdoor spaces
         </p>
-        <h3
-          style="margin: 0 0 0.9rem; font-size: clamp(1.45rem, 2.3vw, 2rem); color: var(--heading);"
-        >
-          Room to run, dig, climb and explore
-        </h3>
+        <h3 class="subheading">Room to run, dig, climb and explore</h3>
         <div class="outdoor-grid">
           {
             outdoorSpaces.map((space) => (
               <figure class="outdoor-tile">
-                <Image src={space.image} width={600} alt={space.alt} />
+                <Image src={space.image} widths={[300, 450, 600]}
+                  sizes="(max-width: 980px) calc(50vw - 1.5rem), 290px" alt={space.alt} />
                 <figcaption>{space.caption}</figcaption>
               </figure>
             ))
@@ -645,31 +703,28 @@ const faqs = [
           </div>
         </div>
       </div>
+    </section>
 
-      <div class="stats-band">
-        <div class="container stats-band-grid">
-          <div class="stat-item">
-            <strong>Since 1986</strong>
-            <span
-              >Part of local families’ stories, routines and milestones.</span
-            >
-          </div>
-          <div class="stat-item">
-            <strong>20+ years</strong>
-            <span
-              >Some educators have been here for decades, creating continuity
-              and trust.</span
-            >
-          </div>
-          <div class="stat-item">
-            <strong>Exceeding NQS</strong>
-            <span>3 of 7 quality areas</span>
-          </div>
-
-          <div class="stat-item">
-            <strong>Parent-led</strong>
-            <span>Community governance remains central.</span>
-          </div>
+    <section class="impact-band" aria-labelledby="impact-heading">
+      <div class="container">
+        <h2 class="impact-heading" id="impact-heading">Betty’s at a glance</h2>
+        <div class="impact-grid">
+          {
+            impactItems.map((item) => (
+              <div
+                class="stat-item impact-item"
+                style={`--impact-color: ${item.color}`}
+              >
+                <div
+                  class="impact-icon"
+                  aria-hidden="true"
+                  set:html={impactIcons[item.icon]}
+                />
+                <strong>{item.value}</strong>
+                <span>{item.label}</span>
+              </div>
+            ))
+          }
         </div>
       </div>
     </section>
@@ -681,7 +736,7 @@ const faqs = [
           Fresh food, shared routines and healthy habits
         </h2>
         <div class="food-grid">
-          <div class="food-copy section-panel">
+          <div class="food-copy">
             <p>
               Our centre cook makes food that is low in salt and sugar, mostly
               from scratch as we try to keep preservatives and additives to a
@@ -701,82 +756,31 @@ const faqs = [
               child feels comfortable and included at the table.
             </p>
           </div>
-          <div class="life-carousel" data-carousel>
-            <div class="life-carousel-viewport">
-              <figure class="life-slide is-active">
-                <Image
-                  src={foodImage1}
-                  width={700}
-                  alt="A child self-selecting pasta at mealtime at Betty Spears"
-                />
-              </figure>
-              <figure class="life-slide">
-                <Image
-                  src={foodImage2}
-                  width={700}
-                  alt="A child having breakfast at Betty Spears"
-                />
-              </figure>
-              <figure class="life-slide">
-                <Image
-                  src={foodImage3}
-                  width={700}
-                  alt="A child eating a meal at the table at Betty Spears"
-                />
-              </figure>
-              <figure class="life-slide">
-                <Image
-                  src={foodImage4}
-                  width={700}
-                  alt="A child self-selecting pasta and vegetables at mealtime at Betty Spears"
-                />
-              </figure>
-              <figure class="life-slide">
-                <Image
-                  src={foodImage5}
-                  width={700}
-                  alt="A child smiling during mealtime at Betty Spears"
-                />
-              </figure>
-            </div>
-
-            <div class="about-carousel-controls">
-              <button
-                type="button"
-                class="carousel-arrow carousel-arrow-prev"
-                aria-label="Previous"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg
-                >
-              </button>
-              <div class="carousel-dots" aria-hidden="true">
-                <span class="carousel-dot is-active"></span>
-                <span class="carousel-dot"></span>
-                <span class="carousel-dot"></span>
-                <span class="carousel-dot"></span>
-                <span class="carousel-dot"></span>
-              </div>
-              <button
-                type="button"
-                class="carousel-arrow carousel-arrow-next"
-                aria-label="Next"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg
-                >
-              </button>
-            </div>
+          <div class="photo-grid">
+            <Image
+              src={foodImage1}
+              widths={[300, 450, 600]}
+              sizes="(max-width: 980px) calc(50vw - 1.5rem), 290px"
+              alt="A child self-selecting pasta at mealtime at Betty Spears"
+            />
+            <Image
+              src={foodImage2}
+              widths={[300, 450, 600]}
+              sizes="(max-width: 980px) calc(50vw - 1.5rem), 290px"
+              alt="A child having breakfast at Betty Spears"
+            />
+            <Image
+              src={foodImage3}
+              widths={[300, 450, 600]}
+              sizes="(max-width: 980px) calc(50vw - 1.5rem), 290px"
+              alt="A child eating a meal at the table at Betty Spears"
+            />
+            <Image
+              src={foodImage5}
+              widths={[300, 450, 600]}
+              sizes="(max-width: 980px) calc(50vw - 1.5rem), 290px"
+              alt="A child smiling during mealtime at Betty Spears"
+            />
           </div>
         </div>
       </div>
@@ -788,122 +792,36 @@ const faqs = [
         <h2 class="section-heading">
           Play-based, and led by the children themselves
         </h2>
-        <div class="room-grid">
-          {
-            roomItems.map((room) => (
-              <article class="feature-card room-card">
-                <h3>{room.title}</h3>
-                <p class="room-age">{room.age}</p>
-                <p>{room.description}</p>
-              </article>
-            ))
-          }
-        </div>
 
         <div class="learning-grid">
-          <div class="life-carousel" data-carousel>
-            <div class="life-carousel-viewport">
-              <figure class="life-slide is-active">
-                <Image
-                  src={learningImage}
-                  width={700}
-                  alt="A child painting at an outdoor art table at Betty Spears"
-                />
-              </figure>
-              <figure class="life-slide">
-                <Image
-                  src={educatorImage2}
-                  width={700}
-                  alt="An educator reading with a group of children outdoors"
-                />
-              </figure>
-              <figure class="life-slide">
-                <Image
-                  src={familyImage}
-                  width={700}
-                  alt="Children engaged in imaginative indoor play at Betty Spears"
-                />
-              </figure>
-              <figure class="life-slide">
-                <Image
-                  src={groupImage}
-                  width={700}
-                  alt="Children gathered together around a shared activity at Betty Spears"
-                />
-              </figure>
-              <figure class="life-slide">
-                <Image
-                  src={educatorImage1}
-                  width={700}
-                  alt="An educator sitting with a group of children during circle time"
-                />
-              </figure>
-              <figure class="life-slide">
-                <Image
-                  src={outdoorImage2}
-                  width={700}
-                  alt="Children playing at the mud kitchen and water play area at Betty Spears"
-                />
-              </figure>
-              <figure class="life-slide">
-                <Image
-                  src={outdoorImage1}
-                  width={700}
-                  alt="Children walking the garden pathway at Betty Spears"
-                />
-              </figure>
-              <figure class="life-slide">
-                <Image
-                  src={outdoorGardenImage}
-                  width={700}
-                  alt="Children watering plants in the garden at Betty Spears"
-                />
-              </figure>
-            </div>
-
-            <div class="about-carousel-controls">
-              <button
-                type="button"
-                class="carousel-arrow carousel-arrow-prev"
-                aria-label="Previous"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg
-                >
-              </button>
-              <div class="carousel-dots" aria-hidden="true">
-                <span class="carousel-dot is-active"></span>
-                <span class="carousel-dot"></span>
-                <span class="carousel-dot"></span>
-                <span class="carousel-dot"></span>
-                <span class="carousel-dot"></span>
-                <span class="carousel-dot"></span>
-                <span class="carousel-dot"></span>
-                <span class="carousel-dot"></span>
-              </div>
-              <button
-                type="button"
-                class="carousel-arrow carousel-arrow-next"
-                aria-label="Next"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg
-                >
-              </button>
-            </div>
+          <div class="photo-grid">
+            <Image
+              src={learningImage}
+              widths={[300, 450, 600]}
+              sizes="(max-width: 980px) calc(50vw - 1.5rem), 290px"
+              alt="A child painting at an outdoor art table at Betty Spears"
+            />
+            <Image
+              src={educatorImage2}
+              widths={[300, 450, 600]}
+              sizes="(max-width: 980px) calc(50vw - 1.5rem), 290px"
+              alt="An educator reading with a group of children outdoors"
+            />
+            <Image
+              src={familyImage}
+              widths={[300, 450, 600]}
+              sizes="(max-width: 980px) calc(50vw - 1.5rem), 290px"
+              alt="Children engaged in imaginative indoor play at Betty Spears"
+            />
+            <Image
+              src={groupImage}
+              widths={[300, 450, 600]}
+              sizes="(max-width: 980px) calc(50vw - 1.5rem), 290px"
+              alt="Children gathered together around a shared activity at Betty Spears"
+            />
           </div>
 
-          <div class="section-panel learning-copy">
+          <div class="learning-copy">
             <p>
               At Betty’s, learning grows naturally from children’s interests,
               relationships and everyday play. We believe children thrive when
@@ -923,6 +841,17 @@ const faqs = [
               learning, and effective communication.
             </p>
           </div>
+        </div>
+        <div class="room-grid">
+          {
+            roomItems.map((room) => (
+              <article class="feature-card room-card">
+                <h3>{room.title}</h3>
+                <p class="room-age">{room.age}</p>
+                <p>{room.description}</p>
+              </article>
+            ))
+          }
         </div>
       </div>
     </section>
@@ -991,7 +920,8 @@ const faqs = [
           <div class="fees-visual">
             <Image
               src={feesImage}
-              width={700}
+              widths={[480, 720, 1000]}
+                  sizes="(max-width: 980px) calc(100vw - 2rem), 590px"
               alt="The renovated play space at Betty Spears"
             />
           </div>
@@ -1125,6 +1055,7 @@ const faqs = [
       '(prefers-reduced-motion: reduce)'
     ).matches
 
+    // Stats are only hidden (via the .js class on <html>) when this script runs
     const statItems = document.querySelectorAll<HTMLElement>('.stat-item')
     if (statItems.length) {
       const statsObserver = new IntersectionObserver(
@@ -1141,18 +1072,37 @@ const faqs = [
       statItems.forEach((item) => statsObserver.observe(item))
     }
 
+    const revealGrids = document.querySelectorAll<HTMLElement>(
+      '.photo-grid, .outdoor-grid'
+    )
+    if (revealGrids.length) {
+      const gridObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible')
+              gridObserver.unobserve(entry.target)
+            }
+          })
+        },
+        { threshold: 0.2 }
+      )
+      revealGrids.forEach((grid) => {
+        grid.classList.add('reveal')
+        gridObserver.observe(grid)
+      })
+    }
+
     document
       .querySelectorAll<HTMLElement>('[data-carousel]')
       .forEach((carousel) => {
         const viewport = carousel.querySelector<HTMLElement>(
-          '[class$="-viewport"]'
+          '.about-carousel-viewport'
         )
         const slides = viewport
           ? (Array.from(viewport.children) as HTMLElement[])
           : []
-        const dots = Array.from(
-          carousel.querySelectorAll<HTMLElement>('.carousel-dot')
-        )
+        const count = carousel.querySelector<HTMLElement>('.carousel-count')
         const prevButton = carousel.querySelector<HTMLButtonElement>(
           '.carousel-arrow-prev'
         )
@@ -1166,26 +1116,77 @@ const faqs = [
           0
         )
 
-        const showSlide = (index: number) => {
+        const showSlide = (index: number, direction?: 'next' | 'prev') => {
           slides[current]?.classList.remove('is-active')
-          dots[current]?.classList.remove('is-active')
+          delete slides[current]?.dataset.enter
           current = (index + slides.length) % slides.length
           slides[current]?.classList.add('is-active')
-          dots[current]?.classList.add('is-active')
+          if (direction) slides[current].dataset.enter = direction
+          if (count) count.textContent = `${current + 1} / ${slides.length}`
         }
 
-        prevButton?.addEventListener('click', () => showSlide(current - 1))
-        nextButton?.addEventListener('click', () => showSlide(current + 1))
+        showSlide(current)
+
+        prevButton?.addEventListener('click', () =>
+          showSlide(current - 1, 'prev')
+        )
+        nextButton?.addEventListener('click', () =>
+          showSlide(current + 1, 'next')
+        )
       })
 
-    const heroSlides = document.querySelectorAll<HTMLElement>('.hero-slide')
+    // Only the first hero photo is in the HTML; the rest load one step ahead
+    const heroSlides = Array.from(
+      document.querySelectorAll<HTMLImageElement>('.hero-slide')
+    )
+    const heroPause = document.querySelector<HTMLButtonElement>('.hero-pause')
+
+    const loadHeroSlide = (slide?: HTMLImageElement) => {
+      if (!slide?.dataset.src) return
+      slide.srcset = slide.dataset.srcset ?? ''
+      slide.src = slide.dataset.src
+      delete slide.dataset.src
+      delete slide.dataset.srcset
+    }
+
     if (heroSlides.length > 1 && !prefersReducedMotion) {
       let currentSlide = 0
-      setInterval(() => {
+      let timer: number | undefined
+
+      const nextHeroSlide = () => {
         heroSlides[currentSlide].classList.remove('is-active')
         currentSlide = (currentSlide + 1) % heroSlides.length
         heroSlides[currentSlide].classList.add('is-active')
-      }, 6000)
+        loadHeroSlide(heroSlides[(currentSlide + 1) % heroSlides.length])
+      }
+      const playHero = () => {
+        timer = window.setInterval(nextHeroSlide, 6000)
+      }
+
+      // Give the first photo and the rest of the page the bandwidth first
+      const loadSecondSlide = () =>
+        window.setTimeout(() => loadHeroSlide(heroSlides[1]), 2000)
+      if (document.readyState === 'complete') loadSecondSlide()
+      else window.addEventListener('load', loadSecondSlide, { once: true })
+      playHero()
+
+      if (heroPause) {
+        heroPause.hidden = false
+        heroPause.addEventListener('click', () => {
+          const pausing = timer !== undefined
+          if (pausing) {
+            window.clearInterval(timer)
+            timer = undefined
+          } else {
+            playHero()
+          }
+          heroPause.classList.toggle('is-paused', pausing)
+          heroPause.setAttribute(
+            'aria-label',
+            pausing ? 'Play slideshow' : 'Pause slideshow'
+          )
+        })
+      }
     }
   </script>
 </Layout>
