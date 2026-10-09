@@ -656,22 +656,6 @@ const faqs = [
             ))
           }
         </div>
-        <p class="section-kicker" style="margin-top: 4rem;">
-          Our outdoor spaces
-        </p>
-        <h3 class="subheading">Room to run, dig, climb and explore</h3>
-        <div class="outdoor-grid">
-          {
-            outdoorSpaces.map((space) => (
-              <figure class="outdoor-tile">
-                <Image src={space.image} widths={[300, 450, 600]}
-                  sizes="(max-width: 980px) calc(50vw - 1.5rem), 290px" alt={space.alt} />
-                <figcaption>{space.caption}</figcaption>
-              </figure>
-            ))
-          }
-        </div>
-
         <div class="founder-wrap">
           <div class="founder-visual">
             <figure class="founder-card">
@@ -850,6 +834,21 @@ const faqs = [
                 <p class="room-age">{room.age}</p>
                 <p>{room.description}</p>
               </article>
+            ))
+          }
+        </div>
+        <p class="section-kicker" style="margin-top: 4rem;">
+          Our outdoor spaces
+        </p>
+        <h3 class="subheading">Room to run, dig, climb and explore</h3>
+        <div class="outdoor-grid">
+          {
+            outdoorSpaces.map((space) => (
+              <figure class="outdoor-tile">
+                <Image src={space.image} widths={[300, 450, 600]}
+                  sizes="(max-width: 980px) calc(50vw - 1.5rem), 290px" alt={space.alt} />
+                <figcaption>{space.caption}</figcaption>
+              </figure>
             ))
           }
         </div>
