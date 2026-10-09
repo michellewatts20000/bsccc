@@ -41,6 +41,23 @@ body {
   line-height: 1.6;
 }
 
+/* Avoid single words stranded on the last line */
+h1,
+h2,
+h3,
+h4,
+summary,
+figcaption,
+.stat-item strong {
+  text-wrap: balance;
+}
+
+p,
+li,
+.stat-item span {
+  text-wrap: pretty;
+}
+
 img {
   max-width: 100%;
   display: block;
@@ -158,15 +175,10 @@ main > section:nth-child(12) { z-index: 3; }
   letter-spacing: -0.03em;
 }
 
-.subheading {
-  margin: 0 0 0.9rem;
-  font-family: var(--font-heading);
-  font-weight: 500;
-  font-size: clamp(1.6rem, 2.6vw, 2.3rem);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  color: var(--heading);
+.slide-heading {
+  margin-bottom: 1.1rem;
 }
+
 
 .section-lead {
   max-width: 40rem;
