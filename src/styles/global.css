@@ -369,6 +369,8 @@ main > section:nth-child(12) { z-index: 3; }
   position: absolute;
   inset: 0;
   z-index: 0;
+  /* Solid backing so the section tucked underneath never shows through */
+  background: var(--heading);
 }
 
 .hero-slide {
@@ -378,17 +380,22 @@ main > section:nth-child(12) { z-index: 3; }
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  transition: opacity 1.4s ease;
+  z-index: 0;
+  /* The outgoing photo stays solid until the new one has fully faded in on top */
+  transition: opacity 0s linear 1.4s;
 }
 
 .hero-slide.is-active {
   opacity: 1;
+  z-index: 1;
+  transition: opacity 1.4s ease;
 }
 
 .hero-media::after {
   content: '';
   position: absolute;
   inset: 0;
+  z-index: 2;
   background:
     radial-gradient(ellipse at center, rgba(15, 28, 10, 0.55) 0%, rgba(15, 28, 10, 0.2) 70%),
     rgba(15, 28, 10, 0.25);

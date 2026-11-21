@@ -51,7 +51,13 @@ const feeTable = [
   { age: '3–5 years', fee: '$176.00' }
 ]
 
-const aboutTabs = ['About us', 'Relationships', 'Nature', 'Neighbourhood', 'Educators']
+const aboutTabs = [
+  'About us',
+  'Relationships',
+  'Nature',
+  'Neighbourhood',
+  'Educators'
+]
 
 const philosophyItems = [
   {
@@ -170,13 +176,13 @@ const roomItems = [
       'Our babies and young toddlers settle in with gentle routines that follow their own rhythms for sleep, meals and play. Days are filled with cuddles, songs, sensory play and first explorations in the Ducklings garden.'
   },
   {
-    title: 'Middle room',
+    title: 'Gumnuts',
     age: '2–3 years',
     description:
       'Busy toddlers grow their independence and language through messy play, music, stories and plenty of time outdoors. Educators help them take turns, make friends and find words for big feelings.'
   },
   {
-    title: 'Preschool room',
+    title: 'Lilly Pillies',
     age: '3–6 years',
     description:
       'Our preschool program builds curiosity, confidence and friendships through longer projects, group conversations and real-world play – giving children the skills and resilience for a smooth start to school.'
@@ -231,8 +237,7 @@ const impactItems = [
     icon: 'cap',
     color: '#dcef9a',
     value: 'Qualified teachers',
-    label:
-      'A university-qualified Early Childhood Teacher in every room.'
+    label: 'A university-qualified Early Childhood Teacher in every room.'
   },
   {
     icon: 'heart',
@@ -258,6 +263,12 @@ const impactItems = [
 
 const keyFacts = [
   {
+    icon: 'sprout',
+    color: '#dcef9a',
+    value: 'Since 1986',
+    label: 'Part of local families’ stories, routines and milestones.'
+  },
+  {
     icon: 'people',
     color: '#9edcf3',
     value: 'Not-for-profit',
@@ -274,18 +285,11 @@ const keyFacts = [
     color: '#f6b98a',
     value: 'Open Mon–Fri',
     label: '7:30am–6pm. 50 weeks per year.'
-  },
-  {
-    icon: 'sprout',
-    color: '#dcef9a',
-    value: 'Since 1986',
-    label: 'Part of local families’ stories, routines and milestones.'
   }
 ]
 
 const impactIcons: Record<string, string> = {
-  cap:
-    '<svg viewBox="0 0 64 64" fill="currentColor"><path d="M32 9 2 23.5 32 38l30-14.5Z"/><path d="M14 32.5V44c0 5.5 8 10 18 10s18-4.5 18-10V32.5L32 41.2Z"/><rect x="54.5" y="24" width="3.5" height="19" rx="1.75"/><circle cx="56.25" cy="45" r="3.5"/></svg>',
+  cap: '<svg viewBox="0 0 64 64" fill="currentColor"><path d="M32 9 2 23.5 32 38l30-14.5Z"/><path d="M14 32.5V44c0 5.5 8 10 18 10s18-4.5 18-10V32.5L32 41.2Z"/><rect x="54.5" y="24" width="3.5" height="19" rx="1.75"/><circle cx="56.25" cy="45" r="3.5"/></svg>',
   people:
     '<svg viewBox="0 0 64 64" fill="currentColor"><circle cx="22" cy="18" r="9"/><circle cx="44" cy="22" r="7.5"/><path d="M5 54c0-11 7.6-19 17-19s17 8 17 19Z"/><path d="M36 54c0-6.5-2-12-5.6-15.6A13 13 0 0 1 44 33c8 0 14 7 14 16v5Z"/></svg>',
   blocks:
@@ -317,7 +321,7 @@ const featureIcons: Record<string, string> = {
 const faqs = [
   {
     q: 'What ages do you accept?',
-    a: 'Betty Spears welcomes children from approximately 6 weeks to 6 years across three rooms: Ducklings (6 weeks–2 years), the Middle room (2–3 years) and our Preschool room (3–6 years).'
+    a: 'Betty Spears welcomes children from approximately 6 weeks to 6 years across three rooms: Ducklings (6 weeks–2 years), Gumnuts (2–3 years) and Lilly Pillies (3–6 years).'
   },
   {
     q: 'What are your opening hours?',
@@ -362,35 +366,33 @@ const faqs = [
   <main>
     <section class="hero" id="top">
       <div class="hero-media" aria-hidden="true">
-        {
-          heroSlides.map((slide, i) =>
-            i === 0 ? (
-              <img
-                class="hero-slide is-active"
-                src={slide.src}
-                srcset={slide.srcSet.attribute}
-                sizes="100vw"
-                width={slide.attributes.width}
-                height={slide.attributes.height}
-                alt=""
-                loading="eager"
-                fetchpriority="high"
-                decoding="async"
-              />
-            ) : (
-              <img
-                class="hero-slide"
-                data-src={slide.src}
-                data-srcset={slide.srcSet.attribute}
-                sizes="100vw"
-                width={slide.attributes.width}
-                height={slide.attributes.height}
-                alt=""
-                decoding="async"
-              />
-            )
+        {heroSlides.map((slide, i) =>
+          i === 0 ? (
+            <img
+              class="hero-slide is-active"
+              src={slide.src}
+              srcset={slide.srcSet.attribute}
+              sizes="100vw"
+              width={slide.attributes.width}
+              height={slide.attributes.height}
+              alt=""
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+            />
+          ) : (
+            <img
+              class="hero-slide"
+              data-src={slide.src}
+              data-srcset={slide.srcSet.attribute}
+              sizes="100vw"
+              width={slide.attributes.width}
+              height={slide.attributes.height}
+              alt=""
+              decoding="async"
+            />
           )
-        }
+        )}
       </div>
 
       <div class="container hero-content">
@@ -409,12 +411,12 @@ const faqs = [
         </p>
 
         <div class="hero-actions">
-          <a href="#" class="button-primary" aria-disabled="true"
-            >Book a Visit</a
-          >
-          <a href="#" class="button-secondary" aria-disabled="true"
-            >Join Waitlist</a
-          >
+          <a href="#" class="button-primary" aria-disabled="true">
+            Book a Visit
+          </a>
+          <a href="#" class="button-secondary" aria-disabled="true">
+            Join Waitlist
+          </a>
         </div>
       </div>
 
@@ -424,18 +426,23 @@ const faqs = [
         aria-label="Pause slideshow"
         hidden
       >
-        <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
-          ><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect
-            x="14"
-            y="5"
-            width="4"
-            height="14"
-            rx="1"></rect></svg
+        <svg
+          class="icon-pause"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          aria-hidden="true"
         >
-        <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
-          ><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"
-          ></path></svg
+          <rect x="6" y="5" width="4" height="14" rx="1"></rect>
+          <rect x="14" y="5" width="4" height="14" rx="1"></rect>
+        </svg>
+        <svg
+          class="icon-play"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          aria-hidden="true"
         >
+          <path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"></path>
+        </svg>
       </button>
     </section>
 
@@ -444,42 +451,44 @@ const faqs = [
       aria-label="Key facts about the centre"
     >
       <div class="container impact-grid">
-        {
-          keyFacts.map((item) => (
+        {keyFacts.map((item) => (
+          <div
+            class="stat-item impact-item"
+            style={`--impact-color: ${item.color}`}
+          >
             <div
-              class="stat-item impact-item"
-              style={`--impact-color: ${item.color}`}
-            >
-              <div
-                class="impact-icon"
-                aria-hidden="true"
-                set:html={impactIcons[item.icon]}
-              />
-              <strong>{item.value}</strong>
-              <span>{item.label}</span>
-            </div>
-          ))
-        }
+              class="impact-icon"
+              aria-hidden="true"
+              set:html={impactIcons[item.icon]}
+            />
+            <strong>{item.value}</strong>
+            <span>{item.label}</span>
+          </div>
+        ))}
       </div>
     </section>
 
     <section class="section" id="about" aria-labelledby="about-heading">
       <div class="container">
-        <h2 class="visually-hidden" id="about-heading">About Betty’s</h2>
+        <h2 class="visually-hidden" id="about-heading">
+          About Betty’s
+        </h2>
         <div class="about-carousel" data-carousel>
-          <div class="carousel-tabs" role="group" aria-label="About Betty’s topics">
-            {
-              aboutTabs.map((tab, i) => (
-                <button
-                  type="button"
-                  class="carousel-tab"
-                  data-index={i}
-                  aria-pressed={i === 0 ? 'true' : 'false'}
-                >
-                  {tab}
-                </button>
-              ))
-            }
+          <div
+            class="carousel-tabs"
+            role="group"
+            aria-label="About Betty’s topics"
+          >
+            {aboutTabs.map((tab, i) => (
+              <button
+                type="button"
+                class="carousel-tab"
+                data-index={i}
+                aria-pressed={i === 0 ? 'true' : 'false'}
+              >
+                {tab}
+              </button>
+            ))}
           </div>
           <div class="about-carousel-viewport">
             <div class="about-slide is-active">
@@ -487,7 +496,9 @@ const faqs = [
                 <p class="section-kicker" style="margin-bottom: 0.6rem;">
                   About us
                 </p>
-                <h2 class="section-heading slide-heading">Run by families, for families</h2>
+                <h2 class="section-heading slide-heading">
+                  Run by families, for families
+                </h2>
 
                 <p>
                   Betty Spears is a not-for-profit, parent-governed centre where
@@ -557,7 +568,9 @@ const faqs = [
                 <p class="section-kicker" style="margin-bottom: 0.6rem;">
                   Nature
                 </p>
-                <h2 class="section-heading slide-heading">Time outdoors, every day</h2>
+                <h2 class="section-heading slide-heading">
+                  Time outdoors, every day
+                </h2>
                 <p>
                   Betty’s is known for its generous natural outdoor spaces,
                   where children run, dig, climb, notice and explore. Fresh air
@@ -592,7 +605,9 @@ const faqs = [
                 <p class="section-kicker" style="margin-bottom: 0.6rem;">
                   Part of the neighbourhood
                 </p>
-                <h2 class="section-heading slide-heading">Woven into the local community</h2>
+                <h2 class="section-heading slide-heading">
+                  Woven into the local community
+                </h2>
                 <p>
                   Betty’s is well known in the local area and we continue to
                   build relationships with individuals and organisations within
@@ -620,7 +635,9 @@ const faqs = [
                 <p class="section-kicker" style="margin-bottom: 0.6rem;">
                   Our educators
                 </p>
-                <h2 class="section-heading slide-heading">Long serving educators</h2>
+                <h2 class="section-heading slide-heading">
+                  Long serving educators
+                </h2>
                 <p>
                   The long-serving nature of our educators is one of Betty’s
                   greatest strengths. Families know they can trust familiar
@@ -664,16 +681,14 @@ const faqs = [
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                ><path d="M19 12H5M11 6l-6 6 6 6"></path></svg
               >
+                <path d="M19 12H5M11 6l-6 6 6 6"></path>
+              </svg>
             </button>
-            <button
-              type="button"
-              class="carousel-arrow carousel-arrow-next"
-            >
-              <span class="carousel-next-text"
-                >Next: <span class="carousel-next-label">{aboutTabs[1]}</span></span
-              >
+            <button type="button" class="carousel-arrow carousel-arrow-next">
+              <span class="carousel-next-text">
+                Next: <span class="carousel-next-label">{aboutTabs[1]}</span>
+              </span>
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
@@ -681,26 +696,25 @@ const faqs = [
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                ><path d="M5 12h14M13 6l6 6-6 6"></path></svg
               >
+                <path d="M5 12h14M13 6l6 6-6 6"></path>
+              </svg>
             </button>
             <p class="carousel-count visually-hidden" aria-live="polite"></p>
           </div>
         </div>
         <div class="feature-grid">
-          {
-            whyItems.map((item) => (
-              <article class="feature-card">
-                <div
-                  class="feature-icon"
-                  aria-hidden="true"
-                  set:html={featureIcons[item.icon]}
-                />
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </article>
-            ))
-          }
+          {whyItems.map((item) => (
+            <article class="feature-card">
+              <div
+                class="feature-icon"
+                aria-hidden="true"
+                set:html={featureIcons[item.icon]}
+              />
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </article>
+          ))}
         </div>
         <div class="founder-wrap">
           <div class="founder-visual">
@@ -737,24 +751,24 @@ const faqs = [
 
     <section class="impact-band" aria-labelledby="impact-heading">
       <div class="container">
-        <h2 class="impact-heading" id="impact-heading">Betty’s at a glance</h2>
+        <h2 class="impact-heading" id="impact-heading">
+          Betty’s at a glance
+        </h2>
         <div class="impact-grid">
-          {
-            impactItems.map((item) => (
+          {impactItems.map((item) => (
+            <div
+              class="stat-item impact-item"
+              style={`--impact-color: ${item.color}`}
+            >
               <div
-                class="stat-item impact-item"
-                style={`--impact-color: ${item.color}`}
-              >
-                <div
-                  class="impact-icon"
-                  aria-hidden="true"
-                  set:html={impactIcons[item.icon]}
-                />
-                <strong>{item.value}</strong>
-                <span>{item.label}</span>
-              </div>
-            ))
-          }
+                class="impact-icon"
+                aria-hidden="true"
+                set:html={impactIcons[item.icon]}
+              />
+              <strong>{item.value}</strong>
+              <span>{item.label}</span>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -873,30 +887,30 @@ const faqs = [
           </div>
         </div>
         <div class="room-grid">
-          {
-            roomItems.map((room) => (
-              <article class="feature-card room-card">
-                <h3>{room.title}</h3>
-                <p class="room-age">{room.age}</p>
-                <p>{room.description}</p>
-              </article>
-            ))
-          }
+          {roomItems.map((room) => (
+            <article class="feature-card room-card">
+              <h3>{room.title}</h3>
+              <p class="room-age">{room.age}</p>
+              <p>{room.description}</p>
+            </article>
+          ))}
         </div>
         <p class="section-kicker" style="margin-top: 4rem;">
           Our outdoor spaces
         </p>
         <h2 class="section-heading">Room to run, dig, climb and explore</h2>
         <div class="outdoor-grid">
-          {
-            outdoorSpaces.map((space) => (
-              <figure class="outdoor-tile">
-                <Image src={space.image} widths={[300, 450, 600]}
-                  sizes="(max-width: 980px) calc(50vw - 1.5rem), 290px" alt={space.alt} />
-                <figcaption>{space.caption}</figcaption>
-              </figure>
-            ))
-          }
+          {outdoorSpaces.map((space) => (
+            <figure class="outdoor-tile">
+              <Image
+                src={space.image}
+                widths={[300, 450, 600]}
+                sizes="(max-width: 980px) calc(50vw - 1.5rem), 290px"
+                alt={space.alt}
+              />
+              <figcaption>{space.caption}</figcaption>
+            </figure>
+          ))}
         </div>
       </div>
     </section>
@@ -906,32 +920,32 @@ const faqs = [
         <p class="section-kicker">Our philosophy</p>
         <h2 class="section-heading">Our philosophy rainbow</h2>
         <div class="philosophy-rainbow" aria-hidden="true">
-          {philosophyItems.map((item) => <span style={`background:${item.hex}`} />)}
+          {philosophyItems.map((item) => (
+            <span style={`background:${item.hex}`} />
+          ))}
         </div>
         <p class="section-lead">
-          Six colours, six core beliefs, in the words of theorists, children
-          and families. It’s a living philosophy that we keep adding to, so
-          we’d love to hear your thoughts.
+          Six colours, six core beliefs, in the words of theorists, children and
+          families. It’s a living philosophy that we keep adding to, so we’d
+          love to hear your thoughts.
         </p>
 
         <div class="philosophy-grid">
-          {
-            philosophyItems.map((item) => (
-              <article class="philosophy-card" style={`--band:${item.hex}`}>
-                <p class="philosophy-colour">{item.colour}</p>
-                <h3>{item.title}</h3>
-                <blockquote class="philosophy-quote">
-                  <p>‘{item.theoristQuote}’</p>
-                  <cite>{item.theorist}</cite>
-                </blockquote>
-                <blockquote class="philosophy-quote philosophy-quote-family">
-                  <p>‘{item.familyQuote}’</p>
-                  <cite>{item.familyName}</cite>
-                </blockquote>
-                <p class="philosophy-description">{item.description}</p>
-              </article>
-            ))
-          }
+          {philosophyItems.map((item) => (
+            <article class="philosophy-card" style={`--band:${item.hex}`}>
+              <p class="philosophy-colour">{item.colour}</p>
+              <h3>{item.title}</h3>
+              <blockquote class="philosophy-quote">
+                <p>‘{item.theoristQuote}’</p>
+                <cite>{item.theorist}</cite>
+              </blockquote>
+              <blockquote class="philosophy-quote philosophy-quote-family">
+                <p>‘{item.familyQuote}’</p>
+                <cite>{item.familyName}</cite>
+              </blockquote>
+              <p class="philosophy-description">{item.description}</p>
+            </article>
+          ))}
         </div>
       </div>
     </section>
@@ -957,14 +971,12 @@ const faqs = [
                 <span role="columnheader">Age group</span>
                 <span role="columnheader">Daily fee</span>
               </div>
-              {
-                feeTable.map((row) => (
-                  <div class="fee-row" role="row">
-                    <span role="cell">{row.age}</span>
-                    <span role="cell">{row.fee}</span>
-                  </div>
-                ))
-              }
+              {feeTable.map((row) => (
+                <div class="fee-row" role="row">
+                  <span role="cell">{row.age}</span>
+                  <span role="cell">{row.fee}</span>
+                </div>
+              ))}
             </div>
             <p class="fee-note">
               Updated 1 September 2026. Includes everything your child needs
@@ -976,7 +988,7 @@ const faqs = [
             <Image
               src={feesImage}
               widths={[480, 720, 1000]}
-                  sizes="(max-width: 980px) calc(100vw - 2rem), 590px"
+              sizes="(max-width: 980px) calc(100vw - 2rem), 590px"
               alt="The renovated play space at Betty Spears"
             />
           </div>
@@ -994,14 +1006,12 @@ const faqs = [
         </p>
 
         <div class="faq-list">
-          {
-            faqs.map((item) => (
-              <details class="faq-item">
-                <summary>{item.q}</summary>
-                <p>{item.a}</p>
-              </details>
-            ))
-          }
+          {faqs.map((item) => (
+            <details class="faq-item">
+              <summary>{item.q}</summary>
+              <p>{item.a}</p>
+            </details>
+          ))}
         </div>
       </div>
     </section>
@@ -1036,7 +1046,9 @@ const faqs = [
                 <span>Message</span>
                 <textarea name="message" rows="4" required></textarea>
               </label>
-              <button type="submit" class="button-primary">Send message</button>
+              <button type="submit" class="button-primary">
+                Send message
+              </button>
               <p class="form-note">
                 This opens your email app with the details filled in, ready to
                 send to the office.
@@ -1051,7 +1063,8 @@ const faqs = [
               src="https://www.google.com/maps?q=1A+Gannon+St+Tempe+NSW+2044&output=embed"
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
-              allowfullscreen></iframe>
+              allowfullscreen
+            ></iframe>
 
             <div class="visit-details">
               <div class="detail-item">
@@ -1068,9 +1081,9 @@ const faqs = [
               </div>
               <div class="detail-item">
                 <strong>Email</strong>
-                <a href="mailto:office@bettyspearschildcare.org.au"
-                  >office@bettyspearschildcare.org.au</a
-                >
+                <a href="mailto:office@bettyspearschildcare.org.au">
+                  office@bettyspearschildcare.org.au
+                </a>
               </div>
             </div>
           </div>
@@ -1189,7 +1202,8 @@ const faqs = [
           tabs.forEach((tab, i) =>
             tab.setAttribute('aria-pressed', String(i === current))
           )
-          if (nextLabel) nextLabel.textContent = name((current + 1) % slides.length)
+          if (nextLabel)
+            nextLabel.textContent = name((current + 1) % slides.length)
         }
 
         showSlide(current)
