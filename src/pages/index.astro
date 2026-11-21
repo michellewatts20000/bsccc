@@ -51,54 +51,81 @@ const feeTable = [
   { age: '3–5 years', fee: '$176.00' }
 ]
 
+const aboutTabs = ['About us', 'Relationships', 'Nature', 'Neighbourhood', 'Educators']
+
 const philosophyItems = [
   {
-    letter: 'C',
-    title: 'Community & belonging',
+    colour: 'Red',
+    hex: '#e53935',
+    title: 'Play',
+    theoristQuote:
+      'If we give children enough space and possibilities for free movement, they will move as beautifully and gracefully as animals: nimbly, simply, confidently and naturally.',
+    theorist: 'Dr Emmi Pikler',
+    familyQuote:
+      'We love the vast grounds at Betty’s and maximising the children’s time outdoors. Also community engagement with the preschoolers’ local excursions.',
+    familyName: 'Harley (Indi)',
     description:
-      'A community-based centre fostering respect and understanding for ourselves, each other and the wider community.'
+      'As childhood theorists such as Piaget, Montessori and Malaguzzi believe, children learn best through play. Learning through play allows children to engage with learning at their level, be inspired through help from others and leave when they feel they’re done. At Betty’s, we can see the benefits of play in developing the whole child, making them confident, social and expressive.'
   },
   {
-    letter: 'H',
-    title: 'Health & wellbeing',
+    colour: 'Orange',
+    hex: '#fb8c00',
+    title: 'Nurturing',
+    theoristQuote:
+      'In order to develop normally, a child requires… one or more adults who have an irrational emotional relationship with the child. Somebody’s got to be crazy about that kid. That’s number one. First, last and always.',
+    theorist: 'Urie Bronfenbrenner',
+    familyQuote: 'The teachers love us.',
+    familyName: 'Greta (aged 5)',
     description:
-      'Emotional and physical wellbeing come first, so every child feels secure enough to fully engage and enjoy their day.'
+      'We look at every child as an individual and meet them where they are at. We encourage and support them while also having high expectations and understanding of their abilities. We also care for our families and their situations and work hard to be a positive and welcoming second home for all.'
   },
   {
-    letter: 'I',
-    title: 'Inclusion',
+    colour: 'Yellow',
+    hex: '#fdd835',
+    title: 'Connection',
+    theoristQuote:
+      'Joy, feeling one’s own value, being appreciated and loved by others, feeling useful and capable of production are all factors of enormous value for the human soul.',
+    theorist: 'Maria Montessori',
+    familyQuote: 'We feel safe and welcome at Betty’s.',
+    familyName: 'Sarah (Ruby and Stella)',
     description:
-      'We welcome all children and families and work to maintain a culturally safe, culturally inclusive centre where everyone feels connected.'
+      'Due to our special place in the Tempe community, we not only have long-term local staff, but also multiple siblings coming through our Centre. We even have former students bringing their own children back here. These aspects of our caring show that we feel a deep connection with each other and that we are there for all.'
   },
   {
-    letter: 'L',
-    title: 'Learning from interest',
+    colour: 'Green',
+    hex: '#43a047',
+    title: 'Sustainability',
+    theoristQuote:
+      'The land is where our roots are. The children must be taught to feel and live in harmony with the Earth.',
+    theorist: 'Maria Montessori',
+    familyQuote: 'I like the bush garden.',
+    familyName: 'Thomas (aged 5)',
     description:
-      'Children are capable, competent co-contributors in their own learning, exploring at their own pace and following their interests.'
+      'We believe in helping children to become strong global citizens who know how to care for their country. We do this through our daily Acknowledgement of Country, caring for our large natural spaces and engaging in our Winter bush school for our Preschoolers. We feel that this process, besides being healthy and inclusive, is also one of our core beliefs.'
   },
   {
-    letter: 'D',
-    title: 'Development: being & becoming',
+    colour: 'Blue',
+    hex: '#1e88e5',
+    title: 'Community',
+    theoristQuote: 'It is through others that we develop into ourselves.',
+    theorist: 'Lev Vygotsky',
+    familyQuote:
+      'We love how Betty’s fosters connection to each other’s families and the wider Tempe community.',
+    familyName: 'Thais (Oscar and Lucas)',
     description:
-      'We meet children where they are and help them grow, while supporting educators’ ongoing development too.'
+      'We have a strong community focus in Tempe. We support this at Betty’s through our regular outings to the local areas and landmarks, strong relationships with the families and our parent-run Management Committee. We believe that helping children understand their part in the community allows them to also become more well-rounded people as they grow.'
   },
   {
-    letter: 'R',
-    title: 'Relationships & rights',
+    colour: 'Purple',
+    hex: '#8e24aa',
+    title: 'Kindness',
+    theoristQuote:
+      'It is only when a child is emotionally satisfied that they will engage in authentic play.',
+    theorist: 'Dr Emmi Pikler',
+    familyQuote: 'We don’t have best friends – we are all friends.',
+    familyName: 'Addison (aged 4)',
     description:
-      'Meaningful relationships built on trust and respect, so Betty’s feels like a home away from home for children and families alike.'
-  },
-  {
-    letter: 'E',
-    title: 'Environment',
-    description:
-      'Time, space and freedom for children to investigate and explore the world in their own way.'
-  },
-  {
-    letter: 'N',
-    title: 'Nature',
-    description:
-      'Daily opportunities to explore our large natural outdoor space, and to learn what it means to care for the world around us.'
+      'At Betty’s, we strive to make every child and family feel that we only have their best interests at heart. We know that children are the most precious part of a family and treat every child as a special part of our lives. Because all the staff are either parents or long-term educators, we have a sympathy and understanding for the lives of families. Even when we engage in hard conversations, we are only ensuring that we are doing the best we can.'
   }
 ]
 
@@ -440,6 +467,20 @@ const faqs = [
       <div class="container">
         <h2 class="visually-hidden" id="about-heading">About Betty’s</h2>
         <div class="about-carousel" data-carousel>
+          <div class="carousel-tabs" role="group" aria-label="About Betty’s topics">
+            {
+              aboutTabs.map((tab, i) => (
+                <button
+                  type="button"
+                  class="carousel-tab"
+                  data-index={i}
+                  aria-pressed={i === 0 ? 'true' : 'false'}
+                >
+                  {tab}
+                </button>
+              ))
+            }
+          </div>
           <div class="about-carousel-viewport">
             <div class="about-slide is-active">
               <div class="about-slide-text">
@@ -629,8 +670,10 @@ const faqs = [
             <button
               type="button"
               class="carousel-arrow carousel-arrow-next"
-              aria-label="Next slide"
             >
+              <span class="carousel-next-text"
+                >Next: <span class="carousel-next-label">{aboutTabs[1]}</span></span
+              >
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
@@ -641,7 +684,7 @@ const faqs = [
                 ><path d="M5 12h14M13 6l6 6-6 6"></path></svg
               >
             </button>
-            <p class="carousel-count" aria-live="polite"></p>
+            <p class="carousel-count visually-hidden" aria-live="polite"></p>
           </div>
         </div>
         <div class="feature-grid">
@@ -861,21 +904,32 @@ const faqs = [
     <section class="section" id="philosophy">
       <div class="container">
         <p class="section-kicker">Our philosophy</p>
-        <h2 class="section-heading">C.H.I.L.D.R.E.N.</h2>
+        <h2 class="section-heading">Our philosophy rainbow</h2>
+        <div class="philosophy-rainbow" aria-hidden="true">
+          {philosophyItems.map((item) => <span style={`background:${item.hex}`} />)}
+        </div>
         <p class="section-lead">
-          Written with families and educators, and revisited every year, this is
-          what guides how we care for your child and each other.
+          Six colours, six core beliefs. Each is shared through the words of
+          early childhood theorists, our children and their families. This is
+          a Philosophy in Action – it is discussed and changed whenever someone
+          has inspiration, so we always welcome your thoughts.
         </p>
 
         <div class="philosophy-grid">
           {
             philosophyItems.map((item) => (
-              <article class="philosophy-card">
-                <div class="philosophy-letter" aria-hidden="true">
-                  {item.letter}
-                </div>
+              <article class="philosophy-card" style={`--band:${item.hex}`}>
+                <p class="philosophy-colour">{item.colour}</p>
                 <h3>{item.title}</h3>
-                <p>{item.description}</p>
+                <blockquote class="philosophy-quote">
+                  <p>‘{item.theoristQuote}’</p>
+                  <cite>{item.theorist}</cite>
+                </blockquote>
+                <blockquote class="philosophy-quote philosophy-quote-family">
+                  <p>‘{item.familyQuote}’</p>
+                  <cite>{item.familyName}</cite>
+                </blockquote>
+                <p class="philosophy-description">{item.description}</p>
               </article>
             ))
           }
@@ -1111,6 +1165,12 @@ const faqs = [
         const nextButton = carousel.querySelector<HTMLButtonElement>(
           '.carousel-arrow-next'
         )
+        const tabs = Array.from(
+          carousel.querySelectorAll<HTMLButtonElement>('.carousel-tab')
+        )
+        const nextLabel = carousel.querySelector<HTMLElement>(
+          '.carousel-next-label'
+        )
         if (!slides.length) return
 
         let current = Math.max(
@@ -1124,7 +1184,13 @@ const faqs = [
           current = (index + slides.length) % slides.length
           slides[current]?.classList.add('is-active')
           if (direction) slides[current].dataset.enter = direction
-          if (count) count.textContent = `${current + 1} / ${slides.length}`
+          const name = (i: number) => tabs[i]?.textContent?.trim() ?? ''
+          if (count)
+            count.textContent = `${name(current)}, ${current + 1} of ${slides.length}`
+          tabs.forEach((tab, i) =>
+            tab.setAttribute('aria-pressed', String(i === current))
+          )
+          if (nextLabel) nextLabel.textContent = name((current + 1) % slides.length)
         }
 
         showSlide(current)
@@ -1134,6 +1200,11 @@ const faqs = [
         )
         nextButton?.addEventListener('click', () =>
           showSlide(current + 1, 'next')
+        )
+        tabs.forEach((tab, i) =>
+          tab.addEventListener('click', () => {
+            if (i !== current) showSlide(i, i > current ? 'next' : 'prev')
+          })
         )
       })
 
