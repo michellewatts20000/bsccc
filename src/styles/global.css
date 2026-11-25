@@ -564,13 +564,6 @@ main > section:nth-child(12) { z-index: 3; }
   font-size: 0.92rem;
 }
 
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 1.25rem;
-  margin-top: 2.8rem;
-}
-
 .feature-card {
   padding: 1.3rem 1.2rem;
   background: rgba(255,255,255,0.5);
@@ -656,22 +649,123 @@ main > section:nth-child(12) { z-index: 3; }
   margin-top: 2.8rem;
 }
 
+/* Section tabs (Base UI), used by About and Philosophy. Panels stack in
+   one grid cell so the section keeps the height of the tallest panel and
+   the page doesn't jump when switching. */
+.tabs {
+  margin-top: 2.8rem;
+}
+
+.tabs-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.8rem;
+}
+
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--line);
+  background: transparent;
+  color: var(--heading);
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.tab:hover,
+.tab:focus-visible {
+  border-color: var(--accent);
+}
+
+.tab[data-active] {
+  background: var(--heading);
+  border-color: var(--heading);
+  color: #ffffff;
+}
+
+/* Coloured tabs keep dark text so light colours like yellow stay readable */
+.tab-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--tab-color);
+}
+
+.tab-coloured:hover,
+.tab-coloured:focus-visible {
+  border-color: var(--tab-color);
+}
+
+.tab-coloured[data-active] {
+  background: color-mix(in srgb, var(--tab-color) 22%, #ffffff);
+  border-color: var(--tab-color);
+  color: var(--heading);
+}
+
+.tabs-viewport {
+  display: grid;
+}
+
+.tabs-panel {
+  display: block;
+  grid-area: 1 / 1;
+}
+
+.tabs-panel[hidden] {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tabs-panel:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 6px;
+  border-radius: var(--radius-xl);
+}
+
+/* The outgoing panel fades out quickly; Base UI waits for this before
+   hiding it, so it must not also play the slide-in animation */
+.tabs-panel[data-ending-style] {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+
+/* Panels glide in from the side of the tab that was chosen */
+@keyframes slide-in-next {
+  from {
+    opacity: 0;
+    transform: translateX(36px);
+  }
+}
+
+@keyframes slide-in-prev {
+  from {
+    opacity: 0;
+    transform: translateX(-36px);
+  }
+}
+
+.tabs-panel:not([hidden]):not([data-ending-style])[data-activation-direction='right'] {
+  animation: slide-in-next 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.tabs-panel:not([hidden]):not([data-ending-style])[data-activation-direction='left'] {
+  animation: slide-in-prev 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
 .about-slide {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2rem;
   align-items: stretch;
-  grid-area: 1 / 1;
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
-.about-slide.is-active {
-  visibility: visible;
-  opacity: 1;
-  pointer-events: auto;
 }
 
 .story-column img,
@@ -690,45 +784,6 @@ main > section:nth-child(12) { z-index: 3; }
   border-radius: var(--radius-xl);
 }
 
-.about-carousel {
-  margin-top: 2.8rem;
-}
-
-/* Slides glide in from the side they're coming from */
-@keyframes slide-in-next {
-  from {
-    opacity: 0;
-    transform: translateX(36px);
-  }
-}
-
-@keyframes slide-in-prev {
-  from {
-    opacity: 0;
-    transform: translateX(-36px);
-  }
-}
-
-.about-slide[data-enter='next'] {
-  animation: slide-in-next 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
-}
-
-.about-slide[data-enter='prev'] {
-  animation: slide-in-prev 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
-}
-
-.about-carousel-viewport {
-  display: grid;
-}
-
-.about-carousel-controls {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 0.6rem;
-  margin-top: 1.6rem;
-}
-
 .outdoor-tile figcaption {
   position: absolute;
   left: 0;
@@ -743,85 +798,8 @@ main > section:nth-child(12) { z-index: 3; }
   letter-spacing: 0.02em;
 }
 
-.carousel-arrow {
-  display: grid;
-  place-items: center;
-  width: 56px;
-  height: 56px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  background: transparent;
-  border: 1.5px solid transparent;
-  color: var(--heading);
-  cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-}
-
-.carousel-arrow-next {
-  width: auto;
-  display: inline-flex;
-  gap: 0.6rem;
-  padding: 0 1.3rem 0 1.5rem;
-  border-radius: 999px;
-  border-color: var(--heading);
-  background: var(--heading);
-  color: #ffffff;
-  font: inherit;
-  font-weight: 700;
-}
-
-.carousel-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.8rem;
-}
-
-.carousel-tab {
-  padding: 0.55rem 1.1rem;
-  border-radius: 999px;
-  border: 1.5px solid var(--line);
-  background: transparent;
-  color: var(--heading);
-  font: inherit;
-  font-size: 0.92rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-}
-
-.carousel-tab:hover,
-.carousel-tab:focus-visible {
-  border-color: var(--accent);
-}
-
-.carousel-tab[aria-pressed='true'] {
-  background: var(--heading);
-  border-color: var(--heading);
-  color: #ffffff;
-}
-
-.carousel-arrow svg {
-  width: 22px;
-  height: 22px;
-}
-
-.carousel-arrow:hover,
-.carousel-arrow:focus-visible {
-  background: var(--accent);
-  border-color: var(--accent);
-}
-
-.carousel-count {
-  min-width: 3.2em;
-  margin: 0 0 0 0.6rem;
-  color: var(--heading);
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-}
-
 .founder-wrap {
-  margin: 4rem 0;
+  margin: 0;
   display: grid;
   grid-template-columns: minmax(220px, 300px) 1fr;
   gap: 3rem;
@@ -939,17 +917,13 @@ main > section:nth-child(12) { z-index: 3; }
   flex: 1;
 }
 
-.philosophy-grid {
+.philosophy-panel {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.25rem;
-  margin-top: 2.8rem;
-}
-
-.philosophy-card {
-  position: relative;
-  padding: 1.6rem 1.3rem 1.4rem;
-  background: rgba(255,255,255,0.5);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 2.5rem;
+  height: 100%;
+  padding: 2rem 2.2rem;
+  background: rgba(255, 255, 255, 0.5);
   border: 1px solid var(--line);
   border-top: 8px solid var(--band);
   border-radius: var(--radius-lg);
@@ -975,9 +949,9 @@ main > section:nth-child(12) { z-index: 3; }
   background: var(--band);
 }
 
-.philosophy-card h3 {
+.philosophy-panel h3 {
   margin: 0 0 1rem;
-  font-size: 1.3rem;
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
 }
 
 .philosophy-quote {
@@ -1010,7 +984,7 @@ main > section:nth-child(12) { z-index: 3; }
 .philosophy-description {
   margin: 0;
   color: var(--muted);
-  font-size: 0.94rem;
+  font-size: 1rem;
 }
 
 .links-grid {
@@ -1532,7 +1506,6 @@ main > section:nth-child(12) { z-index: 3; }
     grid-template-columns: 1fr;
   }
 
-  .feature-grid,
   .outdoor-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1545,8 +1518,9 @@ main > section:nth-child(12) { z-index: 3; }
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .philosophy-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .philosophy-panel {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
   .links-grid {
@@ -1668,16 +1642,12 @@ main > section:nth-child(12) { z-index: 3; }
     padding-top: 4rem;
   }
 
-  .feature-grid {
-    grid-template-columns: 1fr;
-  }
-
   .outdoor-tile img {
     height: 160px;
   }
 
-  .philosophy-grid {
-    grid-template-columns: 1fr;
+  .philosophy-panel {
+    padding: 1.5rem 1.3rem;
   }
 
   .links-grid {

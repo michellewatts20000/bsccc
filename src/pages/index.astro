@@ -1,4 +1,6 @@
 ---
+import SectionTabs from '../components/SectionTabs.tsx'
+import PhilosophyPanel from '../components/PhilosophyPanel.astro'
 import { Image, getImage } from 'astro:assets'
 import Layout from '../layouts/Layout.astro'
 import heroImage from '../assets/current-site/renovated_play_one.jpeg'
@@ -132,39 +134,6 @@ const philosophyItems = [
     familyName: 'Addison (aged 4)',
     description:
       'We treat every child as a precious part of our lives. Our staff are parents or long-term educators who understand family life, and even in hard conversations we are always doing our best for your child.'
-  }
-]
-
-const whyItems = [
-  {
-    icon: 'relationships',
-    title: 'Relationships',
-    description:
-      'Children build strong, familiar relationships with educators who know them and care about them.'
-  },
-  {
-    icon: 'community',
-    title: 'Community',
-    description:
-      'Betty’s is community-based, not-for-profit and shaped by the families who call it home.'
-  },
-  {
-    icon: 'nature',
-    title: 'Nature',
-    description:
-      'Big natural outdoor spaces where children can run, dig, climb and build confidence through risky play.'
-  },
-  {
-    icon: 'familiar-faces',
-    title: 'Familiar faces',
-    description:
-      'Educators who feel like family and consider Betty’s their second home.'
-  },
-  {
-    icon: 'fresh-food',
-    title: 'Fresh food',
-    description:
-      'Meals made in-house, with a focus on fresh food and slow, unhurried mealtimes.'
   }
 ]
 
@@ -306,16 +275,8 @@ const impactIcons: Record<string, string> = {
 }
 
 const featureIcons: Record<string, string> = {
-  relationships:
-    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="5.5"/><circle cx="15" cy="12" r="5.5"/></svg>',
-  community:
-    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5 12 4l8 7.5"/><path d="M6 10v9.5a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V10"/><path d="M10 20.5v-6h4v6"/></svg>',
   nature:
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c8 1 14-5 14-14C10 5 4 11 5 19Z"/><path d="M6 18c3-3.5 5.5-6.5 12.5-12"/></svg>',
-  'familiar-faces':
-    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M9 10.5h.01M15 10.5h.01"/><path d="M8.5 14.5c1 1.3 2.2 2 3.5 2s2.5-.7 3.5-2"/></svg>',
-  'fresh-food':
-    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16a8 6 0 0 1-16 0Z"/><path d="M9 4.5c-.6.8-.6 1.4 0 2M12 4c-.6.8-.6 1.4 0 2"/></svg>'
 }
 
 const faqs = [
@@ -473,249 +434,214 @@ const faqs = [
         <h2 class="visually-hidden" id="about-heading">
           About Betty’s
         </h2>
-        <div class="about-carousel" data-carousel>
-          <div
-            class="carousel-tabs"
-            role="group"
-            aria-label="About Betty’s topics"
-          >
-            {aboutTabs.map((tab, i) => (
-              <button
-                type="button"
-                class="carousel-tab"
-                data-index={i}
-                aria-pressed={i === 0 ? 'true' : 'false'}
-              >
-                {tab}
-              </button>
-            ))}
-          </div>
-          <div class="about-carousel-viewport">
-            <div class="about-slide is-active">
-              <div class="about-slide-text">
-                <p class="section-kicker" style="margin-bottom: 0.6rem;">
-                  About us
-                </p>
-                <h2 class="section-heading slide-heading">
-                  Run by families, for families
-                </h2>
+        <SectionTabs
+          client:visible
+          tabs={aboutTabs}
+          label="About Betty’s topics"
+          panelClassName="about-slide"
+        >
+          <Fragment slot="panel0">
+            <div class="about-slide-text">
+              <p class="section-kicker" style="margin-bottom: 0.6rem;">
+                About us
+              </p>
+              <h2 class="section-heading slide-heading">
+                Run by families, for families
+              </h2>
 
-                <p>
-                  Betty Spears is a not-for-profit, parent-governed centre where
-                  decisions are shaped by families and community. Not-for-profit
-                  means that all of the income we receive in fees and Government
-                  subsidies goes directly to the centre budget to be used for
-                  the benefit of children and families.
-                </p>
-                <p>
-                  The day to day running of the centre is the responsibility of
-                  the Centre Director who reports to our volunteer Board of
-                  Directors – all parents themselves. The Centre Director and
-                  Board meet each month to discuss issues relating to the centre
-                  operation and all parents whose children attend Betty’s are
-                  welcome to attend.
-                </p>
-              </div>
-              <div class="about-slide-visual">
-                <Image
-                  src={familyImage}
-                  widths={[480, 720, 1000]}
-                  sizes="(max-width: 980px) calc(100vw - 2rem), 590px"
-                  alt="Children engaged in imaginative indoor play at Betty Spears"
-                />
-              </div>
+              <p>
+                Betty Spears is a not-for-profit, parent-governed centre where
+                decisions are shaped by families and community. Not-for-profit
+                means that all of the income we receive in fees and Government
+                subsidies goes directly to the centre budget to be used for
+                the benefit of children and families.
+              </p>
+              <p>
+                The day to day running of the centre is the responsibility of
+                the Centre Director who reports to our volunteer Board of
+                Directors – all parents themselves. The Centre Director and
+                Board meet each month to discuss issues relating to the centre
+                operation and all parents whose children attend Betty’s are
+                welcome to attend.
+              </p>
             </div>
-            <div class="about-slide">
-              <div class="about-slide-text">
-                <p class="section-kicker" style="margin-bottom: 0.6rem;">
-                  Relationships
-                </p>
-                <h2 class="section-heading slide-heading">
-                  It really is about the relationships at Betty’s
-                </h2>
-                <p>
-                  Relationships between children and educators are based on
-                  mutual trust and respect. All children feel known, celebrated
-                  and cared for by all educators in the centre.
-                </p>
-                <p>
-                  Children and families see familiar, happy and caring faces
-                  every time they enter the centre. Betty's has a warm,
-                  second-home atmosphere where educators can share their own
-                  unique interests and passions with children, fostering
-                  authentic and meaningful connections.
-                </p>
-                <p>
-                  There is a sense of real presense and belonging among all
-                  members of the Betty's community. Our policies and procedures
-                  ensure that the rostering of staff is child-focussed, flexible
-                  and available to parents, responding to the needs of children
-                  and families.
-                </p>
-              </div>
-              <div class="about-slide-visual">
-                <Image
-                  src={groupImage}
-                  widths={[480, 720, 1000]}
-                  sizes="(max-width: 980px) calc(100vw - 2rem), 590px"
-                  alt="A child painting a cardboard tube at the art table"
-                />
-              </div>
-            </div>
-
-            <div class="about-slide">
-              <div class="about-slide-text">
-                <p class="section-kicker" style="margin-bottom: 0.6rem;">
-                  Nature
-                </p>
-                <h2 class="section-heading slide-heading">
-                  Time outdoors, every day
-                </h2>
-                <p>
-                  Betty’s is known for its generous natural outdoor spaces,
-                  where children run, dig, climb, notice and explore. Fresh air
-                  and open-ended play are part of the rhythm of every day.
-                </p>
-                <p>
-                  We value risky play – climbing a little higher, balancing
-                  along logs and testing their own limits – because that’s how
-                  children build confidence, resilience and good judgement, with
-                  educators close by to support them.
-                </p>
-                <p>
-                  Sustainability is part of daily life too. Children help with
-                  recycling, water the vegetable garden and learn what it means
-                  to care for the world around them. Even our youngest have
-                  their own patch, with a sensory walk and vegetable garden in
-                  the Ducklings outdoor area.
-                </p>
-              </div>
-              <div class="about-slide-visual">
-                <Image
-                  src={bushGardenImage}
-                  widths={[480, 720, 1000]}
-                  sizes="(max-width: 980px) calc(100vw - 2rem), 590px"
-                  alt="The bush garden at Betty Spears"
-                />
-              </div>
-            </div>
-
-            <div class="about-slide">
-              <div class="about-slide-text">
-                <p class="section-kicker" style="margin-bottom: 0.6rem;">
-                  Part of the neighbourhood
-                </p>
-                <h2 class="section-heading slide-heading">
-                  Woven into the local community
-                </h2>
-                <p>
-                  Betty’s is well known in the local area and we continue to
-                  build relationships with individuals and organisations within
-                  our area.
-                </p>
-                <p>
-                  Many of our families have shared several of their children
-                  with us over the course of years. We even have some parents
-                  and staff at Betty’s that came to Betty’s as children
-                  themselves.
-                </p>
-              </div>
-              <div class="about-slide-visual">
-                <Image
-                  src={educatorImage2}
-                  widths={[480, 720, 1000]}
-                  sizes="(max-width: 980px) calc(100vw - 2rem), 590px"
-                  alt="An educator reading with a group of children outdoors"
-                />
-              </div>
-            </div>
-
-            <div class="about-slide">
-              <div class="about-slide-text">
-                <p class="section-kicker" style="margin-bottom: 0.6rem;">
-                  Our educators
-                </p>
-                <h2 class="section-heading slide-heading">
-                  Long serving educators
-                </h2>
-                <p>
-                  The long-serving nature of our educators is one of Betty’s
-                  greatest strengths. Families know they can trust familiar
-                  faces, stable routines and deep relationships that grow over
-                  time.
-                </p>
-                <p>
-                  We care about our staff and are proud of the fact that we have
-                  minimal staff turnover at Betty’s. Our longest serving members
-                  of staff have been at Betty’s for over twenty years with many
-                  of our Educators working at Betty’s for close to ten years.
-                </p>
-                <p>
-                  Every room has a university-qualified Early Childhood Teacher
-                  alongside Diploma-qualified educators, plus our own trusted
-                  list of permanent relief staff, so a sick day never means an
-                  unfamiliar face.
-                </p>
-              </div>
-              <div class="about-slide-visual">
-                <Image
-                  src={educatorImage1}
-                  widths={[480, 720, 1000]}
-                  sizes="(max-width: 980px) calc(100vw - 2rem), 590px"
-                  alt="An educator sitting with a group of children during circle time"
-                />
-              </div>
-            </div>
-          </div>
-
-          <div class="about-carousel-controls">
-            <button
-              type="button"
-              class="carousel-arrow carousel-arrow-prev"
-              aria-label="Previous slide"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M19 12H5M11 6l-6 6 6 6"></path>
-              </svg>
-            </button>
-            <button type="button" class="carousel-arrow carousel-arrow-next">
-              <span class="carousel-next-text">
-                Next: <span class="carousel-next-label">{aboutTabs[1]}</span>
-              </span>
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M5 12h14M13 6l6 6-6 6"></path>
-              </svg>
-            </button>
-            <p class="carousel-count visually-hidden" aria-live="polite"></p>
-          </div>
-        </div>
-        <div class="feature-grid">
-          {whyItems.map((item) => (
-            <article class="feature-card">
-              <div
-                class="feature-icon"
-                aria-hidden="true"
-                set:html={featureIcons[item.icon]}
+            <div class="about-slide-visual">
+              <Image
+                src={familyImage}
+                widths={[480, 720, 1000]}
+                sizes="(max-width: 980px) calc(100vw - 2rem), 590px"
+                alt="Children engaged in imaginative indoor play at Betty Spears"
               />
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-            </article>
+            </div>
+          </Fragment>
+          <Fragment slot="panel1">
+            <div class="about-slide-text">
+              <p class="section-kicker" style="margin-bottom: 0.6rem;">
+                Relationships
+              </p>
+              <h2 class="section-heading slide-heading">
+                It really is about the relationships at Betty’s
+              </h2>
+              <p>
+                Relationships between children and educators are based on
+                mutual trust and respect. All children feel known, celebrated
+                and cared for by all educators in the centre.
+              </p>
+              <p>
+                Children and families see familiar, happy and caring faces
+                every time they enter the centre. Betty's has a warm,
+                second-home atmosphere where educators can share their own
+                unique interests and passions with children, fostering
+                authentic and meaningful connections.
+              </p>
+              <p>
+                There is a sense of real presense and belonging among all
+                members of the Betty's community. Our policies and procedures
+                ensure that the rostering of staff is child-focussed, flexible
+                and available to parents, responding to the needs of children
+                and families.
+              </p>
+            </div>
+            <div class="about-slide-visual">
+              <Image
+                src={groupImage}
+                widths={[480, 720, 1000]}
+                sizes="(max-width: 980px) calc(100vw - 2rem), 590px"
+                alt="A child painting a cardboard tube at the art table"
+              />
+            </div>
+          </Fragment>
+          <Fragment slot="panel2">
+            <div class="about-slide-text">
+              <p class="section-kicker" style="margin-bottom: 0.6rem;">
+                Nature
+              </p>
+              <h2 class="section-heading slide-heading">
+                Time outdoors, every day
+              </h2>
+              <p>
+                Betty’s is known for its generous natural outdoor spaces,
+                where children run, dig, climb, notice and explore. Fresh air
+                and open-ended play are part of the rhythm of every day.
+              </p>
+              <p>
+                We value risky play – climbing a little higher, balancing
+                along logs and testing their own limits – because that’s how
+                children build confidence, resilience and good judgement, with
+                educators close by to support them.
+              </p>
+              <p>
+                Sustainability is part of daily life too. Children help with
+                recycling, water the vegetable garden and learn what it means
+                to care for the world around them. Even our youngest have
+                their own patch, with a sensory walk and vegetable garden in
+                the Ducklings outdoor area.
+              </p>
+            </div>
+            <div class="about-slide-visual">
+              <Image
+                src={bushGardenImage}
+                widths={[480, 720, 1000]}
+                sizes="(max-width: 980px) calc(100vw - 2rem), 590px"
+                alt="The bush garden at Betty Spears"
+              />
+            </div>
+          </Fragment>
+          <Fragment slot="panel3">
+            <div class="about-slide-text">
+              <p class="section-kicker" style="margin-bottom: 0.6rem;">
+                Part of the neighbourhood
+              </p>
+              <h2 class="section-heading slide-heading">
+                Woven into the local community
+              </h2>
+              <p>
+                Betty’s is well known in the local area and we continue to
+                build relationships with individuals and organisations within
+                our area.
+              </p>
+              <p>
+                Many of our families have shared several of their children
+                with us over the course of years. We even have some parents
+                and staff at Betty’s that came to Betty’s as children
+                themselves.
+              </p>
+            </div>
+            <div class="about-slide-visual">
+              <Image
+                src={educatorImage2}
+                widths={[480, 720, 1000]}
+                sizes="(max-width: 980px) calc(100vw - 2rem), 590px"
+                alt="An educator reading with a group of children outdoors"
+              />
+            </div>
+          </Fragment>
+          <Fragment slot="panel4">
+            <div class="about-slide-text">
+              <p class="section-kicker" style="margin-bottom: 0.6rem;">
+                Our educators
+              </p>
+              <h2 class="section-heading slide-heading">
+                Long serving educators
+              </h2>
+              <p>
+                The long-serving nature of our educators is one of Betty’s
+                greatest strengths. Families know they can trust familiar
+                faces, stable routines and deep relationships that grow over
+                time.
+              </p>
+              <p>
+                We care about our staff and are proud of the fact that we have
+                minimal staff turnover at Betty’s. Our longest serving members
+                of staff have been at Betty’s for over twenty years with many
+                of our Educators working at Betty’s for close to ten years.
+              </p>
+              <p>
+                Every room has a university-qualified Early Childhood Teacher
+                alongside Diploma-qualified educators, plus our own trusted
+                list of permanent relief staff, so a sick day never means an
+                unfamiliar face.
+              </p>
+            </div>
+            <div class="about-slide-visual">
+              <Image
+                src={educatorImage1}
+                widths={[480, 720, 1000]}
+                sizes="(max-width: 980px) calc(100vw - 2rem), 590px"
+                alt="An educator sitting with a group of children during circle time"
+              />
+            </div>
+          </Fragment>
+        </SectionTabs>
+      </div>
+    </section>
+
+    <section class="impact-band" aria-labelledby="impact-heading">
+      <div class="container">
+        <h2 class="impact-heading" id="impact-heading">
+          Betty’s at a glance
+        </h2>
+        <div class="impact-grid">
+          {impactItems.map((item) => (
+            <div
+              class="stat-item impact-item"
+              style={`--impact-color: ${item.color}`}
+            >
+              <div
+                class="impact-icon"
+                aria-hidden="true"
+                set:html={impactIcons[item.icon]}
+              />
+              <strong>{item.value}</strong>
+              <span>{item.label}</span>
+            </div>
           ))}
         </div>
+      </div>
+    </section>
+
+    <section class="section section-white" id="story" aria-label="Our story">
+      <div class="container">
         <div class="founder-wrap">
           <div class="founder-visual">
             <figure class="founder-card">
@@ -745,30 +671,6 @@ const faqs = [
               with pride that we carry that same spirit forward today.
             </p>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="impact-band" aria-labelledby="impact-heading">
-      <div class="container">
-        <h2 class="impact-heading" id="impact-heading">
-          Betty’s at a glance
-        </h2>
-        <div class="impact-grid">
-          {impactItems.map((item) => (
-            <div
-              class="stat-item impact-item"
-              style={`--impact-color: ${item.color}`}
-            >
-              <div
-                class="impact-icon"
-                aria-hidden="true"
-                set:html={impactIcons[item.icon]}
-              />
-              <strong>{item.value}</strong>
-              <span>{item.label}</span>
-            </div>
-          ))}
         </div>
       </div>
     </section>
@@ -930,23 +832,21 @@ const faqs = [
           love to hear your thoughts.
         </p>
 
-        <div class="philosophy-grid">
-          {philosophyItems.map((item) => (
-            <article class="philosophy-card" style={`--band:${item.hex}`}>
-              <p class="philosophy-colour">{item.colour}</p>
-              <h3>{item.title}</h3>
-              <blockquote class="philosophy-quote">
-                <p>‘{item.theoristQuote}’</p>
-                <cite>{item.theorist}</cite>
-              </blockquote>
-              <blockquote class="philosophy-quote philosophy-quote-family">
-                <p>‘{item.familyQuote}’</p>
-                <cite>{item.familyName}</cite>
-              </blockquote>
-              <p class="philosophy-description">{item.description}</p>
-            </article>
-          ))}
-        </div>
+        <SectionTabs
+          client:visible
+          tabs={philosophyItems.map((item) => ({
+            label: item.title,
+            color: item.hex
+          }))}
+          label="Our philosophy colours"
+        >
+          <PhilosophyPanel slot="panel0" item={philosophyItems[0]} />
+          <PhilosophyPanel slot="panel1" item={philosophyItems[1]} />
+          <PhilosophyPanel slot="panel2" item={philosophyItems[2]} />
+          <PhilosophyPanel slot="panel3" item={philosophyItems[3]} />
+          <PhilosophyPanel slot="panel4" item={philosophyItems[4]} />
+          <PhilosophyPanel slot="panel5" item={philosophyItems[5]} />
+        </SectionTabs>
       </div>
     </section>
 
@@ -1160,66 +1060,6 @@ const faqs = [
         gridObserver.observe(grid)
       })
     }
-
-    document
-      .querySelectorAll<HTMLElement>('[data-carousel]')
-      .forEach((carousel) => {
-        const viewport = carousel.querySelector<HTMLElement>(
-          '.about-carousel-viewport'
-        )
-        const slides = viewport
-          ? (Array.from(viewport.children) as HTMLElement[])
-          : []
-        const count = carousel.querySelector<HTMLElement>('.carousel-count')
-        const prevButton = carousel.querySelector<HTMLButtonElement>(
-          '.carousel-arrow-prev'
-        )
-        const nextButton = carousel.querySelector<HTMLButtonElement>(
-          '.carousel-arrow-next'
-        )
-        const tabs = Array.from(
-          carousel.querySelectorAll<HTMLButtonElement>('.carousel-tab')
-        )
-        const nextLabel = carousel.querySelector<HTMLElement>(
-          '.carousel-next-label'
-        )
-        if (!slides.length) return
-
-        let current = Math.max(
-          slides.findIndex((slide) => slide.classList.contains('is-active')),
-          0
-        )
-
-        const showSlide = (index: number, direction?: 'next' | 'prev') => {
-          slides[current]?.classList.remove('is-active')
-          delete slides[current]?.dataset.enter
-          current = (index + slides.length) % slides.length
-          slides[current]?.classList.add('is-active')
-          if (direction) slides[current].dataset.enter = direction
-          const name = (i: number) => tabs[i]?.textContent?.trim() ?? ''
-          if (count)
-            count.textContent = `${name(current)}, ${current + 1} of ${slides.length}`
-          tabs.forEach((tab, i) =>
-            tab.setAttribute('aria-pressed', String(i === current))
-          )
-          if (nextLabel)
-            nextLabel.textContent = name((current + 1) % slides.length)
-        }
-
-        showSlide(current)
-
-        prevButton?.addEventListener('click', () =>
-          showSlide(current - 1, 'prev')
-        )
-        nextButton?.addEventListener('click', () =>
-          showSlide(current + 1, 'next')
-        )
-        tabs.forEach((tab, i) =>
-          tab.addEventListener('click', () => {
-            if (i !== current) showSlide(i, i > current ? 'next' : 'prev')
-          })
-        )
-      })
 
     // Only the first hero photo is in the HTML; the rest load one step ahead
     const heroSlides = Array.from(
